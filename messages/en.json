@@ -1,0 +1,358 @@
+{
+  "nav": {
+    "services": "Services",
+    "cases": "Cases",
+    "about": "About",
+    "faq": "FAQ",
+    "contacts": "Contacts",
+    "cta": "Free Analysis",
+    "menu_hint": "Not sure where to start? Get a free consultation.",
+    "discuss": "Discuss a project"
+  },
+  "hero": {
+    "words": [
+      "more leads",
+      "more sales",
+      "more clients",
+      "real results"
+    ],
+    "headline": "Marketing that delivers",
+    "sub1": "PRO Marketing# — a full-cycle agency.",
+    "cta_primary": "Get in touch",
+    "cta_secondary": "View cases",
+    "scroll": "Scroll"
+  },
+  "solution": {
+    "label": "Our approach",
+    "title": "Marketing that",
+    "title_accent": "sells",
+    "description": "PRO Marketing# is not 'just another agency'. We are a marketing partner that takes full responsibility for results.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Full cycle",
+        "description": "Ads, website, SEO, SMM and photo/video in one place. One contractor — one strategy."
+      },
+      {
+        "number": "02",
+        "title": "ROI focus",
+        "description": "Every decision is evaluated through numbers. No pretty reports — only results."
+      },
+      {
+        "number": "03",
+        "title": "Transparency",
+        "description": "You always know what's happening and what you're paying for. No surprises."
+      }
+    ]
+  },
+  "services": {
+    "label": "Services",
+    "title": "What we do",
+    "subtitle": "Comprehensive or individual — tailored to your needs and budget",
+    "popular": "Popular",
+    "cta_text": "Not sure where to start?",
+    "cta_bold": "Get a free analysis of your business.",
+    "cta_btn": "Leave a request",
+    "items": [
+      {
+        "title": "Google Ads",
+        "description": "Search and YouTube advertising focused on conversion.",
+        "popular": true
+      },
+      {
+        "title": "Meta Ads",
+        "description": "Facebook and Instagram targeting for the right audience.",
+        "popular": true
+      },
+      {
+        "title": "TikTok Ads",
+        "description": "Young audience, low CPC, native content.",
+        "popular": false
+      },
+      {
+        "title": "SMM",
+        "description": "Social media that sells, not just exists.",
+        "popular": false
+      },
+      {
+        "title": "SEO",
+        "description": "Organic traffic from Google without ad spend.",
+        "popular": false
+      },
+      {
+        "title": "AEO",
+        "description": "Your business in ChatGPT and Google AI answers.",
+        "popular": false
+      },
+      {
+        "title": "Website development",
+        "description": "Conversion-focused websites and landing pages.",
+        "popular": false
+      },
+      {
+        "title": "Photo & Video",
+        "description": "Content that sells: production for ads and social media.",
+        "popular": false
+      },
+      {
+        "title": "Full-cycle marketing",
+        "description": "Complete turnkey solution — from strategy to results.",
+        "popular": true
+      }
+    ]
+  },
+  "clients": {
+    "label": "Our clients",
+    "title": "Businesses that trust us"
+  },
+  "partners": {
+    "official": "Official partners",
+    "tools": "Tools"
+  },
+  "process": {
+    "label": "How we work",
+    "title": "Our process",
+    "items": [
+      {
+        "number": "01",
+        "title": "Request",
+        "description": "Free consultation and business analysis — we understand your goal and current situation."
+      },
+      {
+        "number": "02",
+        "title": "Audit",
+        "description": "Analysis of your niche, competitors and current marketing — we see where you are and what needs to change."
+      },
+      {
+        "number": "03",
+        "title": "Strategy",
+        "description": "We develop a plan for your goals and budget — channels, tools, KPIs and timelines."
+      },
+      {
+        "number": "04",
+        "title": "Launch",
+        "description": "Ads, website, content — all at once or step by step, depending on priorities and budget."
+      },
+      {
+        "number": "05",
+        "title": "Optimisation",
+        "description": "Continuous monitoring and improvement — we test, analyse, and scale."
+      },
+      {
+        "number": "06",
+        "title": "Reporting",
+        "description": "Weekly / monthly report with real numbers — you always know where the money goes."
+      }
+    ]
+  },
+  "cta": {
+    "label": "Free consultation",
+    "title": "Ready to grow?",
+    "description": "Leave a request — we'll get in touch and analyse your business for free.",
+    "trust1": "We respond within 30 minutes (during business hours)",
+    "trust2": "Free and without obligation",
+    "name_placeholder": "Your name",
+    "phone_placeholder": "+380 XX XXX XX XX",
+    "submit": "Leave a request",
+    "submitting": "Sending...",
+    "privacy": "By clicking the button, you agree to the processing of personal data",
+    "success_title": "Thank you!",
+    "success_text": "We will contact you within 30 minutes.",
+    "name_error_short": "Enter your name (minimum 2 characters)",
+    "name_error_long": "Name is too long",
+    "name_error_chars": "Name can only contain letters",
+    "phone_error": "Enter a valid number (+380XXXXXXXXX or 0XXXXXXXXX)"
+  },
+  "footer": {
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Cases",
+        "href": "/cases"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "FAQ",
+        "href": "/faq"
+      },
+      {
+        "label": "Contacts",
+        "href": "/contact"
+      }
+    ],
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy"
+  },
+  "under_construction": {
+    "badge": "In progress",
+    "message": "We're already working on this page.",
+    "apology": "We apologise for the temporary inconvenience — content will be added gradually. In the meantime, you can leave a request and we'll tell you about the service personally.",
+    "cta_primary": "Leave a request",
+    "cta_secondary": "Back to home"
+  },
+  "cases": {
+    "title": "Cases",
+    "subtitle": "Projects we are proud of",
+    "filter_all": "All",
+    "filter_real_estate": "Real Estate",
+    "filter_medical": "Medical",
+    "filter_ecommerce": "E-commerce",
+    "view": "View case",
+    "items": [
+      {
+        "id": "novobud",
+        "industry": "real_estate",
+        "industry_label": "Real Estate",
+        "title": "Novobud Center",
+        "description": "Full-cycle digital marketing for a property developer. Took the brand to the top of search and increased inquiries.",
+        "featured": true
+      },
+      {
+        "id": "medexpert",
+        "industry": "medical",
+        "industry_label": "Medical",
+        "title": "MedExpert",
+        "description": "Google Ads and SEO for a clinic network. Grew patient bookings while reducing cost per lead.",
+        "featured": false
+      },
+      {
+        "id": "styleshop",
+        "industry": "ecommerce",
+        "industry_label": "E-commerce",
+        "title": "StyleShop",
+        "description": "Meta Ads and Google Shopping for fashion e-commerce. Scaled sales while maintaining ROAS.",
+        "featured": false
+      },
+      {
+        "id": "budmaster",
+        "industry": "real_estate",
+        "industry_label": "Real Estate",
+        "title": "BudMaster",
+        "description": "Targeted ads and SMM for a construction company. Consistent flow of high-quality leads.",
+        "featured": false
+      },
+      {
+        "id": "dentalpro",
+        "industry": "medical",
+        "industry_label": "Medical",
+        "title": "Dental Pro",
+        "description": "Full-cycle promotion for a dental clinic. SEO and paid traffic to attract new patients.",
+        "featured": false
+      },
+      {
+        "id": "techmart",
+        "industry": "ecommerce",
+        "industry_label": "E-commerce",
+        "title": "TechMart",
+        "description": "Electronics e-commerce growth. Google Ads and remarketing driving repeat purchases.",
+        "featured": false
+      },
+      {
+        "id": "restaurantpro",
+        "industry": "other",
+        "industry_label": "Other",
+        "title": "Restaurant Pro",
+        "description": "Full-cycle marketing for a restaurant chain. SMM, targeted ads and delivery promotion.",
+        "featured": false
+      }
+    ],
+    "filter_other": "Other"
+  },
+  "about": {
+    "title": "About us",
+    "message": "We're already working on this page.",
+    "apology": "Information about our team and values will appear here soon. In the meantime, leave a request — and we'll tell you about ourselves personally."
+  },
+  "contact": {
+    "label": "Get in touch",
+    "title": "Contacts",
+    "headline": "Tell us about your project",
+    "description": "Leave a request — we'll get in touch and analyse your business for free.",
+    "phone_label": "Phone",
+    "email_label": "Email",
+    "address_label": "Address",
+    "name_label": "Your name",
+    "name_placeholder": "John Smith",
+    "phone_label_field": "Phone",
+    "phone_placeholder": "+380 XX XXX XX XX",
+    "message_label": "Your request",
+    "message_placeholder": "Briefly about your business and what you need...",
+    "submit": "Leave a request",
+    "submitting": "Sending...",
+    "privacy": "By clicking the button, you agree to the processing of personal data",
+    "success_title": "Thank you!",
+    "success_text": "We will contact you within 30 minutes (during business hours).",
+    "back_home": "Back to home",
+    "trust1": "We respond within 30 minutes (during business hours)",
+    "trust2": "Free and without obligation",
+    "name_error_short": "Enter your name (minimum 2 characters)",
+    "name_error_long": "Name is too long",
+    "name_error_chars": "Name can only contain letters",
+    "phone_error": "Enter a valid number (+380XXXXXXXXX or 0XXXXXXXXX)",
+    "msg_error": "Describe your request (minimum 10 characters)"
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "question": "How much do services cost?",
+        "answer": "The cost depends on the services chosen, the scope of work and the advertising budget. There is no fixed price list — each project is unique. The first consultation is free: we analyse your situation and propose a solution for your specific budget."
+      },
+      {
+        "question": "How quickly will I see results?",
+        "answer": "It depends on the tool. Google Ads and Meta Ads deliver first leads within 1–2 weeks of launch. SEO takes 3–6 months for stable organic traffic. Example: a client received 178,975 UAH in revenue in 23 days with an advertising budget of 28,496 UAH."
+      },
+      {
+        "question": "How are you different from a freelancer?",
+        "answer": "A freelancer is one person with limited responsibility. We are a team of specialists in each area: advertising, SEO, SMM, development, photo/video. A single strategy, transparent reporting and accountability for results — not just the process."
+      },
+      {
+        "question": "Will it work for my specific niche?",
+        "answer": "Yes. Before starting, we audit the niche and analyse competitors. If your audience is online — we'll find a way to reach them. We've worked with e-commerce, healthcare, local services and B2B."
+      },
+      {
+        "question": "How does reporting work?",
+        "answer": "Weekly and monthly reports with real numbers: how much was spent, how many leads were received, what the cost per lead was. No 'vanity metrics' — only what affects your profit. You always retain access to advertising accounts."
+      },
+      {
+        "question": "Can I order just one service?",
+        "answer": "Yes. We work both comprehensively and individually — just Google Ads or just SEO if that's your request. But if the goal is maximum results, a systematic approach works much more effectively."
+      },
+      {
+        "question": "Do I need a large budget to start?",
+        "answer": "No. We select tools for your budget, not the other way around. Even with a small initial budget, you can get real leads — the key is to identify the right channel and set up the campaign correctly."
+      },
+      {
+        "question": "What if I'm not satisfied with the results?",
+        "answer": "We don't disappear after launch. If a campaign isn't delivering expected results — we analyse the cause and adjust the approach. Regular optimisation is included in the cost of work, not an additional service."
+      }
+    ]
+  },
+  "problem": {
+    "heading": "Sound familiar",
+    "closing_text": "The problem isn't your business.",
+    "closing_accent": "The problem is your approach to marketing.",
+    "row1": [
+      "Budget spent — zero orders",
+      "Beautiful reports instead of sales",
+      "The contractor set up the ads — and vanished",
+      "You have a website, social media — but clients never call",
+      "The agency says \"just give it more time\"",
+      "Metrics are growing, sales are not"
+    ],
+    "row2": [
+      "It's unclear where the money is going",
+      "The freelancer disappeared with the budget",
+      "Ads are running — but no clients",
+      "Everything is there, no results",
+      "Reports exist, sales do not",
+      "Nobody is responsible for results"
+    ]
+  }
+}

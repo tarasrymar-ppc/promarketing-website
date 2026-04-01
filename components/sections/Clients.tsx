@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const CLIENTS: { name: string; logo: string }[] = [
-  { name: "Voyak",     logo: "/clients/Voyak.png"     },
+  { name: "Voyak",     logo: "/clients/voyak.png"     },
   { name: "Ave",       logo: "/clients/ave.png"       },
   { name: "Etalon",    logo: "/clients/etalon.png"    },
   { name: "Gazda",     logo: "/clients/gazda.png"     },

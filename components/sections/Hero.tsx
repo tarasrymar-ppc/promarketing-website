@@ -19,19 +19,14 @@ export default function Hero() {
   }, [words.length]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center bg-white px-6 text-center">
 
-      {/* Headline */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="max-w-4xl"
-      >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06]">
+      {/* Headline — no entrance animation, renders visible immediately */}
+      <div className="max-w-4xl w-full">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06]">
           {t("headline")}
           <br />
-          <span className="inline-flex items-center justify-center overflow-hidden h-[1.1em] relative">
+          <span className="flex items-center justify-center overflow-hidden h-[1.15em]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={index}
@@ -39,46 +34,36 @@ export default function Hero() {
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
                 transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-[#E5202E] inline-block whitespace-nowrap"
+                className="text-[#E5202E] block"
               >
                 {words[index]}
               </motion.span>
             </AnimatePresence>
           </span>
         </h1>
-      </motion.div>
+      </div>
 
       {/* Subheadline */}
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mt-8 text-lg md:text-xl text-[#6B6B6B] leading-relaxed"
-      >
+      <p className="mt-6 md:mt-8 text-base md:text-xl text-[#6B6B6B] leading-relaxed max-w-sm md:max-w-none">
         {t("sub1")}
-      </motion.p>
+      </p>
 
       {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mt-10 flex flex-col sm:flex-row items-center gap-4"
-      >
+      <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto">
         <Link
           href="/contact"
-          className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-base font-semibold px-7 py-4 rounded-full transition-colors duration-200"
+          className="group inline-flex items-center justify-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm md:text-base font-semibold px-6 md:px-7 py-3.5 md:py-4 rounded-full transition-colors duration-200 w-full sm:w-auto"
         >
           {t("cta_primary")}
-          <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-1" />
+          <ArrowRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
         <Link
           href="/cases"
-          className="inline-flex items-center gap-2 border border-[#0D0D0D] hover:bg-[#0D0D0D] hover:text-white text-[#0D0D0D] text-base font-semibold px-7 py-4 rounded-full transition-all duration-200"
+          className="inline-flex items-center justify-center gap-2 border border-[#0D0D0D] hover:bg-[#0D0D0D] hover:text-white text-[#0D0D0D] text-sm md:text-base font-semibold px-6 md:px-7 py-3.5 md:py-4 rounded-full transition-all duration-200 w-full sm:w-auto"
         >
           {t("cta_secondary")}
         </Link>
-      </motion.div>
+      </div>
 
       {/* Scroll hint */}
       <motion.div

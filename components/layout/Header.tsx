@@ -76,7 +76,7 @@ export default function Header() {
     .map((item, i) => ({
       title: item.title,
       description: item.description,
-      href: SERVICE_HREFS[i],
+      href: `/${locale}${SERVICE_HREFS[i]}`,
       Icon: SERVICE_ICONS[i],
     }));
   const router = useRouter();

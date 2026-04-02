@@ -36,7 +36,7 @@ const INDUSTRY_STYLES: Record<string, { gradient: string; accent: string }> = {
   },
 };
 
-function CaseCard({ item, featured = false }: { item: CaseItem; featured?: boolean }) {
+function CaseCard({ item, featured = false, viewLabel }: { item: CaseItem; featured?: boolean; viewLabel: string }) {
   const style = INDUSTRY_STYLES[item.industry];
 
   return (
@@ -92,7 +92,7 @@ function CaseCard({ item, featured = false }: { item: CaseItem; featured?: boole
 
         {/* Footer link */}
         <div className="flex items-center gap-1.5 pt-2 text-sm font-medium text-[#0D0D0D]/40 group-hover:text-[#E5202E] transition-colors duration-200">
-          <span>Детальніше</span>
+          <span>{viewLabel}</span>
           <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
       </div>
@@ -103,6 +103,7 @@ function CaseCard({ item, featured = false }: { item: CaseItem; featured?: boole
 export default function CasesGrid() {
   const t = useTranslations("cases");
   const allItems = t.raw("items") as CaseItem[];
+  const viewLabel = t("view");
 
   const [active, setActive] = useState<Industry>("all");
 
@@ -144,10 +145,10 @@ export default function CasesGrid() {
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <AnimatePresence mode="popLayout">
           {featured && (
-            <CaseCard key={featured.id} item={featured} featured />
+            <CaseCard key={featured.id} item={featured} featured viewLabel={viewLabel} />
           )}
           {rest.map((item) => (
-            <CaseCard key={item.id} item={item} />
+            <CaseCard key={item.id} item={item} viewLabel={viewLabel} />
           ))}
         </AnimatePresence>
       </motion.div>

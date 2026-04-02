@@ -92,7 +92,7 @@ export default function Services() {
               </span>
             </p>
             <Link
-              href="/#contact"
+              href="#contact"
               className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0"
             >
               {t("cta_btn")}

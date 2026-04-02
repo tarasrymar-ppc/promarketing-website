@@ -33,10 +33,6 @@ export async function generateMetadata(
   };
 }
 
-export function generateStaticParams() {
-  return Object.keys(SERVICES).map((slug) => ({ slug }));
-}
-
 // --- Page ---
 
 export default async function ServicePage(

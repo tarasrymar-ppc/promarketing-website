@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import AnimatedSection from "@/components/common/AnimatedSection";
 
-const CLIENTS: { name: string; logo: string }[] = [
+const CLIENTS = [
   { name: "Voyak",     logo: "/clients/voyak.png"     },
   { name: "Ave",       logo: "/clients/ave.png"       },
   { name: "Etalon",    logo: "/clients/etalon.png"    },
@@ -19,46 +17,73 @@ const CLIENTS: { name: string; logo: string }[] = [
   { name: "Toyota",    logo: "/clients/toyota.png"    },
 ];
 
-const REPEATED = [...CLIENTS, ...CLIENTS];
-
 export default async function Clients() {
   const t = await getTranslations("clients");
+  const row = [...CLIENTS, ...CLIENTS];
 
   return (
-    <section className="py-16 md:py-20 bg-white rounded-3xl overflow-hidden">
+    <section className="py-16 md:py-24 bg-white rounded-3xl">
 
       {/* Header */}
-      <AnimatedSection className="max-w-6xl mx-auto px-6 mb-12 text-center">
+      <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
         <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
           {t("label")}
         </p>
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
           {t("title")}
         </h2>
-      </AnimatedSection>
+      </div>
 
-      {/* Marquee — no AnimatedSection wrapper, CSS animation is enough */}
-      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      {/* Marquee */}
+      <div
+        className="overflow-hidden"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+        }}
+      >
         <div
-          className="flex items-center gap-10 animate-marquee w-max"
-          style={{ animationDuration: "50s" }}
+          className="flex items-center"
+          style={{
+            width: "max-content",
+            animation: "clients-scroll 40s linear infinite",
+          }}
         >
-          {REPEATED.map((client, i) => (
+          {row.map((client, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center group"
+              className="flex-shrink-0 flex items-center justify-center px-10"
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={client.logo}
                 alt={client.name}
-                width={300}
-                height={120}
-                className="w-auto h-auto max-w-[280px] max-h-[110px] object-contain mix-blend-multiply grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                style={{
+                  height: "60px",
+                  width: "auto",
+                  maxWidth: "160px",
+                  objectFit: "contain",
+                  filter: "grayscale(100%) opacity(45%)",
+                  transition: "filter 0.4s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%) opacity(100%)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%) opacity(45%)";
+                }}
               />
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes clients-scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
 
     </section>
   );

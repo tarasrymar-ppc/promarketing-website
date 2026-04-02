@@ -24,6 +24,31 @@ export default async function Clients() {
   return (
     <section className="py-16 md:py-24 bg-white rounded-3xl">
 
+      <style>{`
+        @keyframes clients-scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .clients-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          animation: clients-scroll 40s linear infinite;
+        }
+        .client-logo {
+          height: 56px;
+          width: auto;
+          max-width: 150px;
+          object-fit: contain;
+          filter: grayscale(100%) opacity(40%);
+          transition: filter 0.4s ease;
+          flex-shrink: 0;
+        }
+        .client-logo:hover {
+          filter: grayscale(0%) opacity(100%);
+        }
+      `}</style>
+
       {/* Header */}
       <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
         <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
@@ -36,54 +61,25 @@ export default async function Clients() {
 
       {/* Marquee */}
       <div
-        className="overflow-hidden"
         style={{
+          overflow: "hidden",
           maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
         }}
       >
-        <div
-          className="flex items-center"
-          style={{
-            width: "max-content",
-            animation: "clients-scroll 40s linear infinite",
-          }}
-        >
+        <div className="clients-track">
           {row.map((client, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex items-center justify-center px-10"
-            >
+            <div key={i} style={{ padding: "0 40px" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={client.logo}
                 alt={client.name}
-                style={{
-                  height: "60px",
-                  width: "auto",
-                  maxWidth: "160px",
-                  objectFit: "contain",
-                  filter: "grayscale(100%) opacity(45%)",
-                  transition: "filter 0.4s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%) opacity(100%)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(100%) opacity(45%)";
-                }}
+                className="client-logo"
               />
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes clients-scroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-      `}</style>
 
     </section>
   );

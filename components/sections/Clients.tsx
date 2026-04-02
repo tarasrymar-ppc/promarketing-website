@@ -37,30 +37,28 @@ export default async function Clients() {
         </h2>
       </AnimatedSection>
 
-      {/* Marquee */}
-      <AnimatedSection delay={0.1}>
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-          <div
-            className="flex items-center gap-10 animate-marquee w-max"
-            style={{ animationDuration: "50s" }}
-          >
-            {REPEATED.map((client, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 flex items-center justify-center group"
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={300}
-                  height={120}
-                  className="w-auto h-auto max-w-[280px] max-h-[110px] object-contain mix-blend-multiply grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                />
-              </div>
-            ))}
-          </div>
+      {/* Marquee — no AnimatedSection wrapper, CSS animation is enough */}
+      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+        <div
+          className="flex items-center gap-10 animate-marquee w-max"
+          style={{ animationDuration: "50s" }}
+        >
+          {REPEATED.map((client, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 flex items-center justify-center group"
+            >
+              <Image
+                src={client.logo}
+                alt={client.name}
+                width={300}
+                height={120}
+                className="w-auto h-auto max-w-[280px] max-h-[110px] object-contain mix-blend-multiply grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+              />
+            </div>
+          ))}
         </div>
-      </AnimatedSection>
+      </div>
 
     </section>
   );

@@ -107,9 +107,14 @@ export default function ContactForm() {
             </div>
             <div>
               <p className="text-[10px] text-[#ADADAD] uppercase tracking-widest mb-0.5">{t("address_label")}</p>
-              <p className="text-sm text-[#0D0D0D] leading-relaxed">
+              <a
+                href="https://maps.app.goo.gl/BbSchhnD9QfbSaK69"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#0D0D0D] leading-relaxed hover:text-[#E5202E] transition-colors duration-200"
+              >
                 {CONTACT.city}<br />{CONTACT.address}
-              </p>
+              </a>
             </div>
           </div>
         </div>

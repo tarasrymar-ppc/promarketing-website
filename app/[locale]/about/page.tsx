@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Про нас — PRO Marketing#",
+  description:
+    "Маркетингове агентство в Ужгороді, засноване у 2019 році. Працюємо з медициною, нерухомістю, б'юті та e-commerce. Рахуємо результат у продажах.",
+  alternates: {
+    canonical: "https://promarketing-website.vercel.app/uk/about",
+    languages: {
+      uk: "https://promarketing-website.vercel.app/uk/about",
+      en: "https://promarketing-website.vercel.app/en/about",
+    },
+  },
+};
 
 export default async function AboutPage() {
   const t = await getTranslations("about");

@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CasesGrid from "@/components/sections/CasesGrid";
+
+export const metadata: Metadata = {
+  title: "Кейси — Реальні результати клієнтів",
+  description:
+    "Проєкти PRO Marketing# в медицині, нерухомості, б'юті та e-commerce. Дивіться конкретні результати наших рекламних кампаній.",
+  alternates: {
+    canonical: "https://promarketing-website.vercel.app/uk/cases",
+    languages: {
+      uk: "https://promarketing-website.vercel.app/uk/cases",
+      en: "https://promarketing-website.vercel.app/en/cases",
+    },
+  },
+};
 
 export default async function CasesPage() {
   const t = await getTranslations("cases");

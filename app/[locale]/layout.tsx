@@ -5,10 +5,28 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
+const BASE_URL = "https://promarketing-website.vercel.app";
+
 export const metadata: Metadata = {
-  title: "PRO Marketing# — Маркетинг під ключ",
+  title: {
+    default: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
+    template: "%s | PRO Marketing#",
+  },
   description:
-    "Комплексний маркетинг: Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні результати — більше клієнтів, більше продажів.",
+    "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі, не просто контент.",
+  metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      "uk": `${BASE_URL}/uk`,
+      "en": `${BASE_URL}/en`,
+    },
+  },
+  openGraph: {
+    siteName: "PRO Marketing#",
+    locale: "uk_UA",
+    type: "website",
+  },
 };
 
 export default async function LocaleLayout({

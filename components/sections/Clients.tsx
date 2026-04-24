@@ -1,5 +1,3 @@
-import { getTranslations } from "next-intl/server";
-
 const CLIENTS = [
   { name: "Voyak",     logo: "/clients/voyak.png"     },
   { name: "Ave",       logo: "/clients/ave.png"       },
@@ -17,8 +15,7 @@ const CLIENTS = [
   { name: "Toyota",    logo: "/clients/toyota.png"    },
 ];
 
-export default async function Clients() {
-  const t = await getTranslations("clients");
+export default function Clients() {
   const row = [...CLIENTS, ...CLIENTS];
 
   return (
@@ -51,12 +48,9 @@ export default async function Clients() {
 
       {/* Header */}
       <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
-        <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
-          {t("label")}
+        <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
+          Наші клієнти
         </p>
-        <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
-          {t("title")}
-        </h2>
       </div>
 
       {/* Marquee */}

@@ -10,6 +10,7 @@ import MetaTimeline from "@/components/sections/meta-ads/MetaTimeline";
 import MetaSpecialist from "@/components/sections/meta-ads/MetaSpecialist";
 import MetaFAQ from "@/components/sections/meta-ads/MetaFAQ";
 import MetaForm from "@/components/sections/meta-ads/MetaForm";
+import Clients from "@/components/sections/Clients";
 
 export const metadata: Metadata = {
   title: "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#",
@@ -39,6 +40,7 @@ export default function MetaAdsPage() {
         <MetaSpecialist />
         <MetaFAQ />
         <MetaForm />
+        <Clients />
 
       </main>
       <Footer />

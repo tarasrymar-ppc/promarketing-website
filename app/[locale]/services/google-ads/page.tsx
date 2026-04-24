@@ -9,6 +9,7 @@ import GATimeline from "@/components/sections/google-ads/GATimeline";
 import GASpecialist from "@/components/sections/google-ads/GASpecialist";
 import GAFAQ from "@/components/sections/google-ads/GAFAQ";
 import GAForm from "@/components/sections/google-ads/GAForm";
+import Clients from "@/components/sections/Clients";
 
 export const metadata: Metadata = {
   title: "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#",
@@ -37,6 +38,7 @@ export default function GoogleAdsPage() {
         <GASpecialist />
         <GAFAQ />
         <GAForm />
+        <Clients />
 
       </main>
       <Footer />

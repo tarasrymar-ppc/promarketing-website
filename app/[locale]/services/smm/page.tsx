@@ -9,6 +9,7 @@ import SMMProcess from "@/components/sections/smm/SMMProcess";
 import SMMPricing from "@/components/sections/smm/SMMPricing";
 import SMMFAQ from "@/components/sections/smm/SMMFAQ";
 import SMMForm from "@/components/sections/smm/SMMForm";
+import Clients from "@/components/sections/Clients";
 
 export const metadata: Metadata = {
   title: "SMM — ведення соціальних мереж + Meta Ads від 35 000 грн/міс | PRO Marketing#",
@@ -37,6 +38,7 @@ export default function SMMPage() {
         <SMMPricing />
         <SMMFAQ />
         <SMMForm />
+        <Clients />
 
       </main>
       <Footer />

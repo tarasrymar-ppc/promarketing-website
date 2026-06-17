@@ -20,7 +20,7 @@ export default function Process() {
 
         {/* Header */}
         <AnimatedSection className="mb-16 text-center">
-          <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
+          <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest mb-4">
             {t("label")}
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
@@ -51,7 +51,7 @@ export default function Process() {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <span className="text-xs font-semibold text-[#E5202E] tracking-widest tabular-nums">
+                  <span className="text-xs font-semibold text-[#C0111D] tracking-widest tabular-nums">
                     {step.number}
                   </span>
                   <h3 className="text-xl md:text-2xl font-semibold text-[#0D0D0D] mt-3 mb-3 tracking-tight">

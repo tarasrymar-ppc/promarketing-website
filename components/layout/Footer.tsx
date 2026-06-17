@@ -41,7 +41,7 @@ export default async function Footer() {
               <span key={link.href} className="flex items-center">
                 <Link
                   href={link.href}
-                  className="text-sm text-white/50 hover:text-white transition-colors duration-200 px-3"
+                  className="inline-flex min-h-6 items-center px-3 py-1 text-sm text-white/55 transition-colors duration-200 hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -56,7 +56,7 @@ export default async function Footer() {
           <div className="flex items-center gap-4 flex-shrink-0">
             <a
               href={`tel:${CONTACT.phone}`}
-              className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+              className="flex min-h-6 items-center gap-1.5 text-sm text-white/55 transition-colors duration-200 hover:text-white whitespace-nowrap"
             >
               <Phone size={13} />
               {CONTACT.phoneFormatted}
@@ -70,7 +70,7 @@ export default async function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-white/40 hover:text-white transition-colors duration-200"
+                className="flex h-6 w-6 items-center justify-center text-white/55 transition-colors duration-200 hover:text-white"
               >
                 <FacebookIcon />
               </a>

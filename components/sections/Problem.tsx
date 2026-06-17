@@ -56,7 +56,7 @@ export default function Problem() {
 
       {/* Closing */}
       <div className="max-w-6xl mx-auto px-6 mt-14 text-center">
-        <p className="text-xl md:text-2xl text-white/40 leading-snug">
+        <p className="text-xl md:text-2xl text-white/55 leading-snug">
           {t("closing_text")}{" "}
           <span className="text-white font-medium">
             {t("closing_accent")}

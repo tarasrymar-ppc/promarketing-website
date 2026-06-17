@@ -68,6 +68,8 @@ export default function Clients() {
               <img
                 src={client.logo}
                 alt={client.name}
+                width={150}
+                height={56}
                 loading="lazy"
                 decoding="async"
                 fetchPriority="low"

@@ -35,7 +35,7 @@ export default function Services() {
         {/* Header */}
         <AnimatedSection className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
-            <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
+            <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest mb-4">
               {t("label")}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
@@ -62,7 +62,7 @@ export default function Services() {
               >
                 {/* Popular badge */}
                 {service.popular && (
-                  <span className="absolute top-3 right-3 text-[10px] font-semibold text-[#E5202E] bg-[#E5202E]/8 px-2 py-0.5 rounded-full tracking-wide">
+                  <span className="absolute top-3 right-3 text-[10px] font-semibold text-[#C0111D] bg-[#E5202E]/8 px-2 py-0.5 rounded-full tracking-wide">
                     {t("popular")}
                   </span>
                 )}

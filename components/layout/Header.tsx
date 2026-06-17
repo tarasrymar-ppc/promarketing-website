@@ -226,7 +226,6 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => switchLocale("uk")}
-                  aria-label="Перемкнути мову на українську"
                   className={locale === "uk" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                 >
                   UA
@@ -235,7 +234,6 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => switchLocale("en")}
-                  aria-label="Switch language to English"
                   className={locale === "en" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                 >
                   EN
@@ -394,7 +392,6 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => switchLocale("uk")}
-                      aria-label="Перемкнути мову на українську"
                       className={locale === "uk" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                     >
                       UA
@@ -403,7 +400,6 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => switchLocale("en")}
-                      aria-label="Switch language to English"
                       className={locale === "en" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                     >
                       EN

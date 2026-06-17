@@ -20,7 +20,7 @@ export default function Solution() {
 
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
+          <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest mb-4">
             {t("label")}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06]">
@@ -44,7 +44,7 @@ export default function Solution() {
                 transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 className="h-full bg-[#F4F4F4] p-8 md:p-10 group hover:bg-white transition-colors duration-300 cursor-default"
               >
-                <span className="text-xs font-semibold text-[#E5202E] tracking-widest tabular-nums">
+                <span className="text-xs font-semibold text-[#C0111D] tracking-widest tabular-nums">
                   {number}
                 </span>
                 <h3 className="text-xl md:text-2xl font-semibold text-[#0D0D0D] mt-4 mb-3 tracking-tight">

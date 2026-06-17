@@ -46,6 +46,9 @@ export default function GASpecialist() {
               <img
                 src={CERT_IMAGE}
                 alt="Google Ads Certificate — Taras Rymar"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
                 className="w-full max-w-[220px] h-auto rounded-lg border border-[#E0E0E0]"
               />
             </div>

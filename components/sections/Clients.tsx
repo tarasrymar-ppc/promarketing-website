@@ -68,6 +68,9 @@ export default function Clients() {
               <img
                 src={client.logo}
                 alt={client.name}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
                 className="client-logo"
               />
             </div>

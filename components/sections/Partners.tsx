@@ -20,6 +20,8 @@ function LogoCard({ name, logo }: { name: string; logo: string }) {
         alt={name}
         width={130}
         height={48}
+        loading="lazy"
+        sizes="130px"
         className="w-[130px] h-[48px] object-contain"
       />
     </div>

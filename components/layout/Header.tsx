@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Menu, X, Phone, ArrowRight, ChevronDown } from "lucide-react";
 import {
   MagnifyingGlassIcon, CrosshairIcon, TiktokLogoIcon, ShareNetworkIcon,
@@ -29,18 +28,6 @@ const SERVICE_HREFS = [
   "/services/website-development",
   "/services/logo-branding",
 ];
-
-
-// Stagger variants for mega-menu items
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
-};
-
-const itemVariants: Variants = {
-  hidden:  { opacity: 0, y: 6 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
-};
 
 function Logo() {
   const [imgError, setImgError] = useState(false);
@@ -139,19 +126,12 @@ export default function Header() {
   return (
     <>
       {/* ── OVERLAY ── */}
-      <AnimatePresence>
-        {isMegaOpen && (
-          <motion.div
-            key="overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={closeMega}
-            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px]"
-          />
-        )}
-      </AnimatePresence>
+      {isMegaOpen && (
+        <div
+          onClick={closeMega}
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px]"
+        />
+      )}
 
       <header
         onMouseLeave={() => setIsMegaOpen(false)}
@@ -189,13 +169,11 @@ export default function Header() {
                       className="flex items-center gap-1 text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200 py-5 cursor-pointer"
                     >
                       {link.label}
-                      <motion.span
-                        animate={{ rotate: isMegaOpen ? 180 : 0 }}
-                        transition={{ duration: 0.2, ease: "easeInOut" }}
-                        className="flex items-center ml-0.5"
+                      <span
+                        className={`flex items-center ml-0.5 transition-transform duration-200 ${isMegaOpen ? "rotate-180" : ""}`}
                       >
                         <ChevronDown size={14} />
-                      </motion.span>
+                      </span>
                     </button>
                   </div>
                 ) : (
@@ -267,38 +245,20 @@ export default function Header() {
         </div>
 
         {/* ── MEGA MENU ── */}
-        <AnimatePresence>
-          {isMegaOpen && (
-            <motion.div
-              key="mega"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              id="services-mega-menu"
-              className="hidden md:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
-            >
+        {isMegaOpen && (
+            <div
+            id="services-mega-menu"
+            className="hidden md:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
+          >
               <div className="max-w-6xl mx-auto px-6 py-8">
                 <div className="flex gap-6">
 
                   {/* Services grid — stagger */}
-                  <motion.div
-                    className="flex-1 grid grid-cols-4 gap-2"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                  >
+                  <div className="flex-1 grid grid-cols-4 gap-2">
                     {serviceItems.map(({ title, description, href, Icon }) => (
-                      <motion.div
+                      <div
                         key={href}
-                        variants={itemVariants}
-                        whileHover={{
-                          scale: 1.03,
-                          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-                          zIndex: 10,
-                        }}
-                        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="rounded-xl"
+                        className="rounded-xl transition-transform duration-200 hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
                       >
                         <Link
                           href={href}
@@ -317,9 +277,9 @@ export default function Header() {
                             </p>
                           </div>
                         </Link>
-                      </motion.div>
+                      </div>
                     ))}
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Bottom strip */}
@@ -337,22 +297,15 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
 
         {/* ── MOBILE MENU ── */}
-        <AnimatePresence>
-          {isMobileOpen && (
-            <motion.div
-              key="mobile"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              id="mobile-menu"
-              className="md:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
-            >
+        {isMobileOpen && (
+            <div
+            id="mobile-menu"
+            className="md:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
+          >
               <div className="px-6 pb-6">
                 <div className="pt-4">
                   <p className="text-xs font-semibold text-[#6B6B6B] uppercase tracking-wider mb-3">
@@ -422,9 +375,8 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </header>
     </>
   );

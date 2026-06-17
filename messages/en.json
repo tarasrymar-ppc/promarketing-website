@@ -31,17 +31,17 @@
       {
         "number": "01",
         "title": "Full cycle",
-        "description": "Ads, website, SEO, SMM and photo/video in one place. One contractor — one strategy."
+        "description": "Ads, website, SEO, SMM and branding in one place. One contractor — one strategy."
       },
       {
         "number": "02",
-        "title": "ROI focus",
-        "description": "Every decision is evaluated through numbers. No pretty reports — only results."
+        "title": "Sales-first mindset",
+        "description": "Our team is focused on sales, not just managing social media."
       },
       {
         "number": "03",
-        "title": "Transparency",
-        "description": "You always know what's happening and what you're paying for. No surprises."
+        "title": "Integration & automation",
+        "description": "We connect CRM, telephony, analytics and all the necessary services. We set up the technical side so ads don't just run — they deliver measurable results."
       }
     ]
   },
@@ -56,47 +56,47 @@
     "items": [
       {
         "title": "Google Ads",
-        "description": "Search and YouTube advertising focused on conversion.",
+        "description": "We run ads on Google Search and YouTube. We reach people who are already looking for your product and bring them to your website or into leads.",
         "popular": true
       },
       {
         "title": "Meta Ads",
-        "description": "Facebook and Instagram targeting for the right audience.",
+        "description": "We run ads on Facebook, Instagram and Threads. We show them to the right audience, warm up interest and convert it into inquiries.",
         "popular": true
       },
       {
         "title": "TikTok Ads",
-        "description": "Young audience, low CPC, native content.",
+        "description": "We promote businesses through short videos on TikTok. We attract new audiences and generate traffic at a lower cost.",
         "popular": false
       },
       {
         "title": "SMM",
-        "description": "Social media that sells, not just exists.",
+        "description": "We manage business social media. We create content that builds trust, explains the product and supports sales.",
         "popular": false
       },
       {
         "title": "SEO",
-        "description": "Organic traffic from Google without ad spend.",
+        "description": "We optimise websites for Google. We help you rank higher in search and get stable organic traffic.",
         "popular": false
       },
       {
         "title": "AEO",
-        "description": "Your business in ChatGPT and Google AI answers.",
+        "description": "We optimise content for answers in ChatGPT and Google AI. We make sure your business appears where people are looking for ready solutions.",
         "popular": false
       },
       {
         "title": "Website development",
-        "description": "Conversion-focused websites and landing pages.",
+        "description": "We build websites and landing pages for advertising. We design the structure so visitors leave requests, not just browse the page.",
         "popular": false
       },
       {
-        "title": "Photo & Video",
-        "description": "Content that sells: production for ads and social media.",
+        "title": "Logo & Branding",
+        "description": "We design logos and complete branding for your product. A visual identity that sets your business apart from competitors.",
         "popular": false
       },
       {
         "title": "Full-cycle marketing",
-        "description": "Complete turnkey solution — from strategy to results.",
+        "description": "We take ownership of the entire process: strategy, advertising, website and analytics. We combine everything into one system for stable results.",
         "popular": true
       }
     ]
@@ -146,11 +146,11 @@
     ]
   },
   "cta": {
-    "label": "Free consultation",
-    "title": "Ready to grow?",
-    "description": "Leave a request — we'll get in touch and analyse your business for free.",
-    "trust1": "We respond within 30 minutes (during business hours)",
-    "trust2": "Free and without obligation",
+    "label": "Initial consultation",
+    "title": "Need marketing?",
+    "description": "Leave a request — we'll get in touch, clarify the details and propose the best format of collaboration for your business.",
+    "trust1": "We'll run an analysis",
+    "trust2": "We'll send a proposal",
     "name_placeholder": "Your name",
     "phone_placeholder": "+380 XX XXX XX XX",
     "submit": "Leave a request",
@@ -273,7 +273,7 @@
     "label": "Get in touch",
     "title": "Contacts",
     "headline": "Tell us about your project",
-    "description": "Leave a request — we'll get in touch and analyse your business for free.",
+    "description": "Leave a request — we'll get in touch, clarify the details and propose the best format of collaboration for your business.",
     "phone_label": "Phone",
     "email_label": "Email",
     "address_label": "Address",
@@ -289,8 +289,8 @@
     "success_title": "Thank you!",
     "success_text": "We will contact you within 30 minutes (during business hours).",
     "back_home": "Back to home",
-    "trust1": "We respond within 30 minutes (during business hours)",
-    "trust2": "Free and without obligation",
+    "trust1": "We'll run an analysis",
+    "trust2": "We'll send a proposal",
     "name_error_short": "Enter your name (minimum 2 characters)",
     "name_error_long": "Name is too long",
     "name_error_chars": "Name can only contain letters",
@@ -301,8 +301,8 @@
     "title": "FAQ",
     "items": [
       {
-        "question": "How much do services cost?",
-        "answer": "The cost depends on the services chosen, the scope of work and the advertising budget. There is no fixed price list — each project is unique. The first consultation is free: we analyse your situation and propose a solution for your specific budget."
+        "question": "How is project cost calculated?",
+        "answer": "The cost depends on the number of specialists involved in the project. We analyse your product, determine the team required to achieve results, prepare a proposal — and you make the decision."
       },
       {
         "question": "How quickly will I see results?",
@@ -310,7 +310,7 @@
       },
       {
         "question": "How are you different from a freelancer?",
-        "answer": "A freelancer is one person with limited responsibility. We are a team of specialists in each area: advertising, SEO, SMM, development, photo/video. A single strategy, transparent reporting and accountability for results — not just the process."
+        "answer": "A freelancer is one person with limited responsibility. We are a team of specialists in each area: advertising, SEO, SMM, development, branding. A single strategy, transparent reporting and accountability for results — not just the process."
       },
       {
         "question": "Will it work for my specific niche?",
@@ -321,8 +321,8 @@
         "answer": "Weekly and monthly reports with real numbers: how much was spent, how many leads were received, what the cost per lead was. No 'vanity metrics' — only what affects your profit. You always retain access to advertising accounts."
       },
       {
-        "question": "Can I order just one service?",
-        "answer": "Yes. We work both comprehensively and individually — just Google Ads or just SEO if that's your request. But if the goal is maximum results, a systematic approach works much more effectively."
+        "question": "Which services can be ordered individually?",
+        "answer": "You can order targeted advertising separately — Meta Ads or TikTok Ads — if you already have an SMM team. Google Ads setup is also available individually, or Google + Target for even stronger results. Website development and logo & branding can be ordered as standalone services too."
       },
       {
         "question": "Do I need a large budget to start?",

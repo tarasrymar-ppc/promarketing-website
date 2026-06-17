@@ -6,8 +6,8 @@ import Image from "next/image";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Menu, X, Phone, ArrowRight, ChevronDown } from "lucide-react";
 import {
-  MagnifyingGlass, Crosshair, TiktokLogo, ShareNetwork,
-  ChartLineUp, Brain, Desktop, Camera,
+  MagnifyingGlassIcon, CrosshairIcon, TiktokLogoIcon, ShareNetworkIcon,
+  ChartLineUpIcon, BrainIcon, DesktopIcon, PenNibIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 import { useTranslations, useLocale } from "next-intl";
@@ -15,8 +15,8 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { CONTACT } from "@/lib/constants";
 
 const SERVICE_ICONS: PhosphorIcon[] = [
-  MagnifyingGlass, Crosshair, TiktokLogo, ShareNetwork,
-  ChartLineUp, Brain, Desktop, Camera,
+  MagnifyingGlassIcon, CrosshairIcon, TiktokLogoIcon, ShareNetworkIcon,
+  ChartLineUpIcon, BrainIcon, DesktopIcon, PenNibIcon,
 ];
 
 const SERVICE_HREFS = [
@@ -27,7 +27,7 @@ const SERVICE_HREFS = [
   "/services/seo",
   "/services/aeo",
   "/services/website-development",
-  "/services/photo-video",
+  "/services/logo-branding",
 ];
 
 

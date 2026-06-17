@@ -14,7 +14,7 @@ const SERVICE_HREFS = [
   "/services/seo",
   "/services/aeo",
   "/services/website-development",
-  "/services/photo-video",
+  "/services/logo-branding",
   "/services/complex-marketing",
 ];
 

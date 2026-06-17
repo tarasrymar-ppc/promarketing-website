@@ -1,12 +1,10 @@
-import { ArrowRight } from "lucide-react";
-
 const FACTS = [
-  "від 15 000 грн/міс",
-  "перші заявки в день запуску",
-  "Facebook + Instagram + Threads",
+  "12 років досвіду",
+  "5–6 спеціалістів на проєкті",
+  "Ужгород · Львів · Європа",
 ];
 
-export default function MetaHero() {
+export default function AboutHero() {
   return (
     <section className="flex flex-col min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-68px)]">
 
@@ -16,7 +14,7 @@ export default function MetaHero() {
             className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
             style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
           >
-            Meta Ads<span className="text-[#E5202E]">.</span>
+            Про нас<span className="text-[#E5202E]">.</span>
           </h1>
         </div>
       </div>
@@ -26,24 +24,13 @@ export default function MetaHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
-              Таргетована реклама у Facebook, Instagram та Threads для бізнесів, яким потрібні клієнти — а не просто охоплення.
+              Команда, яка бере повну відповідальність за результат вашого маркетингу.
             </p>
 
             <div className="flex flex-col gap-8">
               <p className="text-base text-[#6B6B6B] leading-relaxed max-w-sm">
-                Знаходимо вашу аудиторію за інтересами, поведінкою та даними.
-                Ретаргетинг, Lookalike, каталоги — все під ваш бізнес.
+                Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — це команда вузьких спеціалістів з 12-річним досвідом, яка працює разом над кожним проєктом.
               </p>
-              <a
-                href="#form"
-                className="group self-start inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
-              >
-                Отримати консультацію
-                <ArrowRight
-                  size={15}
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                />
-              </a>
             </div>
 
           </div>

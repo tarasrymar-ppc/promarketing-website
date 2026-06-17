@@ -1,11 +1,10 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-
-// --- Service map ---
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const SERVICES: Record<string, string> = {
   "google-ads":          "Google Ads",
@@ -15,25 +14,23 @@ const SERVICES: Record<string, string> = {
   "seo":                 "SEO",
   "aeo":                 "AEO",
   "website-development": "Розробка сайтів",
-  "photo-video":         "Фото та відео",
+  "logo-branding":       "Лого та брендинг",
   "complex-marketing":   "Комплексний маркетинг",
 };
 
-// --- Metadata ---
-
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ locale: string; slug: string }> }
 ): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const name = SERVICES[slug];
   if (!name) return {};
+  const safeLocale = isLocale(locale) ? locale : "uk";
   return {
     title: `${name} — PRO Marketing#`,
     description: `Сторінка послуги ${name} у процесі створення. PRO Marketing# — маркетинг під ключ.`,
+    alternates: localizedAlternates(safeLocale, `/services/${slug}`),
   };
 }
-
-// --- Page ---
 
 export default async function ServicePage(
   { params }: { params: Promise<{ slug: string }> }
@@ -45,68 +42,52 @@ export default async function ServicePage(
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#0D0D0D] flex flex-col pt-16 md:pt-[68px]">
+      <main className="min-h-screen bg-white pt-16 md:pt-[68px]">
 
-        {/* Center content */}
-        <div className="flex-1 flex items-center justify-center px-6 py-24">
-          <div className="max-w-xl w-full text-center">
+        {/* Editorial hero title */}
+        <div className="border-b border-[#E0E0E0]">
+          <div className="max-w-6xl mx-auto px-6">
+            <h1
+              className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
+              style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
+            >
+              {name}<span className="text-[#E5202E]">.</span>
+            </h1>
+          </div>
+        </div>
 
-            {/* Pulsing indicator */}
-            <div className="flex items-center justify-center gap-2.5 mb-10">
+        {/* In progress */}
+        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+          <div className="max-w-lg">
+
+            <div className="flex items-center gap-2.5 mb-8">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5202E] opacity-60" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E5202E]" />
               </span>
               <span className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
-                У процесі створення
+                У процесі підготовки
               </span>
             </div>
 
-            {/* Service name */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.04] mb-6">
-              {name}
-            </h1>
-
-            {/* Divider */}
-            <div className="w-12 h-px bg-[#E5202E] mx-auto mb-8" />
-
-            {/* Message */}
-            <p className="text-base md:text-lg text-white/50 leading-relaxed mb-3">
-              Ми вже працюємо над цією сторінкою.
-            </p>
-            <p className="text-sm text-white/30 leading-relaxed mb-12 max-w-sm mx-auto">
-              Вибачаємось за тимчасові незручності — контент буде додаватись поступово.
-              Поки що ви можете залишити заявку, і ми розкажемо про послугу особисто.
+            <p className="text-2xl md:text-3xl font-medium text-[#0D0D0D] leading-snug mb-6">
+              Готуємо детальну сторінку про цю послугу.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/#contact"
-                className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-6 py-3.5 rounded-full transition-colors duration-200 whitespace-nowrap"
-              >
-                Залишити заявку
-                <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 border border-white/10 hover:border-white/30 text-white/60 hover:text-white text-sm font-medium px-6 py-3.5 rounded-full transition-all duration-200 whitespace-nowrap"
-              >
-                <ArrowLeft size={15} />
-                На головну
-              </Link>
-            </div>
+            <p className="text-base text-[#6B6B6B] leading-relaxed mb-10">
+              Скоро тут з&apos;явиться повна інформація — що входить, як працюємо і скільки коштує. Поки що ви можете залишити заявку, і ми розкажемо про послугу особисто.
+            </p>
+
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
+            >
+              Залишити заявку
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
 
           </div>
         </div>
-
-        {/* Bottom decoration — subtle grid pattern */}
-        <div
-          className="h-px w-full"
-          style={{
-            background: "linear-gradient(to right, transparent, #E5202E30, transparent)",
-          }}
-        />
 
       </main>
       <Footer />

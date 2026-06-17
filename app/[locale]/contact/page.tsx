@@ -3,19 +3,23 @@ import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Контакти — PRO Marketing#",
-  description:
-    "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — безкоштовно проаналізуємо ваш бізнес.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk/contact",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk/contact",
-      en: "https://promarketing-website.vercel.app/en/contact",
-    },
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
+  return {
+    title: "Контакти — PRO Marketing#",
+    description:
+      "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — зв'яжемось і запропонуємо оптимальний формат співпраці.",
+    alternates: localizedAlternates(safeLocale, "/contact"),
+  };
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("contact");

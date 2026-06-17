@@ -9,19 +9,23 @@ import Partners from "@/components/sections/Partners";
 import Process from "@/components/sections/Process";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
-  description:
-    "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі — не просто контент.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk",
-      en: "https://promarketing-website.vercel.app/en",
-    },
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
+  return {
+    title: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
+    description:
+      "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі — не просто контент.",
+    alternates: localizedAlternates(safeLocale),
+  };
+}
 
 export default function HomePage() {
   return (

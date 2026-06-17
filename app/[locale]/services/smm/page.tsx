@@ -10,23 +10,47 @@ import SMMPricing from "@/components/sections/smm/SMMPricing";
 import SMMFAQ from "@/components/sections/smm/SMMFAQ";
 import SMMForm from "@/components/sections/smm/SMMForm";
 import Clients from "@/components/sections/Clients";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "SMM — ведення соціальних мереж + Meta Ads від 35 000 грн/міс | PRO Marketing#",
-  description:
-    "Комплексний SMM пакет: ведення Instagram, Facebook, Google Business + таргетована реклама Meta Ads. Копірайтер, дизайнер і контент-мейкер під ваш бізнес. Від 35 000 грн/міс.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk/services/smm",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk/services/smm",
-      en: "https://promarketing-website.vercel.app/en/services/smm",
-    },
-  },
-};
+const title = "SMM — ведення соціальних мереж + Meta Ads від 35 000 грн/міс | PRO Marketing#";
+const description =
+  "Комплексний SMM пакет: ведення Instagram, Facebook, Google Business + таргетована реклама Meta Ads. Копірайтер, дизайнер і контент-мейкер під ваш бізнес. Від 35 000 грн/міс.";
 
-export default function SMMPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
+  return {
+    title,
+    description,
+    alternates: localizedAlternates(safeLocale, "/services/smm"),
+  };
+}
+
+export default async function SMMPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          locale: safeLocale,
+          path: "/services/smm",
+          name: "SMM",
+          description,
+        })}
+      />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">
 

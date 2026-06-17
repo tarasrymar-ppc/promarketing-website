@@ -8,7 +8,7 @@ const ITEMS = [
     text: "Meta Business Suite налаштовується на ваш бізнес-акаунт. Ви — власник. Якщо завершуємо співпрацю — реклама продовжується без перебоїв.",
   },
   {
-    title: "Facebook + Instagram одночасно",
+    title: "Facebook + Instagram + Threads одночасно",
     text: "Стрічка, Stories, Reels, Messenger — охоплюємо аудиторію там, де вона є. Один кабінет, два майданчики.",
   },
   {

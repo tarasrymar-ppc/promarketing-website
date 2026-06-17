@@ -53,8 +53,8 @@ export default function GAPricing() {
           </div>
 
           {/* Separate — ad budget */}
-          <div className="bg-[#0D0D0D] rounded-xl p-8 md:p-10">
-            <p className="text-[10px] text-white/40 uppercase tracking-widest mb-4">
+          <div className="bg-[#E5202E] rounded-xl p-8 md:p-10">
+            <p className="text-[10px] text-white/60 uppercase tracking-widest mb-4">
               Оплачується окремо
             </p>
             <p className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-tight">

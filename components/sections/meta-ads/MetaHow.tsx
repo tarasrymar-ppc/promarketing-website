@@ -6,7 +6,7 @@ const ITEMS = [
   },
   {
     label: "02",
-    title: "Facebook і Instagram — одночасно",
+    title: "Facebook, Instagram і Threads — одночасно",
     text: "Один рекламний кабінет охоплює обидва майданчики. Стрічка, Stories, Reels, Messenger — реклама там, де ваша аудиторія проводить час щодня.",
   },
   {

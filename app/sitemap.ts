@@ -1,8 +1,5 @@
 import { MetadataRoute } from "next";
-
-const BASE_URL = "https://promarketing-website.vercel.app";
-
-const LOCALES = ["uk", "en"];
+import { localizedUrl, LOCALES } from "@/lib/seo";
 
 const STATIC_ROUTES = [
   "",
@@ -10,6 +7,7 @@ const STATIC_ROUTES = [
   "/about",
   "/contact",
   "/faq",
+  "/privacy",
 ];
 
 const SERVICE_SLUGS = [
@@ -20,7 +18,7 @@ const SERVICE_SLUGS = [
   "seo",
   "aeo",
   "website-development",
-  "photo-video",
+  "logo-branding",
   "complex-marketing",
 ];
 
@@ -31,13 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of LOCALES) {
     for (const route of STATIC_ROUTES) {
       entries.push({
-        url: `${BASE_URL}/${locale}${route}`,
+        url: localizedUrl(locale, route),
         lastModified: new Date(),
         changeFrequency: route === "" ? "weekly" : "monthly",
         priority: route === "" ? 1.0 : 0.8,
         alternates: {
           languages: Object.fromEntries(
-            LOCALES.map((l) => [l, `${BASE_URL}/${l}${route}`])
+            LOCALES.map((l) => [l, localizedUrl(l, route)])
           ),
         },
       });
@@ -46,13 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Service pages
     for (const slug of SERVICE_SLUGS) {
       entries.push({
-        url: `${BASE_URL}/${locale}/services/${slug}`,
+        url: localizedUrl(locale, `/services/${slug}`),
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.7,
         alternates: {
           languages: Object.fromEntries(
-            LOCALES.map((l) => [l, `${BASE_URL}/${l}/services/${slug}`])
+            LOCALES.map((l) => [l, localizedUrl(l, `/services/${slug}`)])
           ),
         },
       });

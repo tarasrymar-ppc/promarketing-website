@@ -62,10 +62,10 @@ export const SERVICES = [
     icon: "monitor",
   },
   {
-    title: "Фото та відео",
-    description: "Контент для реклами, соцмереж і сайту. Знімаємо так, щоб продавало.",
-    href: "/services/photo-video",
-    icon: "camera",
+    title: "Лого та брендинг",
+    description: "Розробляємо логотип та повний брендинг вашого продукту. Фірмовий стиль, який виділяє бізнес серед конкурентів.",
+    href: "/services/logo-branding",
+    icon: "pen-tool",
   },
 ] as const;
 

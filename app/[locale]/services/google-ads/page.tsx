@@ -10,23 +10,47 @@ import GASpecialist from "@/components/sections/google-ads/GASpecialist";
 import GAFAQ from "@/components/sections/google-ads/GAFAQ";
 import GAForm from "@/components/sections/google-ads/GAForm";
 import Clients from "@/components/sections/Clients";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#",
-  description:
-    "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk/services/google-ads",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk/services/google-ads",
-      en: "https://promarketing-website.vercel.app/en/services/google-ads",
-    },
-  },
-};
+const title = "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#";
+const description =
+  "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.";
 
-export default function GoogleAdsPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
+  return {
+    title,
+    description,
+    alternates: localizedAlternates(safeLocale, "/services/google-ads"),
+  };
+}
+
+export default async function GoogleAdsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          locale: safeLocale,
+          path: "/services/google-ads",
+          name: "Google Ads",
+          description,
+        })}
+      />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">
 

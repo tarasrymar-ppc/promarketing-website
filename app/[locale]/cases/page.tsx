@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CasesGrid from "@/components/sections/CasesGrid";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Кейси — Реальні результати клієнтів",
-  description:
-    "Проєкти PRO Marketing# в медицині, нерухомості, б'юті та e-commerce. Дивіться конкретні результати наших рекламних кампаній.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk/cases",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk/cases",
-      en: "https://promarketing-website.vercel.app/en/cases",
-    },
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
 
-export default async function CasesPage() {
-  const t = await getTranslations("cases");
+  return {
+    title: "Кейси — Реальні результати клієнтів",
+    description:
+      "Проєкти PRO Marketing# в медицині, нерухомості, б'юті та e-commerce. Дивіться конкретні результати наших рекламних кампаній.",
+    alternates: localizedAlternates(safeLocale, "/cases"),
+  };
+}
 
+export default function CasesPage() {
   return (
     <>
       <Header />
@@ -33,18 +35,46 @@ export default async function CasesPage() {
                 className="font-semibold tracking-tighter text-[#0D0D0D] leading-none"
                 style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
               >
-                {t("title")}<span className="text-[#E5202E]">.</span>
+                Кейси<span className="text-[#E5202E]">.</span>
               </h1>
               <p className="text-base text-[#6B6B6B] md:pb-2 md:max-w-xs leading-relaxed">
-                {t("subtitle")}
+                Проєкти, якими ми пишаємось
               </p>
             </div>
           </div>
         </div>
 
-        {/* ── CASES GRID ── */}
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-          <CasesGrid />
+        {/* ── IN PROGRESS ── */}
+        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+          <div className="max-w-lg">
+
+            <div className="flex items-center gap-2.5 mb-8">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5202E] opacity-60" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E5202E]" />
+              </span>
+              <span className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
+                У процесі підготовки
+              </span>
+            </div>
+
+            <p className="text-2xl md:text-3xl font-medium text-[#0D0D0D] leading-snug mb-6">
+              Готуємо детальні кейси з реальними цифрами.
+            </p>
+
+            <p className="text-base text-[#6B6B6B] leading-relaxed mb-10">
+              Скоро тут з&apos;являться реальні проєкти — з бюджетами, результатами і ROAS. Поки що ви можете залишити заявку, і ми розкажемо про релевантні кейси особисто.
+            </p>
+
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
+            >
+              Залишити заявку
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
+
+          </div>
         </div>
 
       </main>

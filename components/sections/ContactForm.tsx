@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
-import { Clock, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
-import { useTranslations } from "next-intl";
+import { ClockIcon, ShieldCheckIcon } from "@phosphor-icons/react/dist/ssr";
+import { useLocale, useTranslations } from "next-intl";
 import { CONTACT } from "@/lib/constants";
+import { submitLead } from "@/lib/submitLead";
 
 const inputBase =
   "w-full h-12 px-4 bg-transparent border-b border-[#E0E0E0] text-sm text-[#0D0D0D] placeholder:text-[#ADADAD] outline-none transition-all duration-200 focus:border-[#0D0D0D]";
@@ -15,6 +16,7 @@ const inputError =
 
 export default function ContactForm() {
   const t = useTranslations("contact");
+  const locale = useLocale();
 
   const [name, setName]             = useState("");
   const [phone, setPhone]           = useState("");
@@ -23,9 +25,9 @@ export default function ContactForm() {
   const [nameError, setNameError]   = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [msgError, setMsgError]     = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [loading, setLoading]       = useState(false);
   const [submitted, setSubmitted]   = useState(false);
-  const [loadTime]                  = useState(() => Date.now());
 
   function validateName(value: string): string | null {
     const trimmed = value.trim();
@@ -46,10 +48,10 @@ export default function ContactForm() {
     return null;
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
     if (honeypot) { setSubmitted(true); return; }
-    if (Date.now() - loadTime < 3000) { setSubmitted(true); return; }
 
     const nErr = validateName(name);
     const pErr = validatePhone(phone);
@@ -60,7 +62,20 @@ export default function ContactForm() {
     if (nErr || pErr || mErr) return;
 
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 600);
+    try {
+      await submitLead({
+        name,
+        phone,
+        message,
+        source: "Contact page",
+        locale,
+      });
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -122,8 +137,8 @@ export default function ContactForm() {
         {/* Trust signals */}
         <div className="flex flex-col gap-3">
           {([
-            { Icon: Clock,       text: t("trust1") },
-            { Icon: ShieldCheck, text: t("trust2") },
+            { Icon: ClockIcon,       text: t("trust1") },
+            { Icon: ShieldCheckIcon, text: t("trust2") },
           ] as const).map(({ Icon, text }) => (
             <div key={text} className="flex items-center gap-2.5">
               <div className="w-5 h-5 rounded-md bg-[#E5202E]/10 flex items-center justify-center flex-shrink-0">
@@ -235,6 +250,11 @@ export default function ContactForm() {
                   <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
                 )}
               </button>
+              {submitError && (
+                <p className="text-xs text-[#E5202E] leading-relaxed">
+                  {submitError}
+                </p>
+              )}
               <p className="text-xs text-[#ADADAD] leading-relaxed">
                 {t("privacy")}
               </p>

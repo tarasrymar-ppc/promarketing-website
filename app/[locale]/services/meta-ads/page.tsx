@@ -11,23 +11,47 @@ import MetaSpecialist from "@/components/sections/meta-ads/MetaSpecialist";
 import MetaFAQ from "@/components/sections/meta-ads/MetaFAQ";
 import MetaForm from "@/components/sections/meta-ads/MetaForm";
 import Clients from "@/components/sections/Clients";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/schema";
+import { isLocale, localizedAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#",
-  description:
-    "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.",
-  alternates: {
-    canonical: "https://promarketing-website.vercel.app/uk/services/meta-ads",
-    languages: {
-      uk: "https://promarketing-website.vercel.app/uk/services/meta-ads",
-      en: "https://promarketing-website.vercel.app/en/services/meta-ads",
-    },
-  },
-};
+const title = "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#";
+const description =
+  "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.";
 
-export default function MetaAdsPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
+  return {
+    title,
+    description,
+    alternates: localizedAlternates(safeLocale, "/services/meta-ads"),
+  };
+}
+
+export default async function MetaAdsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={serviceSchema({
+          locale: safeLocale,
+          path: "/services/meta-ads",
+          name: "Meta Ads",
+          description,
+        })}
+      />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">
 

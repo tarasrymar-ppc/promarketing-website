@@ -3,29 +3,24 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Clock, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import AnimatedSection from "@/components/common/AnimatedSection";
-
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-  }
-}
+import { submitLead } from "@/lib/submitLead";
 
 // --- Component ---
 
 export default function CTA() {
   const t = useTranslations("cta");
+  const locale = useLocale();
 
   const [name, setName]             = useState("");
   const [phone, setPhone]           = useState("");
   const [honeypot, setHoneypot]     = useState("");
   const [nameError, setNameError]   = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [loading, setLoading]       = useState(false);
   const [submitted, setSubmitted]   = useState(false);
-
-  const [loadTime] = useState(() => Date.now());
 
   // --- Validation helpers (use translated messages) ---
   function validateName(value: string): string | null {
@@ -49,11 +44,11 @@ export default function CTA() {
     { Icon: ShieldCheck, text: t("trust2") },
   ];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (honeypot) { setSubmitted(true); return; }
-    if (Date.now() - loadTime < 3000) { setSubmitted(true); return; }
 
     const nErr = validateName(name);
     const pErr = validatePhone(phone);
@@ -63,18 +58,19 @@ export default function CTA() {
 
     setLoading(true);
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "form_submit",
-      form_name: "contact_cta",
-      form_location: "homepage",
-    });
-
-    // TODO: replace with real API call
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await submitLead({
+        name,
+        phone,
+        source: "Homepage CTA",
+        locale,
+      });
       setSubmitted(true);
-    }, 600);
+    } catch {
+      setSubmitError("Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -200,6 +196,12 @@ export default function CTA() {
                     />
                   )}
                 </button>
+
+                {submitError && (
+                  <p className="text-xs text-[#E5202E] text-center leading-relaxed">
+                    {submitError}
+                  </p>
+                )}
 
                 <p className="text-xs text-[#ADADAD] text-center leading-relaxed">
                   {t("privacy")}

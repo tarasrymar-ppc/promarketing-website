@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 export function generateStaticParams() {
   const slugs = [
     "google-ads", "meta-ads", "tiktok-ads", "smm",
-    "seo", "aeo", "website-development", "photo-video", "complex-marketing",
+    "seo", "aeo", "website-development", "logo-branding", "complex-marketing",
   ];
   return slugs.map((slug) => ({ slug }));
 }

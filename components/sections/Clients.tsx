@@ -48,7 +48,7 @@ export default function Clients() {
 
       {/* Header */}
       <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
-        <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
+        <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest">
           Наші клієнти
         </p>
       </div>

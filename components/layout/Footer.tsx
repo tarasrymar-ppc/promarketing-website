@@ -83,12 +83,12 @@ export default async function Footer() {
       {/* Bottom bar — copyright */}
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 py-4">
-          <p className="text-xs text-white/25">
+          <p className="text-xs text-white/55">
             © {year} PRO Marketing#. {t("copyright")}
           </p>
           <Link
             href="/privacy"
-            className="text-xs text-white/25 hover:text-white/50 transition-colors duration-200"
+            className="inline-flex min-h-6 items-center text-xs text-white/55 transition-colors duration-200 hover:text-white"
           >
             {t("privacy")}
           </Link>

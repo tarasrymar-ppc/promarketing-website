@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 function MarqueeRow({
   items,
@@ -32,8 +30,8 @@ function MarqueeRow({
   );
 }
 
-export default function Problem() {
-  const t = useTranslations("problem");
+export default async function Problem() {
+  const t = await getTranslations("problem");
   const row1 = t.raw("row1") as string[];
   const row2 = t.raw("row2") as string[];
 

@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 interface StepItem {
@@ -10,8 +7,8 @@ interface StepItem {
   description: string;
 }
 
-export default function Process() {
-  const t = useTranslations("process");
+export default async function Process() {
+  const t = await getTranslations("process");
   const items = t.raw("items") as StepItem[];
 
   return (
@@ -32,15 +29,7 @@ export default function Process() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">
           {items.map((step, i) => (
             <AnimatedSection key={step.number} delay={0.08 * i} className="h-full">
-              <motion.div
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: "0 12px 40px rgba(0,0,0,0.10)",
-                  zIndex: 10,
-                }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative h-full bg-[#F4F4F4] p-8 md:p-10 group hover:bg-white transition-colors duration-300 cursor-default"
-              >
+              <div className="relative h-full bg-[#F4F4F4] p-8 md:p-10 group hover:bg-white transition-colors duration-300 cursor-default">
                 {/* Decorative large number */}
                 <span
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-[120px] md:text-[140px] font-bold leading-none select-none pointer-events-none text-[#E0E0E0] group-hover:text-[#E5202E]/8 transition-colors duration-300"
@@ -61,7 +50,7 @@ export default function Process() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </AnimatedSection>
           ))}
         </div>

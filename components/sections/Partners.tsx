@@ -39,7 +39,7 @@ export default async function Partners() {
 
             {/* Official partners */}
             <div className="flex-1 bg-[#F4F4F4] p-8 md:p-10 flex flex-col items-center">
-              <p className="text-xs font-semibold text-[#ADADAD] uppercase tracking-widest mb-6">
+              <p className="text-xs font-semibold text-[#6B6B6B] uppercase tracking-widest mb-6">
                 {t("official")}
               </p>
               <div className="flex items-center gap-0 w-full">
@@ -59,7 +59,7 @@ export default async function Partners() {
 
             {/* Tools */}
             <div className="flex-1 bg-[#F4F4F4] p-8 md:p-10 flex flex-col items-center">
-              <p className="text-xs font-semibold text-[#ADADAD] uppercase tracking-widest mb-6">
+              <p className="text-xs font-semibold text-[#6B6B6B] uppercase tracking-widest mb-6">
                 {t("tools")}
               </p>
               <div className="flex items-center gap-0 w-full">

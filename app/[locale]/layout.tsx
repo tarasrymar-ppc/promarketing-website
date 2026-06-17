@@ -4,7 +4,11 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import AnalyticsEvents from "@/components/analytics/AnalyticsEvents";
 import CookieConsentBanner from "@/components/analytics/CookieConsentBanner";
-import GoogleTagManager from "@/components/analytics/GoogleTagManager";
+import GoogleConsentUpdater from "@/components/analytics/GoogleConsentUpdater";
+import {
+  GoogleTagManagerBody,
+  GoogleTagManagerHead,
+} from "@/components/analytics/GoogleTagManager";
 import JsonLd from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
 import { siteGraphSchema } from "@/lib/schema";
@@ -58,8 +62,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="h-full">
+      <head>
+        <GoogleTagManagerHead />
+      </head>
       <body className="min-h-full flex flex-col">
-        <GoogleTagManager />
+        <GoogleTagManagerBody />
+        <GoogleConsentUpdater />
         <AnalyticsEvents />
         <JsonLd data={siteGraphSchema()} />
         <NextIntlClientProvider messages={messages}>

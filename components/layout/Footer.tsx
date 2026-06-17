@@ -8,16 +8,6 @@ interface NavItem {
   href: string;
 }
 
-function InstagramIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
 function FacebookIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -75,15 +65,6 @@ export default async function Footer() {
             <div className="w-px h-4 bg-white/10" />
 
             <div className="flex items-center gap-2">
-              <a
-                href={SOCIAL.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-white/40 hover:text-white transition-colors duration-200"
-              >
-                <InstagramIcon />
-              </a>
               <a
                 href={SOCIAL.facebook}
                 target="_blank"

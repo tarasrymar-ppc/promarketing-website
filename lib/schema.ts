@@ -12,7 +12,7 @@ export function organizationSchema() {
     name: "PRO Marketing#",
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    sameAs: [SOCIAL.instagram, SOCIAL.facebook],
+    sameAs: [SOCIAL.facebook],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: CONTACT.phone,

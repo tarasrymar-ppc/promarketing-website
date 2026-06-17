@@ -7,8 +7,7 @@ export const CONTACT = {
 } as const;
 
 export const SOCIAL = {
-  instagram: "https://instagram.com/promarketing",
-  facebook: "https://facebook.com/promarketing",
+  facebook: "https://www.facebook.com/pro.marketing.agency.ua",
 } as const;
 
 export const NAV_LINKS = [

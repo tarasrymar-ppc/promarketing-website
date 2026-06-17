@@ -30,10 +30,10 @@ function trackAnchorClick(anchor: HTMLAnchorElement) {
     return;
   }
 
-  if (href.includes("instagram.com") || href.includes("facebook.com")) {
+  if (href.includes("facebook.com")) {
     trackEvent("social_clicked", {
       ...payload,
-      social_network: href.includes("instagram.com") ? "instagram" : "facebook",
+      social_network: "facebook",
     });
     return;
   }

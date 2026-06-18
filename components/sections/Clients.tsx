@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const CLIENTS = [
   { name: "Voyak",     logo: "/clients/voyak.png"     },
   { name: "Ave",       logo: "/clients/ave.png"       },
@@ -13,6 +15,30 @@ const CLIENTS = [
   { name: "Ondas",     logo: "/clients/ondas.png"     },
   { name: "Patriot",   logo: "/clients/patriot.png"   },
   { name: "Toyota",    logo: "/clients/toyota.png"    },
+  {
+    name: "Forest Residence",
+    logo: "/clients/forest-residence.png",
+    maxWidth: 166,
+    maxHeight: 76,
+  },
+  {
+    name: "Group 369",
+    logo: "/clients/group-369.png",
+    maxWidth: 184,
+    maxHeight: 52,
+  },
+  {
+    name: "ZagorSky",
+    logo: "/clients/zagorsky.png",
+    maxWidth: 168,
+    maxHeight: 62,
+  },
+  {
+    name: "Aura Gold",
+    logo: "/clients/aura.png",
+    maxWidth: 184,
+    maxHeight: 58,
+  },
 ];
 
 export default function Clients() {
@@ -32,10 +58,19 @@ export default function Clients() {
           width: max-content;
           animation: clients-scroll 40s linear infinite;
         }
+        .client-logo-slot {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 208px;
+          height: 96px;
+          flex-shrink: 0;
+        }
         .client-logo {
-          height: 56px;
           width: auto;
-          max-width: 150px;
+          height: auto;
+          max-width: var(--client-logo-width, 170px);
+          max-height: var(--client-logo-height, 68px);
           object-fit: contain;
           filter: grayscale(100%) opacity(40%);
           transition: filter 0.4s ease;
@@ -63,12 +98,16 @@ export default function Clients() {
       >
         <div className="clients-track">
           {row.map((client, i) => (
-            <div key={i} style={{ padding: "0 40px" }}>
+            <div key={i} className="client-logo-slot">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={client.logo}
                 alt={client.name}
                 className="client-logo"
+                style={{
+                  "--client-logo-width": `${client.maxWidth ?? 170}px`,
+                  "--client-logo-height": `${client.maxHeight ?? 68}px`,
+                } as CSSProperties}
               />
             </div>
           ))}

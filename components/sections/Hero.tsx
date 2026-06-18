@@ -65,21 +65,6 @@ export default function Hero() {
         </Link>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="home-hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-[#6B6B6B] uppercase tracking-widest">{t("scroll")}</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-[#6B6B6B] to-transparent"
-        />
-      </motion.div>
-
     </section>
   );
 }

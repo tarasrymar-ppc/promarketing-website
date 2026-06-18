@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { Menu, X, Phone, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ArrowRight, ChevronDown, Clock, MapPin } from "lucide-react";
 import {
   MagnifyingGlassIcon, CrosshairIcon, TiktokLogoIcon, ShareNetworkIcon,
   ChartLineUpIcon, BrainIcon, DesktopIcon, PenNibIcon,
@@ -29,6 +29,9 @@ const SERVICE_HREFS = [
   "/services/website-development",
   "/services/logo-branding",
 ];
+
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=%D0%A3%D0%B6%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%2C%20%D0%B2%D1%83%D0%BB.%20%D0%A4%D0%B5%D0%B4%D0%B8%D0%BD%D1%86%D1%8F%202";
 
 
 // Stagger variants for mega-menu items
@@ -164,6 +167,21 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1280px] mx-auto px-5 lg:px-6">
+          <div className="hidden min-[1120px]:flex h-8 items-center justify-between border-b border-[#E0E0E0]/70 text-[12px] text-[#6B6B6B]">
+            <a
+              href={GOOGLE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-[#0D0D0D]"
+            >
+              <MapPin size={13} className="text-[#E5202E]" />
+              <span>{CONTACT.city}, вул. Фединця 2</span>
+            </a>
+            <div className="inline-flex items-center gap-1.5">
+              <Clock size={13} className="text-[#E5202E]" />
+              <span>Пн–Пт 9:30–17:30 · Сб–Нд вихідний</span>
+            </div>
+          </div>
           <div className="flex items-center h-16 min-[1120px]:h-[64px] xl:h-[68px]">
 
             {/* ── LEFT: Logo ── */}

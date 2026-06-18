@@ -23,19 +23,19 @@ const copy: Record<
   }
 > = {
   uk: {
-    title: "Cookies та аналітика",
+    title: "Режим згоди на аналітику",
     body:
-      "Ми використовуємо необхідні технології за замовчуванням. Аналітика та маркетингові теги через Google Tag Manager вмикаються тільки після вашої згоди.",
-    accept: "Прийняти",
-    reject: "Відхилити",
+      "Ми не запускаємо аналітику без вашого дозволу. Якщо погодитесь, ми збиратимемо анонімні події сайту: які сторінки переглядають, на які кнопки натискають і чи працюють форми. Це допомагає покращувати сайт і рекламу. Дані з форм в аналітику не передаємо.",
+    accept: "Дозволити аналітику",
+    reject: "Лише необхідні",
     privacy: "Політика конфіденційності",
   },
   en: {
-    title: "Cookies and analytics",
+    title: "Analytics consent mode",
     body:
-      "We use essential technologies by default. Analytics and marketing tags through Google Tag Manager are enabled only after your consent.",
-    accept: "Accept",
-    reject: "Reject",
+      "We do not run analytics without your permission. If you agree, we collect anonymous website events: which pages people view, which buttons they click, and whether forms work. This helps us improve the website and advertising. Form data is not sent to analytics.",
+    accept: "Allow analytics",
+    reject: "Necessary only",
     privacy: "Privacy Policy",
   },
 };
@@ -78,12 +78,13 @@ export default function CookieConsentBanner({ locale }: { locale: string }) {
       className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-4xl rounded-[8px] border border-[#2B2B2B] bg-[#0D0D0D] text-white shadow-2xl"
       role="dialog"
       aria-live="polite"
-      aria-label={text.title}
+      aria-labelledby="cookie-consent-title"
+      aria-describedby="cookie-consent-description"
     >
       <div className="flex flex-col gap-5 p-5 md:flex-row md:items-center md:justify-between md:p-6">
         <div className="max-w-2xl">
-          <p className="text-base font-semibold tracking-tight">{text.title}</p>
-          <p className="mt-2 text-sm leading-relaxed text-white/70">
+          <p id="cookie-consent-title" className="text-base font-semibold tracking-tight">{text.title}</p>
+          <p id="cookie-consent-description" className="mt-2 text-sm leading-relaxed text-white/70">
             {text.body}{" "}
             <Link
               href={`/${safeLocale}/privacy`}

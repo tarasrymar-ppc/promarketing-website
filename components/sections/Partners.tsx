@@ -3,8 +3,8 @@ import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const OFFICIAL_PARTNERS = [
-  { name: "Ringostat", logo: "/partners/ringostat.webp" },
-  { name: "Binotel",   logo: "/partners/binotel.webp"   },
+  { name: "Ringostat", logo: "/partners/ringostat.webp", href: "https://ringostat.com/" },
+  { name: "Binotel",   logo: "/partners/binotel.webp",   href: "https://www.binotel.ua/ua" },
 ];
 
 const TOOLS = [
@@ -12,9 +12,14 @@ const TOOLS = [
   { name: "Meta",   logo: "/partners/meta.webp"   },
 ];
 
-function LogoCard({ name, logo }: { name: string; logo: string }) {
+type LogoCardProps = {
+  name: string;
+  logo: string;
+  href?: string;
+};
+
+function LogoImage({ name, logo }: Pick<LogoCardProps, "name" | "logo">) {
   return (
-    <div className="flex items-center justify-center w-full h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default">
       <Image
         src={logo}
         alt={name}
@@ -22,6 +27,30 @@ function LogoCard({ name, logo }: { name: string; logo: string }) {
         height={48}
         className="w-[130px] h-[48px] object-contain"
       />
+  );
+}
+
+function LogoCard({ name, logo, href }: LogoCardProps) {
+  const className =
+    "flex items-center justify-center w-full h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 focus-visible:grayscale-0 focus-visible:opacity-100 transition-all duration-300";
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Перейти на сайт ${name}`}
+        className={`${className} cursor-pointer rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#E5202E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F4F4]`}
+      >
+        <LogoImage name={name} logo={logo} />
+      </a>
+    );
+  }
+
+  return (
+    <div className={`${className} cursor-default`}>
+      <LogoImage name={name} logo={logo} />
     </div>
   );
 }

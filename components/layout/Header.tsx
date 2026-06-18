@@ -47,7 +47,7 @@ function Logo() {
 
   if (imgError) {
     return (
-      <span className="text-[17px] font-bold tracking-tight text-[#0D0D0D] select-none">
+      <span className="text-[16px] xl:text-[17px] font-bold tracking-tight text-[#0D0D0D] select-none">
         PRO Marketing<span className="text-[#E5202E]">#</span>
       </span>
     );
@@ -59,7 +59,7 @@ function Logo() {
       alt="PRO Marketing#"
       width={140}
       height={40}
-      className="h-9 w-auto object-contain"
+      className="h-8 w-auto object-contain xl:h-9"
       priority
       onError={() => setImgError(true)}
     />
@@ -163,8 +163,8 @@ export default function Header() {
             : "bg-white"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center h-16 md:h-[68px]">
+        <div className="max-w-[1280px] mx-auto px-5 lg:px-6">
+          <div className="flex items-center h-16 min-[1120px]:h-[64px] xl:h-[68px]">
 
             {/* ── LEFT: Logo ── */}
             <Link href="/" className="flex-shrink-0" onClick={() => setIsMobileOpen(false)}>
@@ -172,7 +172,7 @@ export default function Header() {
             </Link>
 
             {/* ── CENTER: Nav ── */}
-            <nav className="hidden md:flex flex-1 items-center justify-center gap-8">
+            <nav className="hidden min-[1120px]:flex flex-1 items-center justify-center gap-5 xl:gap-8">
               {NAV_LINKS.map((link) =>
                 link.hasMega ? (
                   <div
@@ -182,7 +182,7 @@ export default function Header() {
                     <button
                       onMouseEnter={() => setIsMegaOpen(true)}
                       onClick={() => setIsMegaOpen((p) => !p)}
-                      className="flex items-center gap-1 text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200 py-5 cursor-pointer"
+                      className="flex items-center gap-1 text-[13px] xl:text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200 py-5 cursor-pointer"
                     >
                       {link.label}
                       <motion.span
@@ -198,7 +198,7 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200"
+                    className="text-[13px] xl:text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -207,18 +207,18 @@ export default function Header() {
             </nav>
 
             {/* ── RIGHT: Phone + CTA + Lang switcher ── */}
-            <div className="hidden md:flex items-center gap-4 flex-shrink-0">
-              <div className="w-px h-4 bg-[#E0E0E0]" />
+            <div className="hidden min-[1120px]:flex items-center gap-3 xl:gap-4 flex-shrink-0">
+              <div className="hidden xl:block w-px h-4 bg-[#E0E0E0]" />
               <a
                 href={`tel:${CONTACT.phone}`}
-                className="flex items-center gap-1.5 text-sm text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors duration-200 whitespace-nowrap"
+                className="hidden xl:flex items-center gap-1.5 text-sm text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors duration-200 whitespace-nowrap"
               >
                 <Phone size={13} />
                 {CONTACT.phoneFormatted}
               </a>
-              <div className="w-px h-4 bg-[#E0E0E0]" />
+              <div className="hidden xl:block w-px h-4 bg-[#E0E0E0]" />
               {/* Language switcher */}
-              <div className="flex items-center gap-1 text-sm">
+              <div className="flex items-center gap-1 text-[13px] xl:text-sm">
                 <button
                   onClick={() => switchLocale("uk")}
                   className={locale === "uk" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
@@ -236,7 +236,7 @@ export default function Header() {
               {/* Pill CTA with animated arrow */}
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 whitespace-nowrap"
+                className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-[13px] xl:text-sm font-semibold px-4 py-2.5 xl:px-5 rounded-full transition-colors duration-200 whitespace-nowrap"
               >
                 {t("cta")}
                 <ArrowRight
@@ -248,7 +248,7 @@ export default function Header() {
 
             {/* ── MOBILE: Burger ── */}
             <button
-              className="md:hidden ml-auto p-2 text-[#0D0D0D]"
+              className="min-[1120px]:hidden ml-auto p-2 text-[#0D0D0D]"
               onClick={() => setIsMobileOpen((p) => !p)}
               aria-label="Меню"
             >
@@ -266,7 +266,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="hidden md:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
+              className="hidden min-[1120px]:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
             >
               <div className="max-w-6xl mx-auto px-6 py-8">
                 <div className="flex gap-6">
@@ -340,7 +340,7 @@ export default function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
+              className="min-[1120px]:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
             >
               <div className="px-6 pb-6">
                 <div className="pt-4">

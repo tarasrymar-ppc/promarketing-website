@@ -3,36 +3,85 @@ import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const OFFICIAL_PARTNERS = [
-  { name: "Ringostat", logo: "/partners/ringostat.webp", href: "https://ringostat.com/" },
-  { name: "Binotel",   logo: "/partners/binotel.webp",   href: "https://www.binotel.ua/ua" },
+  {
+    name: "Ringostat",
+    logo: "/partners/ringostat.webp",
+    href: "https://ringostat.com/",
+  },
+  {
+    name: "Binotel",
+    logo: "/partners/binotel.webp",
+    href: "https://www.binotel.ua/ua",
+  },
 ];
 
 const TOOLS = [
-  { name: "Google", logo: "/partners/google.webp" },
-  { name: "Meta",   logo: "/partners/meta.webp"   },
+  { name: "Google", logo: "/partners/google.webp", width: 104, height: 36 },
+  { name: "Meta",   logo: "/partners/meta.webp",   width: 104, height: 32 },
+  { name: "Figma", logo: "/partners/figma.svg", width: 28, height: 42 },
+  {
+    name: "Adobe Illustrator",
+    logo: "/partners/illustrator.svg",
+    width: 42,
+    height: 42,
+  },
+  {
+    name: "Adobe Photoshop",
+    logo: "/partners/photoshop.svg",
+    width: 42,
+    height: 42,
+  },
+  {
+    name: "Adobe Lightroom",
+    logo: "/partners/lightroom.svg",
+    width: 42,
+    height: 42,
+  },
+  {
+    name: "DaVinci Resolve",
+    logo: "/partners/davinci-resolve.png",
+    width: 42,
+    height: 42,
+  },
 ];
 
 type LogoCardProps = {
   name: string;
   logo: string;
   href?: string;
+  width?: number;
+  height?: number;
+  compact?: boolean;
 };
 
-function LogoImage({ name, logo }: Pick<LogoCardProps, "name" | "logo">) {
+function LogoImage({
+  name,
+  logo,
+  width = 130,
+  height = 48,
+}: Pick<LogoCardProps, "name" | "logo" | "width" | "height">) {
   return (
-      <Image
-        src={logo}
-        alt={name}
-        width={130}
-        height={48}
-        className="w-[130px] h-[48px] object-contain"
-      />
+    <Image
+      src={logo}
+      alt={name}
+      width={width}
+      height={height}
+      className="object-contain"
+      style={{ width, height }}
+    />
   );
 }
 
-function LogoCard({ name, logo, href }: LogoCardProps) {
+function LogoCard({
+  name,
+  logo,
+  href,
+  width,
+  height,
+  compact = false,
+}: LogoCardProps) {
   const className =
-    "flex items-center justify-center w-full h-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 focus-visible:grayscale-0 focus-visible:opacity-100 transition-all duration-300";
+    `flex items-center justify-center w-full ${compact ? "h-16" : "h-20"} grayscale opacity-40 hover:grayscale-0 hover:opacity-100 focus-visible:grayscale-0 focus-visible:opacity-100 transition-all duration-300`;
 
   if (href) {
     return (
@@ -43,14 +92,14 @@ function LogoCard({ name, logo, href }: LogoCardProps) {
         aria-label={`Перейти на сайт ${name}`}
         className={`${className} cursor-pointer rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#E5202E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F4F4]`}
       >
-        <LogoImage name={name} logo={logo} />
+        <LogoImage name={name} logo={logo} width={width} height={height} />
       </a>
     );
   }
 
   return (
     <div className={`${className} cursor-default`}>
-      <LogoImage name={name} logo={logo} />
+      <LogoImage name={name} logo={logo} width={width} height={height} />
     </div>
   );
 }
@@ -89,13 +138,17 @@ export default async function Partners() {
               <p className="text-xs font-semibold text-[#ADADAD] uppercase tracking-widest mb-6">
                 {t("tools")}
               </p>
-              <div className="flex items-center gap-0 w-full">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 w-full">
                 {TOOLS.map((tool, i) => (
-                  <div key={tool.name} className="flex items-center flex-1">
-                    <LogoCard {...tool} />
-                    {i < TOOLS.length - 1 && (
-                      <div className="w-px h-8 bg-[#E0E0E0] flex-shrink-0" />
-                    )}
+                  <div
+                    key={tool.name}
+                    className={`flex items-center justify-center rounded-xl bg-white/35 ${
+                      i === TOOLS.length - 1
+                        ? "sm:col-start-2 lg:col-start-auto"
+                        : ""
+                    }`}
+                  >
+                    <LogoCard {...tool} compact />
                   </div>
                 ))}
               </div>

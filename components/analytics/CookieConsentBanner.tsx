@@ -25,7 +25,7 @@ const copy: Record<
   uk: {
     title: "Cookies та аналітика",
     body:
-      "Аналітика та маркетингові теги через Google Tag Manager працюють тільки після вашої згоди.",
+      "Ми використовуємо необхідні технології за замовчуванням. Аналітика та маркетингові теги через Google Tag Manager вмикаються тільки після вашої згоди.",
     accept: "Прийняти",
     reject: "Відхилити",
     privacy: "Політика конфіденційності",
@@ -33,7 +33,7 @@ const copy: Record<
   en: {
     title: "Cookies and analytics",
     body:
-      "Analytics and marketing tags through Google Tag Manager run only after your consent.",
+      "We use essential technologies by default. Analytics and marketing tags through Google Tag Manager are enabled only after your consent.",
     accept: "Accept",
     reject: "Reject",
     privacy: "Privacy Policy",
@@ -75,16 +75,15 @@ export default function CookieConsentBanner({ locale }: { locale: string }) {
 
   return (
     <div
-      className="fixed inset-x-3 bottom-3 z-[100] mx-auto max-w-4xl rounded-[8px] border border-[#2B2B2B] bg-[#0D0D0D] text-white shadow-2xl md:inset-x-4 md:bottom-4"
+      className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-4xl rounded-[8px] border border-[#2B2B2B] bg-[#0D0D0D] text-white shadow-2xl"
       role="dialog"
       aria-live="polite"
-      aria-labelledby="cookie-consent-title"
-      aria-describedby="cookie-consent-description"
+      aria-label={text.title}
     >
-      <div className="flex flex-col gap-3 p-3 md:flex-row md:items-center md:justify-between md:gap-5 md:p-6">
+      <div className="flex flex-col gap-5 p-5 md:flex-row md:items-center md:justify-between md:p-6">
         <div className="max-w-2xl">
-          <p id="cookie-consent-title" className="text-sm font-semibold tracking-tight md:text-base">{text.title}</p>
-          <p id="cookie-consent-description" className="mt-1 text-xs leading-relaxed text-white/70 md:mt-2 md:text-sm">
+          <p className="text-base font-semibold tracking-tight">{text.title}</p>
+          <p className="mt-2 text-sm leading-relaxed text-white/70">
             {text.body}{" "}
             <Link
               href={`/${safeLocale}/privacy`}
@@ -98,14 +97,14 @@ export default function CookieConsentBanner({ locale }: { locale: string }) {
           <button
             type="button"
             onClick={rejectCookies}
-            className="h-10 rounded-[6px] border border-white/20 px-4 text-xs font-semibold text-white transition hover:border-white/45 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40 md:h-11 md:px-5 md:text-sm"
+            className="h-11 rounded-[6px] border border-white/20 px-5 text-sm font-semibold text-white transition hover:border-white/45 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/40"
           >
             {text.reject}
           </button>
           <button
             type="button"
             onClick={acceptCookies}
-            className="h-10 rounded-[6px] bg-[#E5202E] px-4 text-xs font-semibold text-white transition hover:bg-[#C0111D] focus:outline-none focus:ring-2 focus:ring-[#FF6B6B] md:h-11 md:px-5 md:text-sm"
+            className="h-11 rounded-[6px] bg-[#E5202E] px-5 text-sm font-semibold text-white transition hover:bg-[#C0111D] focus:outline-none focus:ring-2 focus:ring-[#FF6B6B]"
           >
             {text.accept}
           </button>

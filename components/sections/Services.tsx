@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const SERVICE_HREFS = [
@@ -21,8 +24,8 @@ interface ServiceItem {
   popular: boolean;
 }
 
-export default async function Services() {
-  const t = await getTranslations("services");
+export default function Services() {
+  const t = useTranslations("services");
   const items = t.raw("items") as ServiceItem[];
 
   return (
@@ -32,7 +35,7 @@ export default async function Services() {
         {/* Header */}
         <AnimatedSection className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
-            <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest mb-4">
+            <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
               {t("label")}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
@@ -48,10 +51,18 @@ export default async function Services() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[#E0E0E0] rounded-t-2xl overflow-hidden">
           {items.map((service, i) => (
             <AnimatedSection key={SERVICE_HREFS[i]} delay={0.05 * i} className={`h-full${i === items.length - 1 ? " col-span-2 md:col-span-1" : ""}`}>
-              <div className="relative flex flex-col justify-center h-full bg-[#F4F4F4] p-6 md:p-8 cursor-default transition-colors duration-300 hover:bg-white">
+              <motion.div
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: "0 12px 40px rgba(0,0,0,0.10)",
+                  zIndex: 10,
+                }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="relative flex flex-col justify-center h-full bg-[#F4F4F4] p-6 md:p-8 cursor-default"
+              >
                 {/* Popular badge */}
                 {service.popular && (
-                  <span className="absolute top-3 right-3 text-[10px] font-semibold text-[#C0111D] bg-[#E5202E]/8 px-2 py-0.5 rounded-full tracking-wide">
+                  <span className="absolute top-3 right-3 text-[10px] font-semibold text-[#E5202E] bg-[#E5202E]/8 px-2 py-0.5 rounded-full tracking-wide">
                     {t("popular")}
                   </span>
                 )}
@@ -66,7 +77,7 @@ export default async function Services() {
                   {service.description}
                 </p>
 
-              </div>
+              </motion.div>
             </AnimatedSection>
           ))}
         </div>

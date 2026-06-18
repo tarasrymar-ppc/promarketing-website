@@ -1,4 +1,6 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 function MarqueeRow({
   items,
@@ -30,8 +32,8 @@ function MarqueeRow({
   );
 }
 
-export default async function Problem() {
-  const t = await getTranslations("problem");
+export default function Problem() {
+  const t = useTranslations("problem");
   const row1 = t.raw("row1") as string[];
   const row2 = t.raw("row2") as string[];
 
@@ -54,7 +56,7 @@ export default async function Problem() {
 
       {/* Closing */}
       <div className="max-w-6xl mx-auto px-6 mt-14 text-center">
-        <p className="text-xl md:text-2xl text-white/55 leading-snug">
+        <p className="text-xl md:text-2xl text-white/40 leading-snug">
           {t("closing_text")}{" "}
           <span className="text-white font-medium">
             {t("closing_accent")}

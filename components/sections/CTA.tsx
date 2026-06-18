@@ -80,7 +80,7 @@ export default function CTA() {
 
           {/* Left — headline + trust signals */}
           <AnimatedSection className="md:w-1/2">
-            <p className="text-xs font-semibold text-[#C0111D] uppercase tracking-widest mb-4">
+            <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
               {t("label")}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06] mb-6">
@@ -203,7 +203,7 @@ export default function CTA() {
                   </p>
                 )}
 
-                <p className="text-xs text-[#6B6B6B] text-center leading-relaxed">
+                <p className="text-xs text-[#ADADAD] text-center leading-relaxed">
                   {t("privacy")}
                 </p>
               </form>

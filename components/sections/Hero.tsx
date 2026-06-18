@@ -1,21 +1,44 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+"use client";
 
-export default async function Hero() {
-  const t = await getTranslations("hero");
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+export default function Hero() {
+  const t = useTranslations("hero");
   const words = t.raw("words") as string[];
-  const accent = words[1] ?? words[0];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, [words.length]);
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col items-center justify-center bg-white px-6 pb-16 pt-24 text-center md:min-h-[100dvh]">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center bg-white px-6 text-center">
 
+      {/* Headline — no entrance animation, renders visible immediately */}
       <div className="max-w-4xl w-full">
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06]">
           {t("headline")}
           <br />
-          <span className="block text-[#E5202E]">
-            {accent}
+          <span className="flex items-center justify-center overflow-hidden h-[1.15em]">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={index}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                exit={{ y: "-100%", opacity: 0 }}
+                transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-[#E5202E] block"
+              >
+                {words[index]}
+              </motion.span>
+            </AnimatePresence>
           </span>
         </h1>
       </div>
@@ -43,10 +66,19 @@ export default async function Hero() {
       </div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
         <span className="text-xs text-[#6B6B6B] uppercase tracking-widest">{t("scroll")}</span>
-        <div className="h-8 w-px animate-pulse bg-gradient-to-b from-[#6B6B6B] to-transparent" />
-      </div>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-8 bg-gradient-to-b from-[#6B6B6B] to-transparent"
+        />
+      </motion.div>
 
     </section>
   );

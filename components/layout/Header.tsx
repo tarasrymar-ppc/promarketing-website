@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Menu, X, Phone, ArrowRight, ChevronDown } from "lucide-react";
 import {
   MagnifyingGlassIcon, CrosshairIcon, TiktokLogoIcon, ShareNetworkIcon,
@@ -28,6 +29,18 @@ const SERVICE_HREFS = [
   "/services/website-development",
   "/services/logo-branding",
 ];
+
+
+// Stagger variants for mega-menu items
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
+};
+
+const itemVariants: Variants = {
+  hidden:  { opacity: 0, y: 6 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+};
 
 function Logo() {
   const [imgError, setImgError] = useState(false);
@@ -126,12 +139,19 @@ export default function Header() {
   return (
     <>
       {/* ── OVERLAY ── */}
-      {isMegaOpen && (
-        <div
-          onClick={closeMega}
-          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px]"
-        />
-      )}
+      <AnimatePresence>
+        {isMegaOpen && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={closeMega}
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px]"
+          />
+        )}
+      </AnimatePresence>
 
       <header
         onMouseLeave={() => setIsMegaOpen(false)}
@@ -160,20 +180,18 @@ export default function Header() {
                     className="relative flex items-center"
                   >
                     <button
-                      type="button"
                       onMouseEnter={() => setIsMegaOpen(true)}
                       onClick={() => setIsMegaOpen((p) => !p)}
-                      aria-expanded={isMegaOpen}
-                      aria-controls="services-mega-menu"
-                      aria-haspopup="true"
                       className="flex items-center gap-1 text-sm font-medium text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-200 py-5 cursor-pointer"
                     >
                       {link.label}
-                      <span
-                        className={`flex items-center ml-0.5 transition-transform duration-200 ${isMegaOpen ? "rotate-180" : ""}`}
+                      <motion.span
+                        animate={{ rotate: isMegaOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="flex items-center ml-0.5"
                       >
                         <ChevronDown size={14} />
-                      </span>
+                      </motion.span>
                     </button>
                   </div>
                 ) : (
@@ -202,7 +220,6 @@ export default function Header() {
               {/* Language switcher */}
               <div className="flex items-center gap-1 text-sm">
                 <button
-                  type="button"
                   onClick={() => switchLocale("uk")}
                   className={locale === "uk" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                 >
@@ -210,7 +227,6 @@ export default function Header() {
                 </button>
                 <span className="text-[#E0E0E0]">|</span>
                 <button
-                  type="button"
                   onClick={() => switchLocale("en")}
                   className={locale === "en" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                 >
@@ -232,11 +248,8 @@ export default function Header() {
 
             {/* ── MOBILE: Burger ── */}
             <button
-              type="button"
               className="md:hidden ml-auto p-2 text-[#0D0D0D]"
               onClick={() => setIsMobileOpen((p) => !p)}
-              aria-expanded={isMobileOpen}
-              aria-controls="mobile-menu"
               aria-label="Меню"
             >
               {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -245,20 +258,37 @@ export default function Header() {
         </div>
 
         {/* ── MEGA MENU ── */}
-        {isMegaOpen && (
-            <div
-            id="services-mega-menu"
-            className="hidden md:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
-          >
+        <AnimatePresence>
+          {isMegaOpen && (
+            <motion.div
+              key="mega"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="hidden md:block absolute top-full left-0 right-0 bg-white border-t border-[#E0E0E0] shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
+            >
               <div className="max-w-6xl mx-auto px-6 py-8">
                 <div className="flex gap-6">
 
                   {/* Services grid — stagger */}
-                  <div className="flex-1 grid grid-cols-4 gap-2">
+                  <motion.div
+                    className="flex-1 grid grid-cols-4 gap-2"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
                     {serviceItems.map(({ title, description, href, Icon }) => (
-                      <div
+                      <motion.div
                         key={href}
-                        className="rounded-xl transition-transform duration-200 hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                        variants={itemVariants}
+                        whileHover={{
+                          scale: 1.03,
+                          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                          zIndex: 10,
+                        }}
+                        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                        className="rounded-xl"
                       >
                         <Link
                           href={href}
@@ -277,9 +307,9 @@ export default function Header() {
                             </p>
                           </div>
                         </Link>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Bottom strip */}
@@ -297,15 +327,21 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ── MOBILE MENU ── */}
-        {isMobileOpen && (
-            <div
-            id="mobile-menu"
-            className="md:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
-          >
+        <AnimatePresence>
+          {isMobileOpen && (
+            <motion.div
+              key="mobile"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
+            >
               <div className="px-6 pb-6">
                 <div className="pt-4">
                   <p className="text-xs font-semibold text-[#6B6B6B] uppercase tracking-wider mb-3">
@@ -343,7 +379,6 @@ export default function Header() {
                   {/* Language switcher — mobile */}
                   <div className="flex items-center justify-center gap-3 text-sm">
                     <button
-                      type="button"
                       onClick={() => switchLocale("uk")}
                       className={locale === "uk" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                     >
@@ -351,7 +386,6 @@ export default function Header() {
                     </button>
                     <span className="text-[#E0E0E0]">|</span>
                     <button
-                      type="button"
                       onClick={() => switchLocale("en")}
                       className={locale === "en" ? "font-semibold text-[#0D0D0D]" : "text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors"}
                     >
@@ -375,8 +409,9 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
     </>
   );

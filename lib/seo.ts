@@ -20,11 +20,8 @@ export function localizedAlternates(
 ): NonNullable<Metadata["alternates"]> {
   return {
     canonical: localizedUrl(locale, path),
-    languages: {
-      ...Object.fromEntries(
-        LOCALES.map((item) => [item, localizedUrl(item, path)])
-      ),
-      "x-default": localizedUrl("uk", path),
-    },
+    languages: Object.fromEntries(
+      LOCALES.map((item) => [item, localizedUrl(item, path)])
+    ),
   };
 }

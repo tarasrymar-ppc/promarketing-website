@@ -4,7 +4,12 @@ const CLIENTS = [
   { name: "Voyak",     logo: "/clients/voyak.png"     },
   { name: "Ave",       logo: "/clients/ave.png"       },
   { name: "Etalon",    logo: "/clients/etalon.png"    },
-  { name: "Gazda",     logo: "/clients/gazda.png"     },
+  {
+    name: "Gazda",
+    logo: "/clients/gazda.png",
+    maxWidth: 116,
+    maxHeight: 88,
+  },
   { name: "G-Bar",     logo: "/clients/gbar.png"      },
   { name: "Goriachev", logo: "/clients/goriachev.png" },
   { name: "Gyng",      logo: "/clients/gyng.png"      },
@@ -13,7 +18,12 @@ const CLIENTS = [
   { name: "Market",    logo: "/clients/market.png"    },
   { name: "Matsola",   logo: "/clients/matsola.png"   },
   { name: "Ondas",     logo: "/clients/ondas.png"     },
-  { name: "Patriot",   logo: "/clients/patriot.png"   },
+  {
+    name: "Patriot",
+    logo: "/clients/patriot.png",
+    maxWidth: 112,
+    maxHeight: 90,
+  },
   { name: "Toyota",    logo: "/clients/toyota.png"    },
   {
     name: "Forest Residence",
@@ -24,19 +34,20 @@ const CLIENTS = [
   {
     name: "Group 369",
     logo: "/clients/group-369.png",
-    maxWidth: 184,
+    maxWidth: 220,
     maxHeight: 52,
   },
   {
     name: "ZagorSky",
     logo: "/clients/zagorsky.png",
-    maxWidth: 168,
-    maxHeight: 62,
+    maxWidth: 190,
+    maxHeight: 70,
+    offsetY: -4,
   },
   {
     name: "Aura Gold",
     logo: "/clients/aura.png",
-    maxWidth: 184,
+    maxWidth: 280,
     maxHeight: 58,
   },
 ];
@@ -62,16 +73,17 @@ export default function Clients() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 208px;
-          height: 96px;
+          width: 236px;
+          height: 108px;
           flex-shrink: 0;
         }
         .client-logo {
           width: auto;
           height: auto;
-          max-width: var(--client-logo-width, 170px);
-          max-height: var(--client-logo-height, 68px);
+          max-width: var(--client-logo-width, 188px);
+          max-height: var(--client-logo-height, 76px);
           object-fit: contain;
+          transform: translateY(var(--client-logo-y, 0));
           filter: grayscale(100%) opacity(40%);
           transition: filter 0.4s ease;
           flex-shrink: 0;
@@ -105,8 +117,9 @@ export default function Clients() {
                 alt={client.name}
                 className="client-logo"
                 style={{
-                  "--client-logo-width": `${client.maxWidth ?? 170}px`,
-                  "--client-logo-height": `${client.maxHeight ?? 68}px`,
+                  "--client-logo-width": `${client.maxWidth ?? 188}px`,
+                  "--client-logo-height": `${client.maxHeight ?? 76}px`,
+                  "--client-logo-y": `${client.offsetY ?? 0}px`,
                 } as CSSProperties}
               />
             </div>

@@ -58,7 +58,7 @@ export default function Services() {
                   zIndex: 10,
                 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative flex flex-col justify-center h-full bg-[#F4F4F4] p-6 md:p-8 cursor-default"
+                className="relative flex flex-col justify-start h-full bg-[#F4F4F4] p-6 md:p-8 cursor-default"
               >
                 {/* Popular badge */}
                 {service.popular && (

@@ -42,6 +42,11 @@ export async function generateMetadata({
       shortcut: "/favicon.png",
       apple: "/favicon.png",
     },
+    verification: {
+      other: {
+        "msvalidate.01": "B04940E5406D20035CF76F182DC4DF3D",
+      },
+    },
   };
 }
 

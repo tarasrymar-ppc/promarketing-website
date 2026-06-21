@@ -8,6 +8,8 @@ export const CONTACT = {
 
 export const SOCIAL = {
   facebook: "https://www.facebook.com/pro.marketing.agency.ua",
+  linkedin: "https://www.linkedin.com/company/pro-marketing-marketing-agency",
+  google: "https://www.google.com/search?kgmid=/g/11pdjtv0q4",
 } as const;
 
 export const NAV_LINKS = [

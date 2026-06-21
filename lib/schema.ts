@@ -5,17 +5,31 @@ const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const localBusinessId = `${SITE_URL}/#localbusiness`;
 
+const BUSINESS_DESCRIPTION =
+  "PRO Marketing# — маркетингове агентство повного циклу в Ужгороді. З 2019 року допомагаємо бізнесу залучати клієнтів і збільшувати продажі через Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO та розробку сайтів.";
+
+const AREA_SERVED = [
+  { "@type": "City", name: "Ужгород" },
+  { "@type": "AdministrativeArea", name: "Закарпатська область" },
+  { "@type": "Country", name: "Україна" },
+];
+
 export function organizationSchema() {
   return {
     "@type": "Organization",
     "@id": organizationId,
     name: "PRO Marketing#",
+    alternateName: "PRO Marketing Agency",
+    description: BUSINESS_DESCRIPTION,
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    sameAs: [SOCIAL.facebook],
+    foundingDate: "2019",
+    areaServed: AREA_SERVED,
+    sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: CONTACT.phone,
+      email: CONTACT.email,
       contactType: "customer service",
       availableLanguage: ["uk", "en"],
     },
@@ -27,14 +41,21 @@ export function localBusinessSchema() {
     "@type": "LocalBusiness",
     "@id": localBusinessId,
     name: "PRO Marketing#",
+    alternateName: "PRO Marketing Agency",
+    description: BUSINESS_DESCRIPTION,
     image: `${SITE_URL}/logo.png`,
     url: SITE_URL,
     telephone: CONTACT.phone,
+    email: CONTACT.email,
     priceRange: "$$",
+    foundingDate: "2019",
+    areaServed: AREA_SERVED,
+    sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google],
     address: {
       "@type": "PostalAddress",
       streetAddress: CONTACT.address,
       addressLocality: "Ужгород",
+      addressRegion: "Закарпатська область",
       addressCountry: "UA",
     },
     parentOrganization: {

@@ -15,6 +15,13 @@ const OFFICIAL_PARTNERS = [
   },
 ];
 
+const GOOGLE_PARTNER = {
+  name: "Google Partner",
+  href: "https://www.google.com/partners/agency?id=7339068295",
+  badge:
+    "https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg",
+};
+
 const TOOLS = [
   { name: "Google", logo: "/partners/google.webp", width: 104, height: 36 },
   { name: "Meta",   logo: "/partners/meta.webp",   width: 104, height: 32 },
@@ -118,15 +125,34 @@ export default async function Partners() {
               <p className="text-xs font-semibold text-[#ADADAD] uppercase tracking-widest mb-6">
                 {t("official")}
               </p>
-              <div className="flex items-center gap-0 w-full">
-                {OFFICIAL_PARTNERS.map((partner, i) => (
-                  <div key={partner.name} className="flex items-center flex-1">
-                    <LogoCard {...partner} />
-                    {i < OFFICIAL_PARTNERS.length - 1 && (
-                      <div className="w-px h-8 bg-[#E0E0E0] flex-shrink-0" />
-                    )}
-                  </div>
-                ))}
+              <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 w-full">
+                {/* Google Partner — featured official badge (full color, larger) */}
+                <a
+                  href={GOOGLE_PARTNER.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Partner — переглянути профіль агентства"
+                  className="flex items-center justify-center flex-shrink-0 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#E5202E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F4F4]"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={GOOGLE_PARTNER.badge}
+                    alt="Google Partner"
+                    className="h-20 sm:h-[88px] w-auto object-contain"
+                  />
+                </a>
+
+                {/* Other official partners */}
+                <div className="flex items-center gap-1">
+                  {OFFICIAL_PARTNERS.map((partner, i) => (
+                    <div key={partner.name} className="flex items-center">
+                      <LogoCard {...partner} />
+                      {i < OFFICIAL_PARTNERS.length - 1 && (
+                        <div className="w-px h-8 bg-[#E0E0E0] flex-shrink-0" />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

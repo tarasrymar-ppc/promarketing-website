@@ -4,7 +4,7 @@ const content = {
   uk: {
     title: "Про нас",
     lead: "Команда, яка бере повну відповідальність за результат вашого маркетингу.",
-    sub: "Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — це команда вузьких спеціалістів з 12-річним досвідом, яка працює разом над кожним проєктом.",
+    sub: "Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — команда маркетологів в Ужгороді з 12-річним досвідом: вузькі спеціалісти, які працюють разом над кожним проєктом.",
     facts: [
       "12 років досвіду",
       "5–6 спеціалістів на проєкті",
@@ -14,7 +14,7 @@ const content = {
   en: {
     title: "About us",
     lead: "A team that takes full responsibility for the results of your marketing.",
-    sub: "We're not freelancers or one person doing everything. PRO Marketing# is a team of focused specialists with 12 years of experience, working together on every project.",
+    sub: "We're not freelancers or one person doing everything. PRO Marketing# is a team of marketers in Uzhhorod with 12 years of experience — focused specialists working together on every project.",
     facts: [
       "12 years of experience",
       "5–6 specialists per project",

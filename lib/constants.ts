@@ -4,6 +4,7 @@ export const CONTACT = {
   email: "blog.promarketing@gmail.com",
   address: "вул. Фединця 2, 3-й поверх, каб. 6",
   city: "м. Ужгород, Україна",
+  mapUrl: "https://share.google/X73CcSD7IZ8B4v1C9",
 } as const;
 
 export const SOCIAL = {

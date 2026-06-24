@@ -38,7 +38,7 @@ function trackAnchorClick(anchor: HTMLAnchorElement) {
     return;
   }
 
-  if (href.includes("maps.app.goo.gl") || href.includes("google.com/maps")) {
+  if (href.includes("maps.app.goo.gl") || href.includes("google.com/maps") || href.includes("share.google")) {
     trackEvent("map_clicked", payload);
     return;
   }

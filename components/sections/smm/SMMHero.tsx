@@ -1,12 +1,33 @@
 import { ArrowRight } from "lucide-react";
+import { getLocale } from "next-intl/server";
 
-const FACTS = [
-  "від 35 000 грн/міс",
-  "SMM + Meta Ads у пакеті",
-  "Instagram · Facebook · Google Business",
-];
+const content = {
+  uk: {
+    lead: "Ведення соціальних мереж разом із таргетованою рекламою. Контент будує довіру — реклама масштабує результат.",
+    sub: "Команда з 4 спеціалістів: стратег, копірайтер, дизайнер і контент-мейкер. Під ваш бізнес — не шаблони.",
+    cta: "Отримати консультацію",
+    facts: [
+      "від 35 000 грн/міс",
+      "SMM + Meta Ads у пакеті",
+      "Instagram · Facebook · Google Business",
+    ],
+  },
+  en: {
+    lead: "Social media management combined with targeted advertising. Content builds trust — ads scale the result.",
+    sub: "A team of 4 specialists: strategist, copywriter, designer, and content creator. Tailored to your business — not templates.",
+    cta: "Get a consultation",
+    facts: [
+      "from UAH 35,000/mo",
+      "SMM + Meta Ads in one bundle",
+      "Instagram · Facebook · Google Business",
+    ],
+  },
+} as const;
 
-export default function SMMHero() {
+export default async function SMMHero() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="flex flex-col min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-68px)]">
 
@@ -26,19 +47,18 @@ export default function SMMHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
-              Ведення соціальних мереж разом із таргетованою рекламою. Контент будує довіру — реклама масштабує результат.
+              {t.lead}
             </p>
 
             <div className="flex flex-col gap-8">
               <p className="text-base text-[#6B6B6B] leading-relaxed max-w-sm">
-                Команда з 4 спеціалістів: стратег, копірайтер, дизайнер і контент-мейкер.
-                Під ваш бізнес — не шаблони.
+                {t.sub}
               </p>
               <a
                 href="#form"
                 className="group self-start inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
               >
-                Отримати консультацію
+                {t.cta}
                 <ArrowRight
                   size={15}
                   className="transition-transform duration-200 group-hover:translate-x-1"
@@ -53,11 +73,11 @@ export default function SMMHero() {
       <div className="border-t border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row">
-            {FACTS.map((fact, i) => (
+            {t.facts.map((fact, i) => (
               <div
                 key={fact}
                 className={`flex items-center gap-2.5 py-4 md:py-5 text-sm text-[#6B6B6B] ${
-                  i < FACTS.length - 1
+                  i < t.facts.length - 1
                     ? "border-b md:border-b-0 md:border-r border-[#E0E0E0] md:pr-8"
                     : ""
                 } ${i > 0 ? "md:pl-8" : ""}`}

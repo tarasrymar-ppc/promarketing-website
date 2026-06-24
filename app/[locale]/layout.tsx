@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import AnalyticsEvents from "@/components/analytics/AnalyticsEvents";
 import CookieConsentBanner from "@/components/analytics/CookieConsentBanner";
@@ -23,13 +23,25 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale = isLocale(locale) ? locale : "uk";
 
+  const meta = {
+    uk: {
+      default: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
+      description:
+        "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі, не просто контент.",
+    },
+    en: {
+      default: "PRO Marketing# — Full-service Marketing Agency in Uzhhorod",
+      description:
+        "Marketing agency in Uzhhorod since 2019. Google Ads, Meta Ads, SEO, SMM, and web development. Real sales, not just content.",
+    },
+  } as const;
+
   return {
     title: {
-      default: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
+      default: meta[safeLocale].default,
       template: "%s | PRO Marketing#",
     },
-    description:
-      "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі, не просто контент.",
+    description: meta[safeLocale].description,
     metadataBase: new URL(SITE_URL),
     alternates: localizedAlternates(safeLocale),
     openGraph: {
@@ -63,6 +75,8 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
@@ -74,7 +88,7 @@ export default async function LocaleLayout({
         <GoogleTagManagerBody />
         <GoogleConsentUpdater />
         <AnalyticsEvents />
-        <JsonLd data={siteGraphSchema()} />
+        <JsonLd data={siteGraphSchema(locale === "en" ? "en" : "uk")} />
         <NextIntlClientProvider messages={messages}>
           {children}
           <CookieConsentBanner locale={locale} />

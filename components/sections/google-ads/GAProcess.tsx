@@ -1,41 +1,89 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
-const STEPS = [
-  {
-    label: "Тиждень 1",
-    title: "Аудит, стратегія, запуск",
-    items: [
-      "Аналіз ніші, конкурентів, ключових слів",
-      "Підбір типів кампаній під цілі і бюджет",
-      "Налаштування конверсійного відстеження",
-      "Запуск перших кампаній",
+const content = {
+  uk: {
+    eyebrow: "Процес",
+    heading: "Як ми працюємо",
+    intro: "Покроково — що відбувається після старту співпраці.",
+    steps: [
+      {
+        label: "Тиждень 1",
+        title: "Аудит, стратегія, запуск",
+        items: [
+          "Аналіз ніші, конкурентів, ключових слів",
+          "Підбір типів кампаній під цілі і бюджет",
+          "Налаштування конверсійного відстеження",
+          "Запуск перших кампаній",
+        ],
+      },
+      {
+        label: "Тиждень 2–4",
+        title: "Оптимізація",
+        items: [
+          "Щоденний моніторинг показників",
+          "Додавання мінус-слів",
+          "A/B тести оголошень",
+          "Коригування ставок і бюджетів",
+        ],
+      },
+      {
+        label: "Щомісяця",
+        title: "Масштабування",
+        items: [
+          "Перегляд KPI і цілей",
+          "Додавання нових кампаній",
+          "Оновлення стратегії під сезонність",
+          "Онлайн-зустріч (опційно)",
+        ],
+      },
     ],
   },
-  {
-    label: "Тиждень 2–4",
-    title: "Оптимізація",
-    items: [
-      "Щоденний моніторинг показників",
-      "Додавання мінус-слів",
-      "A/B тести оголошень",
-      "Коригування ставок і бюджетів",
+  en: {
+    eyebrow: "Process",
+    heading: "How we work",
+    intro: "Step by step — what happens once we start working together.",
+    steps: [
+      {
+        label: "Week 1",
+        title: "Audit, strategy, launch",
+        items: [
+          "Analysis of niche, competitors, keywords",
+          "Choosing campaign types for your goals and budget",
+          "Conversion tracking setup",
+          "Launch of the first campaigns",
+        ],
+      },
+      {
+        label: "Weeks 2–4",
+        title: "Optimization",
+        items: [
+          "Daily performance monitoring",
+          "Adding negative keywords",
+          "A/B testing of ads",
+          "Adjusting bids and budgets",
+        ],
+      },
+      {
+        label: "Monthly",
+        title: "Scaling",
+        items: [
+          "Reviewing KPIs and goals",
+          "Adding new campaigns",
+          "Updating strategy for seasonality",
+          "Online meeting (optional)",
+        ],
+      },
     ],
   },
-  {
-    label: "Щомісяця",
-    title: "Масштабування",
-    items: [
-      "Перегляд KPI і цілей",
-      "Додавання нових кампаній",
-      "Оновлення стратегії під сезонність",
-      "Онлайн-зустріч (опційно)",
-    ],
-  },
-];
+} as const;
 
 export default function GAProcess() {
+  const locale = useLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -43,19 +91,19 @@ export default function GAProcess() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
-              Процес
+              {t.eyebrow}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
-              Як ми працюємо
+              {t.heading}
             </h2>
           </div>
           <p className="text-base text-[#6B6B6B] max-w-xs leading-relaxed">
-            Покроково — що відбувається після старту співпраці.
+            {t.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">
-          {STEPS.map((step) => (
+          {t.steps.map((step) => (
             <motion.div
               key={step.label}
               whileHover={{

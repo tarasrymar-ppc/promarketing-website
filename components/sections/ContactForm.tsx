@@ -14,9 +14,23 @@ const inputBase =
 const inputError =
   "w-full h-12 px-4 bg-transparent border-b border-[#E5202E]/60 text-sm text-[#0D0D0D] placeholder:text-[#ADADAD] outline-none";
 
+const content = {
+  uk: {
+    submitError: "Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.",
+    city: CONTACT.city,
+    address: CONTACT.address,
+  },
+  en: {
+    submitError: "Couldn't send your request. Please try again or call us.",
+    city: "Uzhhorod, Ukraine",
+    address: "Fedyntsia St., 2, 3rd floor, office 6",
+  },
+} as const;
+
 export default function ContactForm() {
   const t = useTranslations("contact");
   const locale = useLocale();
+  const c = locale === "en" ? content.en : content.uk;
 
   const [name, setName]             = useState("");
   const [phone, setPhone]           = useState("");
@@ -72,7 +86,7 @@ export default function ContactForm() {
       });
       setSubmitted(true);
     } catch {
-      setSubmitError("Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.");
+      setSubmitError(c.submitError);
     } finally {
       setLoading(false);
     }
@@ -128,7 +142,7 @@ export default function ContactForm() {
                 rel="noopener noreferrer"
                 className="text-sm text-[#0D0D0D] leading-relaxed hover:text-[#E5202E] transition-colors duration-200"
               >
-                {CONTACT.city}<br />{CONTACT.address}
+                {c.city}<br />{c.address}
               </a>
             </div>
           </div>

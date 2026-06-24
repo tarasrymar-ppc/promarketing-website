@@ -14,9 +14,18 @@ import JsonLd from "@/components/seo/JsonLd";
 import { serviceSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
-const title = "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#";
-const description =
-  "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.";
+const meta = {
+  uk: {
+    title: "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#",
+    description:
+      "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.",
+  },
+  en: {
+    title: "Google Ads — setup and management from UAH 10,000/mo | PRO Marketing#",
+    description:
+      "Setup and management of Google Ads for e-commerce and service businesses. From UAH 10,000/mo, first leads in 1–2 weeks, no mandatory contract. The account stays in your name.",
+  },
+} as const;
 
 export async function generateMetadata({
   params,
@@ -27,8 +36,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title,
-    description,
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/services/google-ads"),
   };
 }
@@ -48,7 +57,7 @@ export default async function GoogleAdsPage({
           locale: safeLocale,
           path: "/services/google-ads",
           name: "Google Ads",
-          description,
+          description: meta[safeLocale].description,
         })}
       />
       <Header />

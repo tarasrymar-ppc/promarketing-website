@@ -8,6 +8,19 @@ import Clients from "@/components/sections/Clients";
 import CTA from "@/components/sections/CTA";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
+const meta = {
+  uk: {
+    title: "Про нас — PRO Marketing#",
+    description:
+      "Команда з 12 років досвіду в Ужгороді та Львові. 5–6 спеціалістів на кожному проєкті: реклама, SEO, SMM, розробка, дизайн і контент в одних руках.",
+  },
+  en: {
+    title: "About us — PRO Marketing#",
+    description:
+      "A team with 12 years of experience in Uzhhorod and Lviv. 5–6 specialists on every project: ads, SEO, SMM, development, design, and content in one place.",
+  },
+} as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -17,9 +30,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: "Про нас — PRO Marketing#",
-    description:
-      "Команда з 12 років досвіду в Ужгороді та Львові. 5–6 спеціалістів на кожному проєкті: реклама, SEO, SMM, розробка, дизайн і контент в одних руках.",
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/about"),
   };
 }

@@ -1,12 +1,33 @@
 import { ArrowRight } from "lucide-react";
+import { getLocale } from "next-intl/server";
 
-const FACTS = [
-  "від 10 000 грн/міс",
-  "перші заявки за 1–2 тижні",
-  "без обов'язкового контракту",
-];
+const content = {
+  uk: {
+    lead: "Налаштування та ведення реклами в Google для e-commerce і сервісного бізнесу.",
+    sub: "Акаунт — на ваше ім'я. Пряма комунікація без посередників. Чесно скажемо якщо не підійде.",
+    cta: "Отримати консультацію",
+    facts: [
+      "від 10 000 грн/міс",
+      "перші заявки за 1–2 тижні",
+      "без обов'язкового контракту",
+    ],
+  },
+  en: {
+    lead: "Setup and management of Google Ads for e-commerce and service businesses.",
+    sub: "The account stays in your name. Direct communication, no middlemen. We'll tell you honestly if it's not a fit.",
+    cta: "Get a consultation",
+    facts: [
+      "from UAH 10,000/mo",
+      "first leads in 1–2 weeks",
+      "no mandatory contract",
+    ],
+  },
+} as const;
 
-export default function GAHero() {
+export default async function GAHero() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="flex flex-col min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-68px)]">
 
@@ -28,19 +49,18 @@ export default function GAHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
-              Налаштування та ведення реклами в Google для e-commerce і сервісного бізнесу.
+              {t.lead}
             </p>
 
             <div className="flex flex-col gap-8">
               <p className="text-base text-[#6B6B6B] leading-relaxed max-w-sm">
-                Акаунт — на ваше ім&apos;я. Пряма комунікація без посередників.
-                Чесно скажемо якщо не підійде.
+                {t.sub}
               </p>
               <a
                 href="#form"
                 className="group self-start inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
               >
-                Отримати консультацію
+                {t.cta}
                 <ArrowRight
                   size={15}
                   className="transition-transform duration-200 group-hover:translate-x-1"
@@ -56,11 +76,11 @@ export default function GAHero() {
       <div className="border-t border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row">
-            {FACTS.map((fact, i) => (
+            {t.facts.map((fact, i) => (
               <div
                 key={fact}
                 className={`flex items-center gap-2.5 py-4 md:py-5 text-sm text-[#6B6B6B] ${
-                  i < FACTS.length - 1
+                  i < t.facts.length - 1
                     ? "border-b md:border-b-0 md:border-r border-[#E0E0E0] md:pr-8"
                     : ""
                 } ${i > 0 ? "md:pl-8" : ""}`}

@@ -1,6 +1,17 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/common/AnimatedSection";
+
+const content = {
+  uk: {
+    visitSite: (name: string) => `Перейти на сайт ${name}`,
+    googlePartnerAria: "Google Partner — переглянути профіль агентства",
+  },
+  en: {
+    visitSite: (name: string) => `Visit ${name} website`,
+    googlePartnerAria: "Google Partner — view agency profile",
+  },
+} as const;
 
 const OFFICIAL_PARTNERS = [
   {
@@ -59,6 +70,7 @@ type LogoCardProps = {
   width?: number;
   height?: number;
   compact?: boolean;
+  visitSiteLabel?: (name: string) => string;
 };
 
 function LogoImage({
@@ -86,9 +98,10 @@ function LogoCard({
   width,
   height,
   compact = false,
+  visitSiteLabel = (n) => `Перейти на сайт ${n}`,
 }: LogoCardProps) {
   const className =
-    `flex items-center justify-center w-full ${compact ? "h-16" : "h-20"} grayscale opacity-40 hover:grayscale-0 hover:opacity-100 focus-visible:grayscale-0 focus-visible:opacity-100 transition-all duration-300`;
+    `flex items-center justify-center w-full ${compact ? "h-16" : "h-20"}`;
 
   if (href) {
     return (
@@ -96,7 +109,7 @@ function LogoCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Перейти на сайт ${name}`}
+        aria-label={visitSiteLabel(name)}
         className={`${className} cursor-pointer rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#E5202E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F4F4]`}
       >
         <LogoImage name={name} logo={logo} width={width} height={height} />
@@ -113,6 +126,8 @@ function LogoCard({
 
 export default async function Partners() {
   const t = await getTranslations("partners");
+  const locale = await getLocale();
+  const c = locale === "en" ? content.en : content.uk;
 
   return (
     <section className="py-16 md:py-20 bg-[#F4F4F4] rounded-3xl overflow-hidden">
@@ -125,34 +140,29 @@ export default async function Partners() {
               <p className="text-xs font-semibold text-[#ADADAD] uppercase tracking-widest mb-6">
                 {t("official")}
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 w-full">
-                {/* Google Partner — featured official badge (full color, larger) */}
+              <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 w-full">
+                {/* Google Partner — official badge (full color) */}
                 <a
                   href={GOOGLE_PARTNER.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Google Partner — переглянути профіль агентства"
+                  aria-label={c.googlePartnerAria}
                   className="flex items-center justify-center flex-shrink-0 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#E5202E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F4F4]"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={GOOGLE_PARTNER.badge}
                     alt="Google Partner"
-                    className="h-20 sm:h-[88px] w-auto object-contain"
+                    className="h-16 sm:h-[72px] w-auto object-contain"
                   />
                 </a>
 
-                {/* Other official partners */}
-                <div className="flex items-center gap-1">
-                  {OFFICIAL_PARTNERS.map((partner, i) => (
-                    <div key={partner.name} className="flex items-center">
-                      <LogoCard {...partner} />
-                      {i < OFFICIAL_PARTNERS.length - 1 && (
-                        <div className="w-px h-8 bg-[#E0E0E0] flex-shrink-0" />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                {/* Ringostat, Binotel — evenly spaced */}
+                {OFFICIAL_PARTNERS.map((partner) => (
+                  <div key={partner.name} className="flex items-center">
+                    <LogoCard {...partner} visitSiteLabel={c.visitSite} />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -174,7 +184,7 @@ export default async function Partners() {
                         : ""
                     }`}
                   >
-                    <LogoCard {...tool} compact />
+                    <LogoCard {...tool} compact visitSiteLabel={c.visitSite} />
                   </div>
                 ))}
               </div>

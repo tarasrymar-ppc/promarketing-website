@@ -1,4 +1,10 @@
 import type { CSSProperties } from "react";
+import { getLocale } from "next-intl/server";
+
+const content = {
+  uk: { heading: "Наші клієнти" },
+  en: { heading: "Our clients" },
+} as const;
 
 const CLIENTS = [
   { name: "Voyak",     logo: "/clients/voyak.png"     },
@@ -52,7 +58,9 @@ const CLIENTS = [
   },
 ];
 
-export default function Clients() {
+export default async function Clients() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
   const row = [...CLIENTS, ...CLIENTS];
 
   return (
@@ -96,7 +104,7 @@ export default function Clients() {
       {/* Header */}
       <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
         <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
-          Наші клієнти
+          {t.heading}
         </p>
       </div>
 

@@ -1,35 +1,74 @@
 import { ArrowRight } from "lucide-react";
+import { getLocale } from "next-intl/server";
 
-const FACTORS = [
-  "Тип бізнесу (e-commerce, послуги, локальний)",
-  "Регіон реклами (місто, Україна, міжнародна)",
-  "Кількість рекламних кампаній",
-];
+const content = {
+  uk: {
+    heading: "Ціна.",
+    serviceLabel: "Послуга ведення",
+    priceFrom: "від 15 000 грн",
+    priceUnit: "/міс",
+    dependsOn: "Фінальна ціна залежить від:",
+    factors: [
+      "Тип бізнесу (e-commerce, послуги, локальний)",
+      "Регіон реклами (місто, Україна, міжнародна)",
+      "Кількість рекламних кампаній",
+    ],
+    cta: "Отримати розрахунок",
+    budgetLabel: "Оплачується окремо",
+    budgetTitle: "Рекламний бюджет у Meta",
+    budgetText1:
+      "Ви поповнюєте рекламний кабінет напряму — платіж не проходить через нас. Ви завжди бачите скільки реально витрачено на рекламу.",
+    budgetText2:
+      "Рекомендований мінімум — від 10 000 грн/міс рекламного бюджету для стабільних результатів.",
+  },
+  en: {
+    heading: "Pricing.",
+    serviceLabel: "Management service",
+    priceFrom: "from UAH 15,000",
+    priceUnit: "/mo",
+    dependsOn: "The final price depends on:",
+    factors: [
+      "Business type (e-commerce, services, local)",
+      "Advertising region (city, Ukraine, international)",
+      "Number of ad campaigns",
+    ],
+    cta: "Get a quote",
+    budgetLabel: "Paid separately",
+    budgetTitle: "Meta ad budget",
+    budgetText1:
+      "You fund the ad account directly — the payment doesn't go through us. You always see exactly how much is actually spent on ads.",
+    budgetText2:
+      "Recommended minimum — from UAH 10,000/mo in ad budget for stable results.",
+  },
+} as const;
 
-export default function MetaPricing() {
+export default async function MetaPricing() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D] mb-12">
-          Ціна.
+          {t.heading}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
           <div className="bg-[#F4F4F4] border border-[#E0E0E0] rounded-xl p-8 md:p-10">
             <p className="text-[10px] text-[#ADADAD] uppercase tracking-widest mb-4">
-              Послуга ведення
+              {t.serviceLabel}
             </p>
             <p className="text-4xl md:text-5xl font-semibold text-[#0D0D0D] mb-5 leading-none">
-              від 15 000 грн
-              <span className="text-xl text-[#6B6B6B] font-normal">/міс</span>
+              {t.priceFrom}
+              <span className="text-xl text-[#6B6B6B] font-normal">{t.priceUnit}</span>
             </p>
             <p className="text-sm text-[#6B6B6B] mb-5 leading-relaxed">
-              Фінальна ціна залежить від:
+              {t.dependsOn}
             </p>
             <ul className="flex flex-col gap-2 mb-8">
-              {FACTORS.map((factor) => (
+              {t.factors.map((factor) => (
                 <li key={factor} className="flex items-start gap-2 text-sm text-[#0D0D0D]">
                   <span className="text-[#E5202E] mt-0.5 flex-shrink-0 font-bold">·</span>
                   {factor}
@@ -40,7 +79,7 @@ export default function MetaPricing() {
               href="#form"
               className="group inline-flex items-center gap-2 text-sm font-semibold text-[#E5202E] hover:text-[#C0111D] transition-colors duration-200"
             >
-              Отримати розрахунок
+              {t.cta}
               <ArrowRight
                 size={15}
                 className="transition-transform duration-200 group-hover:translate-x-1"
@@ -50,18 +89,16 @@ export default function MetaPricing() {
 
           <div className="bg-[#E5202E] rounded-xl p-8 md:p-10">
             <p className="text-[10px] text-white/60 uppercase tracking-widest mb-4">
-              Оплачується окремо
+              {t.budgetLabel}
             </p>
             <p className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-tight">
-              Рекламний бюджет у Meta
+              {t.budgetTitle}
             </p>
             <p className="text-sm text-white/60 leading-relaxed mb-4">
-              Ви поповнюєте рекламний кабінет напряму — платіж не проходить через нас.
-              Ви завжди бачите скільки реально витрачено на рекламу.
+              {t.budgetText1}
             </p>
             <p className="text-sm text-white/60 leading-relaxed">
-              Рекомендований мінімум — від 10 000 грн/міс рекламного бюджету для
-              стабільних результатів.
+              {t.budgetText2}
             </p>
           </div>
 

@@ -11,14 +11,60 @@ const inputBase =
 const inputNormal = `${inputBase} border-white/40 focus:border-white`;
 const inputError  = `${inputBase} border-white/80`;
 
-const TRUST = [
-  { Icon: ClockIcon,       text: "Відповімо протягом 2 годин" },
-  { Icon: ShieldCheckIcon, text: "Проведемо аналіз вашої ніші" },
-  { Icon: ChatCircleIcon,  text: "Чесно скажемо якщо не підійде" },
-] as const;
+const TRUST_ICONS = [ClockIcon, ShieldCheckIcon, ChatCircleIcon] as const;
+
+const content = {
+  uk: {
+    trust: [
+      "Відповімо протягом 2 годин",
+      "Проведемо аналіз вашої ніші",
+      "Чесно скажемо якщо не підійде",
+    ],
+    heading: "Готові отримати більше клієнтів?",
+    sub: "Залиште заявку — проаналізуємо ваш бізнес і скажемо чесно, чи підійде Google Ads.",
+    doneTitle: "Дякуємо!",
+    doneText: "Ми зв'яжемось з вами протягом 2 годин у робочий час.",
+    nameLabel: "Ім'я",
+    namePlaceholder: "Ваше ім'я",
+    phoneLabel: "Телефон",
+    businessLabel: "Ваш бізнес",
+    businessOptional: "(необов'язково)",
+    businessPlaceholder: "Наприклад: інтернет-магазин, стоматологія...",
+    submit: "Залишити заявку",
+    submitting: "Надсилаємо...",
+    submitNote: "Відповімо протягом 2 годин у робочий час",
+    nameError: "Мінімум 2 символи",
+    phoneError: "Введіть коректний номер",
+    submitError: "Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.",
+  },
+  en: {
+    trust: [
+      "We'll reply within 2 hours",
+      "We'll analyze your niche",
+      "We'll tell you honestly if it's not a fit",
+    ],
+    heading: "Ready to get more clients?",
+    sub: "Submit a request — we'll analyze your business and tell you honestly whether Google Ads is a fit.",
+    doneTitle: "Thank you!",
+    doneText: "We'll get in touch within 2 hours during business hours.",
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    phoneLabel: "Phone",
+    businessLabel: "Your business",
+    businessOptional: "(optional)",
+    businessPlaceholder: "For example: online store, dental clinic...",
+    submit: "Submit a request",
+    submitting: "Sending...",
+    submitNote: "We'll reply within 2 hours during business hours",
+    nameError: "At least 2 characters",
+    phoneError: "Enter a valid number",
+    submitError: "Couldn't send your request. Please try again or give us a call.",
+  },
+} as const;
 
 export default function GAForm() {
   const locale = useLocale();
+  const t = locale === "en" ? content.en : content.uk;
   const [name,     setName]     = useState("");
   const [phone,    setPhone]    = useState("");
   const [business, setBusiness] = useState("");
@@ -29,10 +75,10 @@ export default function GAForm() {
   const [done,     setDone]     = useState(false);
   const [honeypot, setHoneypot] = useState("");
 
-  const validateName  = (v: string) => v.trim().length < 2 ? "Мінімум 2 символи" : null;
+  const validateName  = (v: string) => v.trim().length < 2 ? t.nameError : null;
   const validatePhone = (v: string) => {
     const d = v.replace(/[\s\-\(\)]/g, "");
-    return /^(\+?380\d{9}|0\d{9})$/.test(d) ? null : "Введіть коректний номер";
+    return /^(\+?380\d{9}|0\d{9})$/.test(d) ? null : t.phoneError;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,7 +101,7 @@ export default function GAForm() {
       });
       setDone(true);
     } catch {
-      setSubmitErr("Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.");
+      setSubmitErr(t.submitError);
     } finally {
       setLoading(false);
     }
@@ -70,21 +116,24 @@ export default function GAForm() {
           <div className="flex flex-col gap-8">
             <div>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3 leading-tight">
-                Готові отримати більше клієнтів?
+                {t.heading}
               </h2>
               <p className="text-sm text-white/70 leading-relaxed">
-                Залиште заявку — проаналізуємо ваш бізнес і скажемо чесно, чи підійде Google Ads.
+                {t.sub}
               </p>
             </div>
             <div className="flex flex-col gap-4">
-              {TRUST.map(({ Icon, text }) => (
-                <div key={text} className="flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <Icon size={13} weight="duotone" className="text-white" />
+              {t.trust.map((text, i) => {
+                const Icon = TRUST_ICONS[i];
+                return (
+                  <div key={text} className="flex items-center gap-3">
+                    <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <Icon size={13} weight="duotone" className="text-white" />
+                    </div>
+                    <span className="text-sm text-white/80">{text}</span>
                   </div>
-                  <span className="text-sm text-white/80">{text}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -97,9 +146,9 @@ export default function GAForm() {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
-                <p className="text-2xl font-semibold text-white mb-2">Дякуємо!</p>
+                <p className="text-2xl font-semibold text-white mb-2">{t.doneTitle}</p>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  Ми зв&apos;яжемось з вами протягом 2 годин у робочий час.
+                  {t.doneText}
                 </p>
               </div>
             ) : (
@@ -107,10 +156,10 @@ export default function GAForm() {
                 <input type="text" name="website" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] text-white/70 uppercase tracking-widest">Ім&apos;я</label>
+                  <label className="text-[10px] text-white/70 uppercase tracking-widest">{t.nameLabel}</label>
                   <input
                     type="text"
-                    placeholder="Ваше ім'я"
+                    placeholder={t.namePlaceholder}
                     value={name}
                     onChange={(e) => { setName(e.target.value); if (nameErr) setNameErr(validateName(e.target.value)); }}
                     className={nameErr ? inputError : inputNormal}
@@ -119,7 +168,7 @@ export default function GAForm() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-[10px] text-white/70 uppercase tracking-widest">Телефон</label>
+                  <label className="text-[10px] text-white/70 uppercase tracking-widest">{t.phoneLabel}</label>
                   <input
                     type="tel"
                     placeholder="+380 00 000 00 00"
@@ -132,11 +181,11 @@ export default function GAForm() {
 
                 <div className="flex flex-col gap-1">
                   <label className="text-[10px] text-white/70 uppercase tracking-widest">
-                    Ваш бізнес <span className="text-white/20 normal-case">(необов&apos;язково)</span>
+                    {t.businessLabel} <span className="text-white/20 normal-case">{t.businessOptional}</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Наприклад: інтернет-магазин, стоматологія..."
+                    placeholder={t.businessPlaceholder}
                     value={business}
                     onChange={(e) => setBusiness(e.target.value)}
                     className={inputNormal}
@@ -149,13 +198,13 @@ export default function GAForm() {
                     disabled={loading}
                     className="group self-start inline-flex items-center gap-2 bg-white hover:bg-[#F4F4F4] disabled:opacity-60 text-[#0D0D0D] text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
                   >
-                    {loading ? "Надсилаємо..." : "Залишити заявку"}
+                    {loading ? t.submitting : t.submit}
                     {!loading && (
                       <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
                     )}
                   </button>
                   <p className="text-xs text-white/50 leading-relaxed">
-                    Відповімо протягом 2 годин у робочий час
+                    {t.submitNote}
                   </p>
                   {submitErr && (
                     <p className="text-xs text-white leading-relaxed">

@@ -7,6 +7,19 @@ import JsonLd from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
+const meta = {
+  uk: {
+    title: "FAQ — Питання та відповіді | PRO Marketing#",
+    description:
+      "Відповіді на найпоширеніші запитання про послуги PRO Marketing#: ціни, терміни, звітність та процес роботи.",
+  },
+  en: {
+    title: "FAQ — Questions and answers | PRO Marketing#",
+    description:
+      "Answers to the most frequently asked questions about PRO Marketing# services: pricing, timelines, reporting, and how we work.",
+  },
+} as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -16,9 +29,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: "FAQ — Питання та відповіді | PRO Marketing#",
-    description:
-      "Відповіді на найпоширеніші запитання про послуги PRO Marketing#: ціни, терміни, звітність та процес роботи.",
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/faq"),
   };
 }

@@ -1,12 +1,33 @@
 import { ArrowRight } from "lucide-react";
+import { getLocale } from "next-intl/server";
 
-const FACTS = [
-  "від 15 000 грн/міс",
-  "перші заявки в день запуску",
-  "Facebook + Instagram + Threads",
-];
+const content = {
+  uk: {
+    lead: "Таргетована реклама у Facebook, Instagram та Threads для бізнесів, яким потрібні клієнти — а не просто охоплення.",
+    sub: "Знаходимо вашу аудиторію за інтересами, поведінкою та даними. Ретаргетинг, Lookalike, каталоги — все під ваш бізнес.",
+    cta: "Отримати консультацію",
+    facts: [
+      "від 15 000 грн/міс",
+      "перші заявки в день запуску",
+      "Facebook + Instagram + Threads",
+    ],
+  },
+  en: {
+    lead: "Targeted advertising on Facebook, Instagram and Threads for businesses that need customers — not just reach.",
+    sub: "We find your audience by interests, behavior and data. Retargeting, Lookalike, catalogs — all tailored to your business.",
+    cta: "Get a consultation",
+    facts: [
+      "from UAH 15,000/mo",
+      "first leads on launch day",
+      "Facebook + Instagram + Threads",
+    ],
+  },
+} as const;
 
-export default function MetaHero() {
+export default async function MetaHero() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="flex flex-col min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-68px)]">
 
@@ -26,19 +47,18 @@ export default function MetaHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
-              Таргетована реклама у Facebook, Instagram та Threads для бізнесів, яким потрібні клієнти — а не просто охоплення.
+              {t.lead}
             </p>
 
             <div className="flex flex-col gap-8">
               <p className="text-base text-[#6B6B6B] leading-relaxed max-w-sm">
-                Знаходимо вашу аудиторію за інтересами, поведінкою та даними.
-                Ретаргетинг, Lookalike, каталоги — все під ваш бізнес.
+                {t.sub}
               </p>
               <a
                 href="#form"
                 className="group self-start inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
               >
-                Отримати консультацію
+                {t.cta}
                 <ArrowRight
                   size={15}
                   className="transition-transform duration-200 group-hover:translate-x-1"
@@ -53,11 +73,11 @@ export default function MetaHero() {
       <div className="border-t border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row">
-            {FACTS.map((fact, i) => (
+            {t.facts.map((fact, i) => (
               <div
                 key={fact}
                 className={`flex items-center gap-2.5 py-4 md:py-5 text-sm text-[#6B6B6B] ${
-                  i < FACTS.length - 1
+                  i < t.facts.length - 1
                     ? "border-b md:border-b-0 md:border-r border-[#E0E0E0] md:pr-8"
                     : ""
                 } ${i > 0 ? "md:pl-8" : ""}`}

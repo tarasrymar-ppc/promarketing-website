@@ -3,41 +3,84 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
+import { useLocale } from "next-intl";
 
-const ITEMS = [
-  {
-    question: "Чому SMM і Meta Ads завжди разом?",
-    answer:
-      "Органічне охоплення в Facebook та Instagram — до 5% підписників. Без реклами контент бачать лише ті, хто вже на вас підписаний. Реклама забезпечує постійний приплив нової аудиторії, а контент її прогріває і конвертує. Окремо — обидва інструменти значно слабші.",
+const content = {
+  uk: {
+    heading: "Часті питання.",
+    items: [
+      {
+        question: "Чому SMM і Meta Ads завжди разом?",
+        answer:
+          "Органічне охоплення в Facebook та Instagram — до 5% підписників. Без реклами контент бачать лише ті, хто вже на вас підписаний. Реклама забезпечує постійний приплив нової аудиторії, а контент її прогріває і конвертує. Окремо — обидва інструменти значно слабші.",
+      },
+      {
+        question: "Чи є окремий SMM без реклами?",
+        answer:
+          "Ні. Ми свідомо не надаємо SMM без Meta Ads — це не дає клієнту реального результату. Наша мета — заявки і клієнти, а не просто пости у стрічці.",
+      },
+      {
+        question: "Хто пише тексти для моїх соцмереж?",
+        answer:
+          "Профільний копірайтер, який спеціалізується на вашій ніші. Перед стартом проводимо бриф — щоб тексти звучали як ваш бренд, а не шаблонно.",
+      },
+      {
+        question: "Як виглядає процес затвердження контенту?",
+        answer:
+          "Щомісяця готуємо контент-план і надсилаємо вам на погодження. Ви бачите всі пости наперед і можете вносити правки до публікації.",
+      },
+      {
+        question: "TikTok теж входить у пакет?",
+        answer:
+          "Ні. TikTok — це окрема послуга з окремою командою і підходом. Якщо вас цікавить TikTok — обговоримо окремо.",
+      },
+      {
+        question: "Рекламний бюджет Meta — це окремо від ціни пакету?",
+        answer:
+          "Так. Ви поповнюєте рекламний кабінет напряму. Цей платіж не проходить через нас — ви завжди бачите скільки реально витрачено на рекламу.",
+      },
+    ],
   },
-  {
-    question: "Чи є окремий SMM без реклами?",
-    answer:
-      "Ні. Ми свідомо не надаємо SMM без Meta Ads — це не дає клієнту реального результату. Наша мета — заявки і клієнти, а не просто пости у стрічці.",
+  en: {
+    heading: "FAQ.",
+    items: [
+      {
+        question: "Why are SMM and Meta Ads always together?",
+        answer:
+          "Organic reach on Facebook and Instagram is up to 5% of followers. Without ads, only people who already follow you see your content. Ads provide a steady flow of new audiences, while content warms it up and converts. On their own, both tools are far weaker.",
+      },
+      {
+        question: "Is there SMM without ads?",
+        answer:
+          "No. We deliberately don't offer SMM without Meta Ads — it doesn't bring the client real results. Our goal is leads and clients, not just posts in the feed.",
+      },
+      {
+        question: "Who writes the copy for my social media?",
+        answer:
+          "A specialist copywriter who focuses on your niche. Before we start, we run a brief — so the copy sounds like your brand, not like a template.",
+      },
+      {
+        question: "What does the content approval process look like?",
+        answer:
+          "Every month we prepare a content plan and send it to you for approval. You see all posts in advance and can make edits before publication.",
+      },
+      {
+        question: "Is TikTok included in the bundle?",
+        answer:
+          "No. TikTok is a separate service with a separate team and approach. If you're interested in TikTok, we'll discuss it separately.",
+      },
+      {
+        question: "Is the Meta ad budget separate from the bundle price?",
+        answer:
+          "Yes. You top up the ad account directly. This payment doesn't go through us — you always see exactly how much is actually spent on ads.",
+      },
+    ],
   },
-  {
-    question: "Хто пише тексти для моїх соцмереж?",
-    answer:
-      "Профільний копірайтер, який спеціалізується на вашій ніші. Перед стартом проводимо бриф — щоб тексти звучали як ваш бренд, а не шаблонно.",
-  },
-  {
-    question: "Як виглядає процес затвердження контенту?",
-    answer:
-      "Щомісяця готуємо контент-план і надсилаємо вам на погодження. Ви бачите всі пости наперед і можете вносити правки до публікації.",
-  },
-  {
-    question: "TikTok теж входить у пакет?",
-    answer:
-      "Ні. TikTok — це окрема послуга з окремою командою і підходом. Якщо вас цікавить TikTok — обговоримо окремо.",
-  },
-  {
-    question: "Рекламний бюджет Meta — це окремо від ціни пакету?",
-    answer:
-      "Так. Ви поповнюєте рекламний кабінет напряму. Цей платіж не проходить через нас — ви завжди бачите скільки реально витрачено на рекламу.",
-  },
-];
+} as const;
 
 export default function SMMFAQ() {
+  const locale = useLocale();
+  const t = locale === "en" ? content.en : content.uk;
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -45,11 +88,11 @@ export default function SMMFAQ() {
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D] mb-12">
-          Часті питання.
+          {t.heading}
         </h2>
 
         <div className="divide-y divide-[#E8E8E8] border-y border-[#E8E8E8]">
-          {ITEMS.map((item, i) => {
+          {t.items.map((item, i) => {
             const isOpen = active === i;
             return (
               <div key={i}>

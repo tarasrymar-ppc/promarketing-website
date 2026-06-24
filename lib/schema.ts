@@ -5,26 +5,48 @@ const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const localBusinessId = `${SITE_URL}/#localbusiness`;
 
-const BUSINESS_DESCRIPTION =
-  "PRO Marketing# — маркетингове агентство повного циклу в Ужгороді. З 2019 року допомагаємо бізнесу залучати клієнтів і збільшувати продажі через Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO та розробку сайтів.";
+const BUSINESS_DESCRIPTION = {
+  uk: "PRO Marketing# — маркетингове агентство повного циклу в Ужгороді. З 2019 року допомагаємо бізнесу залучати клієнтів і збільшувати продажі через Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO та розробку сайтів.",
+  en: "PRO Marketing# is a full-service marketing agency in Uzhhorod, Ukraine. Since 2019 we help businesses attract clients and grow sales through Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO, and web development.",
+} as const;
 
-const AREA_SERVED = [
-  { "@type": "City", name: "Ужгород" },
-  { "@type": "AdministrativeArea", name: "Закарпатська область" },
-  { "@type": "Country", name: "Україна" },
-];
+const AREA_SERVED = {
+  uk: [
+    { "@type": "City", name: "Ужгород" },
+    { "@type": "AdministrativeArea", name: "Закарпатська область" },
+    { "@type": "Country", name: "Україна" },
+  ],
+  en: [
+    { "@type": "City", name: "Uzhhorod" },
+    { "@type": "AdministrativeArea", name: "Zakarpattia Oblast" },
+    { "@type": "Country", name: "Ukraine" },
+  ],
+} as const;
 
-export function organizationSchema() {
+const ADDRESS = {
+  uk: {
+    streetAddress: CONTACT.address,
+    addressLocality: "Ужгород",
+    addressRegion: "Закарпатська область",
+  },
+  en: {
+    streetAddress: "Fedyntsia St., 2, 3rd floor, office 6",
+    addressLocality: "Uzhhorod",
+    addressRegion: "Zakarpattia Oblast",
+  },
+} as const;
+
+export function organizationSchema(locale: Locale) {
   return {
     "@type": "Organization",
     "@id": organizationId,
     name: "PRO Marketing#",
     alternateName: "PRO Marketing Agency",
-    description: BUSINESS_DESCRIPTION,
+    description: BUSINESS_DESCRIPTION[locale],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     foundingDate: "2019",
-    areaServed: AREA_SERVED,
+    areaServed: AREA_SERVED[locale],
     sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google],
     contactPoint: {
       "@type": "ContactPoint",
@@ -36,26 +58,24 @@ export function organizationSchema() {
   };
 }
 
-export function localBusinessSchema() {
+export function localBusinessSchema(locale: Locale) {
   return {
     "@type": "LocalBusiness",
     "@id": localBusinessId,
     name: "PRO Marketing#",
     alternateName: "PRO Marketing Agency",
-    description: BUSINESS_DESCRIPTION,
+    description: BUSINESS_DESCRIPTION[locale],
     image: `${SITE_URL}/logo.png`,
     url: SITE_URL,
     telephone: CONTACT.phone,
     email: CONTACT.email,
     priceRange: "$$",
     foundingDate: "2019",
-    areaServed: AREA_SERVED,
+    areaServed: AREA_SERVED[locale],
     sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google],
     address: {
       "@type": "PostalAddress",
-      streetAddress: CONTACT.address,
-      addressLocality: "Ужгород",
-      addressRegion: "Закарпатська область",
+      ...ADDRESS[locale],
       addressCountry: "UA",
     },
     parentOrganization: {
@@ -77,10 +97,14 @@ export function websiteSchema() {
   };
 }
 
-export function siteGraphSchema() {
+export function siteGraphSchema(locale: Locale) {
   return {
     "@context": "https://schema.org",
-    "@graph": [organizationSchema(), localBusinessSchema(), websiteSchema()],
+    "@graph": [
+      organizationSchema(locale),
+      localBusinessSchema(locale),
+      websiteSchema(),
+    ],
   };
 }
 

@@ -15,9 +15,18 @@ import JsonLd from "@/components/seo/JsonLd";
 import { serviceSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
-const title = "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#";
-const description =
-  "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.";
+const meta = {
+  uk: {
+    title: "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#",
+    description:
+      "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.",
+  },
+  en: {
+    title: "Meta Ads — targeted Facebook and Instagram advertising from UAH 15,000/mo | PRO Marketing#",
+    description:
+      "Targeted advertising on Facebook and Instagram. From UAH 15,000/mo, first leads on launch day, no mandatory contract. Retargeting, Lookalike audiences, two platforms in one account.",
+  },
+} as const;
 
 export async function generateMetadata({
   params,
@@ -28,8 +37,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title,
-    description,
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/services/meta-ads"),
   };
 }
@@ -49,7 +58,7 @@ export default async function MetaAdsPage({
           locale: safeLocale,
           path: "/services/meta-ads",
           name: "Meta Ads",
-          description,
+          description: meta[safeLocale].description,
         })}
       />
       <Header />

@@ -7,11 +7,21 @@ import { useLocale, useTranslations } from "next-intl";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { submitLead } from "@/lib/submitLead";
 
+const content = {
+  uk: {
+    submitError: "Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.",
+  },
+  en: {
+    submitError: "Couldn't send your request. Please try again or call us.",
+  },
+} as const;
+
 // --- Component ---
 
 export default function CTA() {
   const t = useTranslations("cta");
   const locale = useLocale();
+  const c = locale === "en" ? content.en : content.uk;
 
   const [name, setName]             = useState("");
   const [phone, setPhone]           = useState("");
@@ -67,7 +77,7 @@ export default function CTA() {
       });
       setSubmitted(true);
     } catch {
-      setSubmitError("Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.");
+      setSubmitError(c.submitError);
     } finally {
       setLoading(false);
     }

@@ -5,6 +5,19 @@ import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
+const meta = {
+  uk: {
+    title: "Контакти — PRO Marketing#",
+    description:
+      "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — зв'яжемось і запропонуємо оптимальний формат співпраці.",
+  },
+  en: {
+    title: "Contact — PRO Marketing#",
+    description:
+      "Get in touch with PRO Marketing# in Uzhhorod. Submit a request online or call us — we'll get back to you and propose the best way to work together.",
+  },
+} as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -14,9 +27,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: "Контакти — PRO Marketing#",
-    description:
-      "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — зв'яжемось і запропонуємо оптимальний формат співпраці.",
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/contact"),
   };
 }

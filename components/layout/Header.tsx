@@ -33,6 +33,21 @@ const SERVICE_HREFS = [
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=%D0%A3%D0%B6%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%2C%20%D0%B2%D1%83%D0%BB.%20%D0%A4%D0%B5%D0%B4%D0%B8%D0%BD%D1%86%D1%8F%202";
 
+const content = {
+  uk: {
+    city: CONTACT.city,
+    location: "вул. Фединця 2",
+    hours: "Пн–Пт 9:30–17:30 · Сб–Нд вихідний",
+    menu: "Меню",
+  },
+  en: {
+    city: "Uzhhorod, Ukraine",
+    location: "Fedyntsia St., 2",
+    hours: "Mon–Fri 9:30–17:30 · Sat–Sun closed",
+    menu: "Menu",
+  },
+} as const;
+
 
 // Stagger variants for mega-menu items
 const containerVariants = {
@@ -73,6 +88,7 @@ export default function Header() {
   const t = useTranslations("nav");
   const tServices = useTranslations("services");
   const locale = useLocale();
+  const c = locale === "en" ? content.en : content.uk;
 
   const serviceItems = (tServices.raw("items") as { title: string; description: string }[])
     .slice(0, 8)
@@ -175,11 +191,11 @@ export default function Header() {
               className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-[#0D0D0D]"
             >
               <MapPin size={13} className="text-[#E5202E]" />
-              <span>{CONTACT.city}, вул. Фединця 2</span>
+              <span>{c.city}, {c.location}</span>
             </a>
             <div className="inline-flex items-center gap-1.5">
               <Clock size={13} className="text-[#E5202E]" />
-              <span>Пн–Пт 9:30–17:30 · Сб–Нд вихідний</span>
+              <span>{c.hours}</span>
             </div>
           </div>
           <div className="flex items-center h-16 min-[1120px]:h-[64px] xl:h-[68px]">
@@ -268,7 +284,7 @@ export default function Header() {
             <button
               className="min-[1120px]:hidden ml-auto p-2 text-[#0D0D0D]"
               onClick={() => setIsMobileOpen((p) => !p)}
-              aria-label="Меню"
+              aria-label={c.menu}
             >
               {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

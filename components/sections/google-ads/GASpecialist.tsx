@@ -1,17 +1,36 @@
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import { getLocale } from "next-intl/server";
 
 const CERT_URL =
   "https://skillshop.credential.net/234c14e9-a1be-495f-b688-2c7765df7cdd#acc.q4wrikZ6";
 const CERT_IMAGE =
   "https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/160568898";
 
-export default function GASpecialist() {
+const content = {
+  uk: {
+    heading: "Хто веде ваш акаунт.",
+    name: "Тарас Римар",
+    bio: "Відповідає за налаштування, ведення і оптимізацію вашого Google Ads акаунту. Пряма комунікація — без посередників.",
+    cert: "Переглянути Google Ads сертифікат",
+  },
+  en: {
+    heading: "Who runs your account.",
+    name: "Taras Rymar",
+    bio: "Responsible for setting up, managing and optimizing your Google Ads account. Direct communication — no middlemen.",
+    cert: "View Google Ads certificate",
+  },
+} as const;
+
+export default async function GASpecialist() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="bg-[#F4F4F4] py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D] mb-12">
-          Хто веде ваш акаунт.
+          {t.heading}
         </h2>
 
         <div className="bg-white border border-[#E0E0E0] rounded-xl p-8 md:p-10">
@@ -23,11 +42,10 @@ export default function GASpecialist() {
                 PPC Specialist
               </p>
               <p className="text-3xl md:text-4xl font-semibold text-[#0D0D0D] mb-4 leading-tight">
-                Тарас Римар
+                {t.name}
               </p>
               <p className="text-sm text-[#6B6B6B] leading-relaxed mb-6 max-w-md">
-                Відповідає за налаштування, ведення і оптимізацію вашого
-                Google Ads акаунту. Пряма комунікація — без посередників.
+                {t.bio}
               </p>
               <a
                 href={CERT_URL}
@@ -35,7 +53,7 @@ export default function GASpecialist() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-[#E5202E] hover:text-[#C0111D] transition-colors duration-200"
               >
-                Переглянути Google Ads сертифікат
+                {t.cert}
                 <ArrowSquareOut size={14} weight="bold" />
               </a>
             </div>

@@ -5,6 +5,40 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
+const meta = {
+  uk: {
+    title: "Кейси — Реальні результати клієнтів",
+    description:
+      "Проєкти PRO Marketing# в медицині, нерухомості, б'юті та e-commerce. Дивіться конкретні результати наших рекламних кампаній.",
+  },
+  en: {
+    title: "Cases — Real client results",
+    description:
+      "PRO Marketing# projects in healthcare, real estate, beauty, and e-commerce. See the concrete results of our advertising campaigns.",
+  },
+} as const;
+
+const content = {
+  uk: {
+    heroTitle: "Кейси",
+    heroSubtitle: "Проєкти, якими ми пишаємось",
+    badge: "У процесі підготовки",
+    heading: "Готуємо детальні кейси з реальними цифрами.",
+    paragraph:
+      "Скоро тут з'являться реальні проєкти — з бюджетами, результатами і ROAS. Поки що ви можете залишити заявку, і ми розкажемо про релевантні кейси особисто.",
+    cta: "Залишити заявку",
+  },
+  en: {
+    heroTitle: "Cases",
+    heroSubtitle: "Projects we're proud of",
+    badge: "In preparation",
+    heading: "We're preparing detailed cases with real numbers.",
+    paragraph:
+      "Real projects will appear here soon — with budgets, results, and ROAS. For now, submit a request and we'll walk you through the most relevant cases in person.",
+    cta: "Submit a request",
+  },
+} as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -14,14 +48,21 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: "Кейси — Реальні результати клієнтів",
-    description:
-      "Проєкти PRO Marketing# в медицині, нерухомості, б'юті та e-commerce. Дивіться конкретні результати наших рекламних кампаній.",
+    title: meta[safeLocale].title,
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/cases"),
   };
 }
 
-export default function CasesPage() {
+export default async function CasesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const safeLocale = isLocale(locale) ? locale : "uk";
+  const page = content[safeLocale];
+
   return (
     <>
       <Header />
@@ -35,10 +76,10 @@ export default function CasesPage() {
                 className="font-semibold tracking-tighter text-[#0D0D0D] leading-none"
                 style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
               >
-                Кейси<span className="text-[#E5202E]">.</span>
+                {page.heroTitle}<span className="text-[#E5202E]">.</span>
               </h1>
               <p className="text-base text-[#6B6B6B] md:pb-2 md:max-w-xs leading-relaxed">
-                Проєкти, якими ми пишаємось
+                {page.heroSubtitle}
               </p>
             </div>
           </div>
@@ -54,23 +95,23 @@ export default function CasesPage() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E5202E]" />
               </span>
               <span className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest">
-                У процесі підготовки
+                {page.badge}
               </span>
             </div>
 
             <p className="text-2xl md:text-3xl font-medium text-[#0D0D0D] leading-snug mb-6">
-              Готуємо детальні кейси з реальними цифрами.
+              {page.heading}
             </p>
 
             <p className="text-base text-[#6B6B6B] leading-relaxed mb-10">
-              Скоро тут з&apos;являться реальні проєкти — з бюджетами, результатами і ROAS. Поки що ви можете залишити заявку, і ми розкажемо про релевантні кейси особисто.
+              {page.paragraph}
             </p>
 
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 bg-[#E5202E] hover:bg-[#C0111D] text-white text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
             >
-              Залишити заявку
+              {page.cta}
               <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
 

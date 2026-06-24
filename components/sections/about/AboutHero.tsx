@@ -1,10 +1,32 @@
-const FACTS = [
-  "12 років досвіду",
-  "5–6 спеціалістів на проєкті",
-  "Ужгород · Львів · Європа",
-];
+import { getLocale } from "next-intl/server";
 
-export default function AboutHero() {
+const content = {
+  uk: {
+    title: "Про нас",
+    lead: "Команда, яка бере повну відповідальність за результат вашого маркетингу.",
+    sub: "Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — це команда вузьких спеціалістів з 12-річним досвідом, яка працює разом над кожним проєктом.",
+    facts: [
+      "12 років досвіду",
+      "5–6 спеціалістів на проєкті",
+      "Ужгород · Львів · Європа",
+    ],
+  },
+  en: {
+    title: "About us",
+    lead: "A team that takes full responsibility for the results of your marketing.",
+    sub: "We're not freelancers or one person doing everything. PRO Marketing# is a team of focused specialists with 12 years of experience, working together on every project.",
+    facts: [
+      "12 years of experience",
+      "5–6 specialists per project",
+      "Uzhhorod · Lviv · Europe",
+    ],
+  },
+} as const;
+
+export default async function AboutHero() {
+  const locale = await getLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="flex flex-col min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-68px)]">
 
@@ -14,7 +36,7 @@ export default function AboutHero() {
             className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
             style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
           >
-            Про нас<span className="text-[#E5202E]">.</span>
+            {t.title}<span className="text-[#E5202E]">.</span>
           </h1>
         </div>
       </div>
@@ -24,12 +46,12 @@ export default function AboutHero() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
-              Команда, яка бере повну відповідальність за результат вашого маркетингу.
+              {t.lead}
             </p>
 
             <div className="flex flex-col gap-8">
               <p className="text-base text-[#6B6B6B] leading-relaxed max-w-sm">
-                Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — це команда вузьких спеціалістів з 12-річним досвідом, яка працює разом над кожним проєктом.
+                {t.sub}
               </p>
             </div>
 
@@ -40,11 +62,11 @@ export default function AboutHero() {
       <div className="border-t border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row">
-            {FACTS.map((fact, i) => (
+            {t.facts.map((fact, i) => (
               <div
                 key={fact}
                 className={`flex items-center gap-2.5 py-4 md:py-5 text-sm text-[#6B6B6B] ${
-                  i < FACTS.length - 1
+                  i < t.facts.length - 1
                     ? "border-b md:border-b-0 md:border-r border-[#E0E0E0] md:pr-8"
                     : ""
                 } ${i > 0 ? "md:pl-8" : ""}`}

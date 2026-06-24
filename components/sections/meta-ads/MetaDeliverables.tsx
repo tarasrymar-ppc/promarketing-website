@@ -1,27 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
-const ITEMS = [
-  {
-    title: "Рекламний кабінет на ваше ім'я",
-    text: "Meta Business Suite налаштовується на ваш бізнес-акаунт. Ви — власник. Якщо завершуємо співпрацю — реклама продовжується без перебоїв.",
+const content = {
+  uk: {
+    eyebrow: "Що входить",
+    heading: "Що ви отримуєте",
+    intro: "Конкретні речі, які ви отримуєте щомісяця.",
+    items: [
+      {
+        title: "Рекламний кабінет на ваше ім'я",
+        text: "Meta Business Suite налаштовується на ваш бізнес-акаунт. Ви — власник. Якщо завершуємо співпрацю — реклама продовжується без перебоїв.",
+      },
+      {
+        title: "Facebook + Instagram + Threads одночасно",
+        text: "Стрічка, Stories, Reels, Messenger — охоплюємо аудиторію там, де вона є. Один кабінет, два майданчики.",
+      },
+      {
+        title: "Щотижневий звіт",
+        text: "PDF на email щопонеділка до 12:00 + цілодобовий доступ до Meta Ads Manager з усіма даними у реальному часі.",
+      },
+      {
+        title: "Пряма комунікація",
+        text: "Чат у Telegram (відповідь до 2 годин) + щомісячна онлайн-зустріч з оглядом результатів.",
+      },
+    ],
   },
-  {
-    title: "Facebook + Instagram + Threads одночасно",
-    text: "Стрічка, Stories, Reels, Messenger — охоплюємо аудиторію там, де вона є. Один кабінет, два майданчики.",
+  en: {
+    eyebrow: "What's included",
+    heading: "What you get",
+    intro: "The concrete things you receive every month.",
+    items: [
+      {
+        title: "Ad account in your name",
+        text: "Meta Business Suite is set up on your business account. You're the owner. If we end our cooperation, your ads keep running without interruption.",
+      },
+      {
+        title: "Facebook + Instagram + Threads at once",
+        text: "Feed, Stories, Reels, Messenger — we reach your audience where it already is. One account, two platforms.",
+      },
+      {
+        title: "Weekly report",
+        text: "A PDF to your email every Monday by 12:00 + 24/7 access to Meta Ads Manager with all data in real time.",
+      },
+      {
+        title: "Direct communication",
+        text: "A Telegram chat (reply within 2 hours) + a monthly online meeting reviewing results.",
+      },
+    ],
   },
-  {
-    title: "Щотижневий звіт",
-    text: "PDF на email щопонеділка до 12:00 + цілодобовий доступ до Meta Ads Manager з усіма даними у реальному часі.",
-  },
-  {
-    title: "Пряма комунікація",
-    text: "Чат у Telegram (відповідь до 2 годин) + щомісячна онлайн-зустріч з оглядом результатів.",
-  },
-];
+} as const;
 
 export default function MetaDeliverables() {
+  const locale = useLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -29,19 +63,19 @@ export default function MetaDeliverables() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
-              Що входить
+              {t.eyebrow}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
-              Що ви отримуєте
+              {t.heading}
             </h2>
           </div>
           <p className="text-base text-[#6B6B6B] max-w-xs leading-relaxed">
-            Конкретні речі, які ви отримуєте щомісяця.
+            {t.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">
-          {ITEMS.map((item, i) => (
+          {t.items.map((item, i) => (
             <motion.div
               key={item.title}
               whileHover={{

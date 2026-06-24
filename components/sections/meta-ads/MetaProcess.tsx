@@ -1,41 +1,89 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
-const STEPS = [
-  {
-    label: "Тиждень 1",
-    title: "Стратегія і запуск",
-    items: [
-      "Аналіз ніші, конкурентів, аудиторій",
-      "Налаштування Meta Pixel і подій конверсії",
-      "Створення оголошень і креативів",
-      "Запуск перших кампаній",
+const content = {
+  uk: {
+    eyebrow: "Процес",
+    heading: "Як ми працюємо",
+    intro: "Покроково — що відбувається після старту співпраці.",
+    steps: [
+      {
+        label: "Тиждень 1",
+        title: "Стратегія і запуск",
+        items: [
+          "Аналіз ніші, конкурентів, аудиторій",
+          "Налаштування Meta Pixel і подій конверсії",
+          "Створення оголошень і креативів",
+          "Запуск перших кампаній",
+        ],
+      },
+      {
+        label: "Тиждень 2–4",
+        title: "Оптимізація",
+        items: [
+          "Щоденний моніторинг показників",
+          "A/B тести оголошень і аудиторій",
+          "Відключення слабких оголошень",
+          "Масштабування ефективних кампаній",
+        ],
+      },
+      {
+        label: "Щомісяця",
+        title: "Масштабування",
+        items: [
+          "Перегляд KPI і цілей",
+          "Lookalike і ретаргетинг аудиторії",
+          "Оновлення креативів під сезонність",
+          "Онлайн-зустріч (опційно)",
+        ],
+      },
     ],
   },
-  {
-    label: "Тиждень 2–4",
-    title: "Оптимізація",
-    items: [
-      "Щоденний моніторинг показників",
-      "A/B тести оголошень і аудиторій",
-      "Відключення слабких оголошень",
-      "Масштабування ефективних кампаній",
+  en: {
+    eyebrow: "Process",
+    heading: "How we work",
+    intro: "Step by step — what happens after we start working together.",
+    steps: [
+      {
+        label: "Week 1",
+        title: "Strategy and launch",
+        items: [
+          "Analysis of niche, competitors, audiences",
+          "Meta Pixel and conversion event setup",
+          "Creating ads and creatives",
+          "Launching the first campaigns",
+        ],
+      },
+      {
+        label: "Weeks 2–4",
+        title: "Optimization",
+        items: [
+          "Daily monitoring of metrics",
+          "A/B tests of ads and audiences",
+          "Turning off weak ads",
+          "Scaling effective campaigns",
+        ],
+      },
+      {
+        label: "Monthly",
+        title: "Scaling",
+        items: [
+          "Reviewing KPIs and goals",
+          "Lookalike and retargeting audiences",
+          "Refreshing creatives for seasonality",
+          "Online meeting (optional)",
+        ],
+      },
     ],
   },
-  {
-    label: "Щомісяця",
-    title: "Масштабування",
-    items: [
-      "Перегляд KPI і цілей",
-      "Lookalike і ретаргетинг аудиторії",
-      "Оновлення креативів під сезонність",
-      "Онлайн-зустріч (опційно)",
-    ],
-  },
-];
+} as const;
 
 export default function MetaProcess() {
+  const locale = useLocale();
+  const t = locale === "en" ? content.en : content.uk;
+
   return (
     <section className="bg-[#F4F4F4] py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -43,19 +91,19 @@ export default function MetaProcess() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
             <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
-              Процес
+              {t.eyebrow}
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
-              Як ми працюємо
+              {t.heading}
             </h2>
           </div>
           <p className="text-base text-[#6B6B6B] max-w-xs leading-relaxed">
-            Покроково — що відбувається після старту співпраці.
+            {t.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">
-          {STEPS.map((step) => (
+          {t.steps.map((step) => (
             <motion.div
               key={step.label}
               whileHover={{

@@ -45,6 +45,16 @@ const SCREENS: { src: string; alt: string; uk: string; en: string }[] = [
   },
 ];
 
+const API_SERVICES = [
+  "GoogleAdsService.searchStream",
+  "CampaignService",
+  "CampaignBudgetService",
+  "AdGroupService",
+  "AdGroupAdService",
+  "KeywordPlanIdeaService",
+  "KeywordPlanService",
+];
+
 const content: Record<
   Locale,
   {
@@ -65,6 +75,7 @@ const content: Record<
     apiIntro: string;
     apiBullets: string[];
     apiClosing: string;
+    apiServicesLabel: string;
     internalHeading: string;
     internalUse: string[];
   }
@@ -74,7 +85,7 @@ const content: Record<
     metaDescription:
       "PPC AdLaunch — внутрішній інструмент Google Ads, який використовує виключно команда PRO Marketing для створення, ведення та звітності по пошукових кампаніях клієнтів.",
     eyebrow: "Внутрішні інструменти",
-    lead: "PPC AdLaunch — внутрішній інструмент, який створила й використовує виключно команда PRO Marketing (агентство — партнер Google), щоб планувати, створювати, оптимізувати та звітувати по пошукових кампаніях Google Ads для акаунтів клієнтів, які ми ведемо. Акаунти підключені до нашого менеджер-акаунта (MCC) з дозволу їхніх власників, а ручний процес із експортом у CSV замінюється прямими операціями, що відповідають політикам Google.",
+    lead: "PPC AdLaunch — внутрішній інструмент, який створила й використовує виключно команда PRO Marketing (агентство — партнер Google), щоб планувати, створювати, оптимізувати та звітувати по пошукових кампаніях Google Ads для акаунтів клієнтів, які ми ведемо. Акаунти підключені до нашого менеджер-акаунта (MCC) з дозволу їхніх власників, а ручний процес із експортом у CSV замінюється прямою інтеграцією з Google Ads API, що відповідає політикам Google.",
     pills: [
       "Партнер Google",
       "Google Ads API",
@@ -122,6 +133,7 @@ const content: Record<
     ],
     apiClosing:
       "Платформу використовують виключно співробітники PRO Marketing для ведення авторизованих акаунтів клієнтів, підключених через наш менеджер-акаунт Google Ads (MCC).",
+    apiServicesLabel: "Використовувані сервіси Google Ads API:",
     internalHeading: "Лише для внутрішнього використання",
     internalUse: [
       "PPC AdLaunch не є публічним SaaS-продуктом і не продається, не ліцензується та не надається третім сторонам. Доступ мають лише авторизовані учасники команди PRO Marketing.",
@@ -133,7 +145,7 @@ const content: Record<
     metaDescription:
       "PPC AdLaunch is an internal Google Ads tool used exclusively by the PRO Marketing team to build, manage, and report on client Search campaigns.",
     eyebrow: "Internal Tools",
-    lead: "PPC AdLaunch is an internal tool built and used exclusively by the PRO Marketing team — a verified Google Partner agency — to plan, build, optimize, and report on Google Ads Search campaigns for the client accounts we manage. Accounts are linked under our manager account (MCC) with the owners' authorization, replacing a manual, CSV-based workflow with direct, policy-compliant operations.",
+    lead: "PPC AdLaunch is an internal tool built and used exclusively by the PRO Marketing team — a verified Google Partner agency — to plan, build, optimize, and report on Google Ads Search campaigns for the client accounts we manage. Accounts are linked under our manager account (MCC) with the owners' authorization, replacing a manual, CSV-based workflow with direct, policy-compliant Google Ads API integration.",
     pills: [
       "Google Partner",
       "Google Ads API",
@@ -181,6 +193,7 @@ const content: Record<
     ],
     apiClosing:
       "The platform is used exclusively by PRO Marketing employees for managing authorized client accounts connected through our Google Ads manager account (MCC).",
+    apiServicesLabel: "Google Ads API services used include:",
     internalHeading: "Internal Use Only",
     internalUse: [
       "PPC AdLaunch is not a public SaaS product and is not sold, licensed, or provided to third parties. Access is restricted to authorized PRO Marketing team members only.",
@@ -352,6 +365,22 @@ export default async function PpcAdLaunchPage({
               <p className="text-sm text-[#ADADAD] leading-relaxed max-w-2xl mt-9 pt-8 border-t border-white/10">
                 {page.apiClosing}
               </p>
+
+              <div className="mt-8">
+                <p className="text-xs text-[#ADADAD] mb-3">
+                  {page.apiServicesLabel}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {API_SERVICES.map((svc) => (
+                    <code
+                      key={svc}
+                      className="text-xs font-mono text-white/90 bg-white/[0.06] border border-white/10 rounded-md px-2.5 py-1.5"
+                    >
+                      {svc}
+                    </code>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>

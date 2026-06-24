@@ -11,6 +11,19 @@ import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
+const meta = {
+  uk: {
+    title: "Маркетингове агентство в Ужгороді — PRO Marketing#",
+    description:
+      "Маркетингове агентство в Ужгороді: налаштування реклами Google Ads і Meta, SEO, SMM, розробка сайтів та брендинг. Більше заявок і продажів від однієї команди.",
+  },
+  en: {
+    title: "Marketing Agency in Uzhhorod — PRO Marketing#",
+    description:
+      "Marketing agency in Uzhhorod, Ukraine: Google Ads & Meta advertising, SEO, SMM, web development and branding. More leads and sales from one in-house team.",
+  },
+} as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -20,9 +33,8 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: "PRO Marketing# — Маркетинг під ключ в Ужгороді",
-    description:
-      "Маркетингове агентство в Ужгороді з 2019 року. Google Ads, Meta Ads, SEO, SMM, розробка сайтів. Реальні продажі — не просто контент.",
+    title: { absolute: meta[safeLocale].title },
+    description: meta[safeLocale].description,
     alternates: localizedAlternates(safeLocale),
   };
 }

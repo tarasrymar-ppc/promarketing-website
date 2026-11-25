@@ -149,7 +149,7 @@ export async function generateMetadata({
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return {
-    title: `${content[safeLocale].title} | PRO Marketing#`,
+    title: content[safeLocale].title,
     description: content[safeLocale].description,
     alternates: localizedAlternates(safeLocale, "/privacy"),
   };

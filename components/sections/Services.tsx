@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -58,7 +59,7 @@ export default function Services() {
                   zIndex: 10,
                 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative flex flex-col justify-start h-full bg-[#F4F4F4] p-6 md:p-8 cursor-default"
+                className="relative flex flex-col justify-start h-full bg-[#F4F4F4] p-6 md:p-8 cursor-pointer"
               >
                 {/* Popular badge */}
                 {service.popular && (
@@ -68,8 +69,14 @@ export default function Services() {
                 )}
 
                 {/* Title */}
+                {/* Title links to the service page; ::after stretches the link over the whole card */}
                 <h3 className="text-base md:text-lg font-semibold text-[#0D0D0D] mb-2 leading-snug">
-                  {service.title}
+                  <LocaleLink
+                    href={SERVICE_HREFS[i]}
+                    className="after:absolute after:inset-0 after:content-['']"
+                  >
+                    {service.title}
+                  </LocaleLink>
                 </h3>
 
                 {/* Description */}

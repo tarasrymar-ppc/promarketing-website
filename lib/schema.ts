@@ -78,6 +78,15 @@ export function localBusinessSchema(locale: Locale) {
       ...ADDRESS[locale],
       addressCountry: "UA",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:30",
+        closes: "17:30",
+      },
+    ],
+    hasMap: CONTACT.mapUrl,
     parentOrganization: {
       "@id": organizationId,
     },

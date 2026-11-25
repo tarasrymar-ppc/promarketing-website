@@ -10,12 +10,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Про нас — PRO Marketing#",
+    title: "Про нас — маркетингове агентство в Ужгороді",
     description:
       "Команда з 12 років досвіду в Ужгороді та Львові. 5–6 спеціалістів на кожному проєкті: реклама, SEO, SMM, розробка, дизайн і контент в одних руках.",
   },
   en: {
-    title: "About us — PRO Marketing#",
+    title: "About us — marketing agency in Uzhhorod",
     description:
       "A team with 12 years of experience in Uzhhorod and Lviv. 5–6 specialists on every project: ads, SEO, SMM, development, design, and content in one place.",
   },

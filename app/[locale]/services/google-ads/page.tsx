@@ -16,12 +16,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#",
+    title: "Налаштування Google Ads від 10 000 грн/міс",
     description:
       "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.",
   },
   en: {
-    title: "Google Ads — setup and management from UAH 10,000/mo | PRO Marketing#",
+    title: "Google Ads management from UAH 10,000/mo",
     description:
       "Setup and management of Google Ads for e-commerce and service businesses. From UAH 10,000/mo, first leads in 1–2 weeks, no mandatory contract. The account stays in your name.",
   },

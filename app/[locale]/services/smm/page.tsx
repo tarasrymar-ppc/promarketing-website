@@ -16,12 +16,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "SMM — ведення соціальних мереж + Meta Ads від 35 000 грн/міс | PRO Marketing#",
+    title: "SMM: ведення соцмереж від 35 000 грн/міс",
     description:
       "Комплексний SMM пакет: ведення Instagram, Facebook, Google Business + таргетована реклама Meta Ads. Копірайтер, дизайнер і контент-мейкер під ваш бізнес. Від 35 000 грн/міс.",
   },
   en: {
-    title: "SMM — social media management + Meta Ads from UAH 35,000/mo | PRO Marketing#",
+    title: "SMM: social media management from UAH 35,000/mo",
     description:
       "Comprehensive SMM bundle: Instagram, Facebook, and Google Business management + targeted Meta Ads. Copywriter, designer, and content creator tailored to your business. From UAH 35,000/mo.",
   },

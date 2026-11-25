@@ -7,12 +7,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Контакти — PRO Marketing#",
+    title: "Контакти — Ужгород, вул. Фединця 2",
     description:
       "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — зв'яжемось і запропонуємо оптимальний формат співпраці.",
   },
   en: {
-    title: "Contact — PRO Marketing#",
+    title: "Contact — Uzhhorod, Fedyntsia St. 2",
     description:
       "Get in touch with PRO Marketing# in Uzhhorod. Submit a request online or call us — we'll get back to you and propose the best way to work together.",
   },

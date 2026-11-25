@@ -17,12 +17,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Meta Ads — таргетована реклама Facebook та Instagram від 15 000 грн/міс | PRO Marketing#",
+    title: "Таргетована реклама Meta Ads від 15 000 грн/міс",
     description:
       "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.",
   },
   en: {
-    title: "Meta Ads — targeted Facebook and Instagram advertising from UAH 15,000/mo | PRO Marketing#",
+    title: "Meta Ads: Facebook & Instagram from UAH 15,000/mo",
     description:
       "Targeted advertising on Facebook and Instagram. From UAH 15,000/mo, first leads on launch day, no mandatory contract. Retargeting, Lookalike audiences, two platforms in one account.",
   },

@@ -9,12 +9,12 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "FAQ — Питання та відповіді | PRO Marketing#",
+    title: "FAQ — питання та відповіді",
     description:
       "Відповіді на найпоширеніші запитання про послуги PRO Marketing#: ціни, терміни, звітність та процес роботи.",
   },
   en: {
-    title: "FAQ — Questions and answers | PRO Marketing#",
+    title: "FAQ — questions and answers",
     description:
       "Answers to the most frequently asked questions about PRO Marketing# services: pricing, timelines, reporting, and how we work.",
   },

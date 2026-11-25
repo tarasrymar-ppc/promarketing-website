@@ -7,6 +7,8 @@ export type ServicePageContent = {
   name: string;
   metaTitle: string;
   metaDescription: string;
+  /** Keyword line rendered inside the H1 under the big service name. */
+  h1: string;
   lead: string;
   sub: string;
   facts: string[];
@@ -53,6 +55,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "SEO-просування сайтів в Ужгороді та по Україні",
       metaDescription:
         "SEO-просування сайту в Google: технічний аудит, семантика, контент і посилання. Маркетингове агентство PRO Marketing# в Ужгороді. Вартість — після безкоштовного аналізу.",
+      h1: "SEO-просування сайтів в Ужгороді та по всій Україні",
       lead: "SEO-просування сайтів у Google для бізнесу в Ужгороді та по всій Україні.",
       sub: "Виправляємо технічні помилки, збираємо запити ваших клієнтів і готуємо сторінки, які на них відповідають. Працюємо на заявки, а не на позиції заради позицій.",
       facts: [
@@ -177,6 +180,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "SEO services in Uzhhorod and across Ukraine",
       metaDescription:
         "SEO for Google: technical audit, keyword research, content and links. PRO Marketing# — a marketing agency in Uzhhorod, Ukraine. Pricing after a free analysis.",
+      h1: "SEO services in Uzhhorod and across Ukraine",
       lead: "SEO in Google for businesses in Uzhhorod and across Ukraine.",
       sub: "We fix technical issues, research what your customers search for and build pages that answer those searches. We work for leads, not for rankings alone.",
       facts: [
@@ -305,6 +309,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "AEO — оптимізація сайту під ChatGPT та AI-пошук",
       metaDescription:
         "AEO (Answer Engine Optimization): готуємо сайт до того, щоб його цитували ChatGPT, Gemini, Perplexity та AI-огляди Google. Агентство PRO Marketing#, Ужгород.",
+      h1: "AEO: оптимізація сайту під ChatGPT, Gemini та AI-пошук",
       lead: "AEO — оптимізація сайту під відповіді ChatGPT, Gemini, Perplexity та AI-огляди Google.",
       sub: "Люди дедалі частіше питають пораду в AI замість пошуку. Робимо так, щоб асистенти могли прочитати ваш сайт, зрозуміти, чим ви займаєтесь, і мали підстави вас згадати.",
       facts: [
@@ -429,6 +434,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "AEO — optimising your site for ChatGPT and AI search",
       metaDescription:
         "AEO (Answer Engine Optimization): we prepare your site to be cited by ChatGPT, Gemini, Perplexity and Google AI Overviews. PRO Marketing#, Uzhhorod, Ukraine.",
+      h1: "AEO: website optimisation for ChatGPT, Gemini and AI search",
       lead: "AEO — optimising your site for answers from ChatGPT, Gemini, Perplexity and Google AI Overviews.",
       sub: "People increasingly ask AI for advice instead of searching. We make sure assistants can read your site, understand what you do and have reasons to mention you.",
       facts: [
@@ -557,6 +563,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Реклама в TikTok — налаштування і ведення TikTok Ads",
       metaDescription:
         "Налаштування та ведення реклами в TikTok для бізнесу: стратегія, креативи, піксель, оптимізація. Агентство PRO Marketing#, Ужгород. Вартість — після безкоштовного аналізу.",
+      h1: "Налаштування реклами в TikTok в Ужгороді та по всій Україні",
       lead: "Налаштування та ведення реклами в TikTok для бізнесу, якому потрібні охоплення і заявки.",
       sub: "У TikTok продає відео, а не налаштування кабінету. Тому беремо на себе і те, і інше: ідеї для роликів, запуск кампаній і щоденну оптимізацію.",
       facts: [
@@ -681,6 +688,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "TikTok advertising — TikTok Ads setup and management",
       metaDescription:
         "TikTok Ads setup and management for businesses: strategy, creatives, pixel, optimisation. PRO Marketing#, Uzhhorod, Ukraine. Pricing after a free analysis.",
+      h1: "TikTok advertising in Uzhhorod and across Ukraine",
       lead: "TikTok Ads setup and management for businesses that need reach and leads.",
       sub: "On TikTok the video sells, not the account settings. So we take on both: ideas for videos, campaign launch and daily optimisation.",
       facts: [
@@ -809,6 +817,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Розробка сайтів і лендінгів в Ужгороді",
       metaDescription:
         "Розробка сайтів та лендінгів під рекламу і SEO: структура, дизайн, тексти, аналітика. Маркетингове агентство PRO Marketing#, Ужгород. Вартість — після безкоштовного аналізу.",
+      h1: "Розробка сайтів і лендінгів в Ужгороді та по всій Україні",
       lead: "Розробка сайтів і лендінгів, які приводять заявки, — в Ужгороді та по всій Україні.",
       sub: "Сайт для нас — частина маркетингу, а не окремий проєкт. Проєктуємо його під рекламу та SEO, з якими він працюватиме, і одразу налаштовуємо аналітику.",
       facts: [
@@ -933,6 +942,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Website and landing page development in Uzhhorod",
       metaDescription:
         "Websites and landing pages built for ads and SEO: structure, design, copy, analytics. PRO Marketing#, Uzhhorod, Ukraine. Pricing after a free analysis.",
+      h1: "Website and landing page development in Uzhhorod and across Ukraine",
       lead: "Websites and landing pages that bring leads — in Uzhhorod and across Ukraine.",
       sub: "For us a website is part of marketing, not a separate project. We design it for the ads and SEO it will work with, and set up analytics from day one.",
       facts: [
@@ -1061,6 +1071,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Розробка логотипа та фірмового стилю в Ужгороді",
       metaDescription:
         "Розробка логотипа, фірмового стилю та брендбуку для бізнесу. Агентство PRO Marketing#, Ужгород. Стиль, який працює в рекламі, на сайті та в соцмережах.",
+      h1: "Розробка логотипа та фірмового стилю в Ужгороді",
       lead: "Розробка логотипа та фірмового стилю для бізнесу в Ужгороді та по всій Україні.",
       sub: "Робимо айдентику, якою зручно користуватись щодня: у рекламі, на сайті, в соцмережах, на вивісці та упаковці. Не картинку заради картинки.",
       facts: [
@@ -1182,6 +1193,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Logo and brand identity design in Uzhhorod",
       metaDescription:
         "Logo, brand identity and brand guidelines for businesses. PRO Marketing#, Uzhhorod, Ukraine. A style that works in ads, on your site and on social media.",
+      h1: "Logo and brand identity design in Uzhhorod",
       lead: "Logo and brand identity design for businesses in Uzhhorod and across Ukraine.",
       sub: "We create an identity that is practical to use every day: in ads, on the website, on social media, on signage and packaging. Not a picture for its own sake.",
       facts: [
@@ -1307,6 +1319,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Комплексний маркетинг під ключ в Ужгороді",
       metaDescription:
         "Комплексний маркетинг для бізнесу: стратегія, реклама Google і Meta, SEO, SMM, сайт та аналітика від однієї команди. Агентство PRO Marketing#, Ужгород.",
+      h1: "Комплексний маркетинг під ключ в Ужгороді",
       lead: "Комплексний маркетинг під ключ: стратегія, реклама, сайт і аналітика від однієї команди.",
       sub: "Коли рекламу веде один підрядник, сайт робить інший, а соцмережі — третій, за результат не відповідає ніхто. Ми беремо всі канали на себе і відповідаємо за заявки загалом.",
       facts: [
@@ -1431,6 +1444,7 @@ export const SERVICE_PAGES: ServicePages = {
       metaTitle: "Full-service marketing in Uzhhorod",
       metaDescription:
         "Full-service marketing: strategy, Google and Meta ads, SEO, SMM, website and analytics from one team. PRO Marketing#, Uzhhorod, Ukraine.",
+      h1: "Full-service marketing in Uzhhorod",
       lead: "Full-service marketing: strategy, advertising, website and analytics from one team.",
       sub: "When one contractor runs ads, another builds the site and a third manages social media, nobody answers for the result. We take on all channels and answer for leads overall.",
       facts: [

@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import PageTitle from "@/components/common/PageTitle";
 
 const meta = {
   uk: {
@@ -54,12 +55,7 @@ export default async function FAQPage() {
         {/* Editorial hero title */}
         <div className="border-b border-[#E0E0E0]">
           <div className="max-w-6xl mx-auto px-6">
-            <h1
-              className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-              style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-            >
-              FAQ<span className="text-[#E5202E]">.</span>
-            </h1>
+            <PageTitle title="FAQ" keyword={t("h1")} />
           </div>
         </div>
 

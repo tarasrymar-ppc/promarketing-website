@@ -1,8 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { getLocale } from "next-intl/server";
+import PageTitle from "@/components/common/PageTitle";
 
 const content = {
   uk: {
+    h1: "Налаштування реклами Google Ads в Ужгороді та по всій Україні",
     lead: "Налаштування та ведення реклами в Google для e-commerce і сервісного бізнесу.",
     sub: "Акаунт — на ваше ім'я. Пряма комунікація без посередників. Чесно скажемо якщо не підійде.",
     cta: "Отримати консультацію",
@@ -13,6 +15,7 @@ const content = {
     ],
   },
   en: {
+    h1: "Google Ads management in Uzhhorod and across Ukraine",
     lead: "Setup and management of Google Ads for e-commerce and service businesses.",
     sub: "The account stays in your name. Direct communication, no middlemen. We'll tell you honestly if it's not a fit.",
     cta: "Get a consultation",
@@ -34,12 +37,7 @@ export default async function GAHero() {
       {/* Editorial H1 */}
       <div className="border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
-          <h1
-            className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-            style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-          >
-            Google Ads<span className="text-[#E5202E]">.</span>
-          </h1>
+          <PageTitle title="Google Ads" keyword={t.h1} />
         </div>
       </div>
 

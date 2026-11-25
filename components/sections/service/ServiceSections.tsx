@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import type { ServicePageContent } from "@/lib/servicePages";
+import PageTitle from "@/components/common/PageTitle";
 
 // Server-rendered sections for the data-driven service pages. Markup and
 // classes mirror the Google Ads page so all service pages share one design.
@@ -28,12 +29,7 @@ export function ServiceHero({
       {/* Editorial H1 */}
       <div className="border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
-          <h1
-            className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-            style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-          >
-            {page.name}<span className="text-[#E5202E]">.</span>
-          </h1>
+          <PageTitle title={page.name} keyword={page.h1} />
         </div>
       </div>
 

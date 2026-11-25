@@ -6,6 +6,7 @@ import ContactForm from "@/components/sections/ContactForm";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import PageTitle from "@/components/common/PageTitle";
 
 const meta = {
   uk: {
@@ -52,12 +53,7 @@ export default async function ContactPage() {
         {/* ── EDITORIAL HERO TITLE ── */}
         <div className="border-b border-[#E0E0E0]">
           <div className="max-w-6xl mx-auto px-6">
-            <h1
-              className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-              style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-            >
-              {t("title")}<span className="text-[#E5202E]">.</span>
-            </h1>
+            <PageTitle title={t("title")} keyword={t("h1")} />
           </div>
         </div>
 

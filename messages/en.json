@@ -295,7 +295,8 @@
     "name_error_long": "Name is too long",
     "name_error_chars": "Name can only contain letters",
     "phone_error": "Enter a valid number (+380XXXXXXXXX or 0XXXXXXXXX)",
-    "msg_error": "Describe your request (minimum 10 characters)"
+    "msg_error": "Describe your request (minimum 10 characters)",
+    "h1": "Marketing agency in Uzhhorod, Fedyntsia St. 2"
   },
   "faq": {
     "title": "FAQ",
@@ -332,7 +333,8 @@
         "question": "What if I'm not satisfied with the results?",
         "answer": "We don't disappear after launch. If a campaign isn't delivering expected results — we analyse the cause and adjust the approach. Regular optimisation is included in the cost of work, not an additional service."
       }
-    ]
+    ],
+    "h1": "Questions about ads, SEO and marketing: pricing, timing, reporting"
   },
   "problem": {
     "heading": "Sound familiar",

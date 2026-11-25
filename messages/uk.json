@@ -31,6 +31,22 @@
       {
         "label": "Салони краси",
         "href": "/industries/beauty-salons"
+      },
+      {
+        "label": "Медичні центри",
+        "href": "/industries/medical-clinics"
+      },
+      {
+        "label": "Ресторани",
+        "href": "/industries/restaurants"
+      },
+      {
+        "label": "Автобізнес",
+        "href": "/industries/auto"
+      },
+      {
+        "label": "Освіта",
+        "href": "/industries/education"
       }
     ]
   },
@@ -277,6 +293,22 @@
       {
         "label": "Салони краси",
         "href": "/industries/beauty-salons"
+      },
+      {
+        "label": "Медичні центри",
+        "href": "/industries/medical-clinics"
+      },
+      {
+        "label": "Ресторани",
+        "href": "/industries/restaurants"
+      },
+      {
+        "label": "Автобізнес",
+        "href": "/industries/auto"
+      },
+      {
+        "label": "Освіта",
+        "href": "/industries/education"
       }
     ]
   },

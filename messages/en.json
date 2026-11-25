@@ -31,6 +31,22 @@
       {
         "label": "Beauty salons",
         "href": "/industries/beauty-salons"
+      },
+      {
+        "label": "Medical clinics",
+        "href": "/industries/medical-clinics"
+      },
+      {
+        "label": "Restaurants",
+        "href": "/industries/restaurants"
+      },
+      {
+        "label": "Auto business",
+        "href": "/industries/auto"
+      },
+      {
+        "label": "Education",
+        "href": "/industries/education"
       }
     ]
   },
@@ -277,6 +293,22 @@
       {
         "label": "Beauty salons",
         "href": "/industries/beauty-salons"
+      },
+      {
+        "label": "Medical clinics",
+        "href": "/industries/medical-clinics"
+      },
+      {
+        "label": "Restaurants",
+        "href": "/industries/restaurants"
+      },
+      {
+        "label": "Auto business",
+        "href": "/industries/auto"
+      },
+      {
+        "label": "Education",
+        "href": "/industries/education"
       }
     ]
   },

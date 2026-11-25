@@ -34,7 +34,7 @@ export type BlogPost = {
 export const BLOG_LABELS = {
   uk: {
     name: "Блог",
-    indexKeyword: "Статті про рекламу в Google, Meta Ads, SEO та AI-пошук: ціни, терміни, поради",
+    indexKeyword: "Статті про рекламу в Google, Meta Ads, TikTok, SMM, SEO та AI-пошук: ціни, терміни, поради",
     indexMetaTitle: "Блог про рекламу, SEO і маркетинг для бізнесу",
     indexMetaDescription:
       "Відповіді на питання власників бізнесу: скільки коштує реклама в Google, що обрати — Meta Ads чи Google Ads, скільки часу потрібно на SEO, що таке AEO.",
@@ -53,7 +53,7 @@ export const BLOG_LABELS = {
   },
   en: {
     name: "Blog",
-    indexKeyword: "Articles on Google Ads, Meta Ads, SEO and AI search: prices, timelines, advice",
+    indexKeyword: "Articles on Google Ads, Meta Ads, TikTok, SMM, SEO and AI search: prices, timelines, advice",
     indexMetaTitle: "Blog on advertising, SEO and marketing for business",
     indexMetaDescription:
       "Answers to business owners' questions: how much Google Ads costs, Meta Ads or Google Ads, how long SEO takes, what AEO is.",
@@ -738,6 +738,708 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
         { question: "How much do marketing agency services cost?", answer: "It depends on the services. With us, Google Ads management starts from UAH 10,000 per month, Meta Ads from UAH 15,000 and the SMM bundle with ads from UAH 35,000. SEO, AEO, websites and branding are quoted after a free analysis." },
         { question: "How do I check Google Partner status?", answer: "The Google Partners website has an agency search. Find the agency by name and check for the Partner badge." },
         { question: "Can I start with one service?", answer: "Yes. You can start with one channel and expand once it works." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── SMM cost ─────────────────────── */
+  "smm-cost": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/smm", "/services/meta-ads"],
+    relatedIndustries: ["restaurants", "beauty-salons", "hotels-zakarpattia"],
+    uk: {
+      title: "Скільки коштує SMM і ведення Instagram для бізнесу",
+      metaTitle: "Скільки коштує SMM і ведення Instagram у 2026 році",
+      description:
+        "З чого складається ціна SMM, що має входити в ведення Instagram і Facebook, чому контент без реклами майже не приводить клієнтів і скільки закладати на рекламний бюджет.",
+      summary:
+        "Ціна SMM залежить від того, що входить у роботу: контент, дизайн, зйомка, реклама, ведення профілю в Google. У PRO Marketing# пакет SMM з таргетованою рекламою коштує від 35 000 грн на місяць; у нього входять Instagram, Facebook, Meta Ads, Google Бізнес-профіль, тексти, дизайн і зйомка. Рекламний бюджет Meta оплачується окремо, рекомендований мінімум — від 10 000 грн на місяць.",
+      readingMinutes: 5,
+      sections: [
+        {
+          heading: "Що входить у SMM",
+          paragraphs: ["Під словом «SMM» різні підрядники мають на увазі дуже різний обсяг роботи. Перед порівнянням цін з'ясуйте, що саме входить:"],
+          list: [
+            "стратегія і контент-план: про що і для кого публікуємо;",
+            "тексти, дизайн і зйомка фото та відео;",
+            "публікації, сторіс і reels за графіком;",
+            "таргетована реклама у Facebook та Instagram;",
+            "відповіді на коментарі та повідомлення або допомога з ними;",
+            "звіт: охоплення, підписки, звернення, вартість звернення.",
+          ],
+        },
+        {
+          heading: "Чому SMM без реклами майже не продає",
+          paragraphs: [
+            "Алгоритми Facebook та Instagram показують пости лише невеликій частині підписників. Без реклами контент бачать переважно ті, хто вже вас знає. Нові клієнти з'являються, коли контент і реклама працюють разом: контент формує довіру, реклама щодня приводить нову аудиторію, а ретаргетинг повертає тих, хто вже бачив вас.",
+            "Тому ми не продаємо SMM без реклами: у наш пакет таргет входить одразу.",
+          ],
+        },
+        {
+          heading: "Скільки коштує SMM у PRO Marketing#",
+          paragraphs: [
+            "Пакет SMM + Meta Ads — від 35 000 грн на місяць. У нього входять ведення Instagram і Facebook, таргетована реклама, Google Бізнес-профіль, копірайтинг під нішу, дизайн креативів і зйомка контенту.",
+            "Рекламний бюджет Meta ви поповнюєте напряму в рекламному кабінеті, платіж не проходить через нас. Рекомендований мінімум — від 10 000 грн на місяць. Якщо потрібна лише реклама без ведення соцмереж, Meta Ads коштує від 15 000 грн на місяць.",
+          ],
+        },
+        {
+          heading: "Як оцінити, що SMM працює",
+          paragraphs: ["Лайки і кількість підписників — не головні показники. Дивіться на:"],
+          list: [
+            "кількість звернень у Direct, дзвінків і заявок із соцмереж;",
+            "вартість одного звернення з реклами;",
+            "охоплення нових людей, а не лише підписників;",
+            "кількість повторних клієнтів, які повернулися після ретаргетингу.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Чи можна замовити лише ведення Instagram без реклами?", answer: "Ми так не працюємо: без реклами контент майже не доходить до нових людей, і власник платить за роботу, яка не приводить клієнтів." },
+        { question: "Хто пише тексти і знімає контент?", answer: "Тексти пишемо ми під вашу нішу, ви затверджуєте. Зйомка входить у пакет; для щоденних сторіс даємо прості сценарії." },
+        { question: "TikTok входить у пакет SMM?", answer: "Ні, TikTok ведемо окремо, вартість — після безкоштовного аналізу." },
+      ],
+    },
+    en: {
+      title: "How much does SMM and Instagram management cost",
+      metaTitle: "How much does SMM and Instagram management cost in 2026",
+      description:
+        "What drives the price of SMM, what Instagram and Facebook management should include, why content without ads rarely brings clients, and what ad budget to plan.",
+      summary:
+        "SMM pricing depends on what's included: content, design, shoots, ads, Google profile management. At PRO Marketing#, the SMM bundle with targeted ads starts from UAH 35,000 per month and includes Instagram, Facebook, Meta Ads, Google Business Profile, copywriting, design and shoots. The Meta ad budget is paid separately; the recommended minimum is from UAH 10,000 per month.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "What SMM includes",
+          paragraphs: ["Different providers mean very different scopes by “SMM”. Before comparing prices, check what's included:"],
+          list: [
+            "strategy and content plan: what we post and for whom;",
+            "copy, design and photo and video shoots;",
+            "posts, stories and reels on schedule;",
+            "targeted ads on Facebook and Instagram;",
+            "replies to comments and messages, or help with them;",
+            "a report: reach, follows, enquiries, cost per enquiry.",
+          ],
+        },
+        {
+          heading: "Why SMM without ads rarely sells",
+          paragraphs: [
+            "Facebook and Instagram show posts organically to only a small share of followers. Without ads, mostly people who already know you see the content. New clients appear when content and ads work together: content builds trust, ads bring new people every day, and retargeting brings back those who've seen you.",
+            "That's why we don't sell SMM without ads: targeting is included in our bundle.",
+          ],
+        },
+        {
+          heading: "What SMM costs at PRO Marketing#",
+          paragraphs: [
+            "The SMM + Meta Ads bundle starts from UAH 35,000 per month and includes Instagram and Facebook management, targeted ads, Google Business Profile, niche copywriting, creative design and content shoots.",
+            "You top up the Meta ad budget directly in your ad account; the payment doesn't pass through us. The recommended minimum is from UAH 10,000 per month. If you only need ads without social media management, Meta Ads starts from UAH 15,000 per month.",
+          ],
+        },
+        {
+          heading: "How to tell SMM is working",
+          paragraphs: ["Likes and follower counts aren't the main metrics. Look at:"],
+          list: [
+            "DMs, calls and leads from social media;",
+            "cost per enquiry from ads;",
+            "reach among new people, not just followers;",
+            "returning clients brought back by retargeting.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Can I order Instagram management without ads?", answer: "We don't work that way: without ads, content barely reaches new people, and the owner pays for work that brings no clients." },
+        { question: "Who writes the copy and shoots content?", answer: "We write the copy for your niche and you approve it. Shoots are included; for daily stories we give simple scripts." },
+        { question: "Is TikTok included in the SMM bundle?", answer: "No, TikTok is managed separately and quoted after a free analysis." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── Google Business Profile ─────────────────────── */
+  "google-business-profile": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/seo", "/services/smm", "/services/google-ads"],
+    relatedIndustries: ["restaurants", "medical-clinics", "auto"],
+    uk: {
+      title: "Як налаштувати Google Бізнес-профіль, щоб вас знаходили на картах",
+      metaTitle: "Google Бізнес-профіль: як потрапити в топ на Google Картах",
+      description:
+        "Покроково: як заповнити Google Бізнес-профіль, які категорії обрати, як працювати з відгуками і фото, щоб бізнес показувався на картах за запитами «поруч».",
+      summary:
+        "Щоб бізнес показувався на Google Картах за запитами на кшталт «стоматолог поруч» чи «шиномонтаж Ужгород», потрібен підтверджений і повністю заповнений Google Бізнес-профіль: правильна основна категорія, точна адреса і години роботи, послуги, свіжі фото та регулярні відповіді на відгуки. На позицію впливають відповідність запиту, відстань до людини і відомість бізнесу, тобто відгуки, рейтинг і згадки в інтернеті.",
+      readingMinutes: 5,
+      sections: [
+        {
+          heading: "Чому профіль на картах важливий",
+          paragraphs: [
+            "Для локального бізнесу карта часто важливіша за сайт. Людина, яка шукає послугу поруч, бачить блок з картою вгорі пошуку, порівнює рейтинги і фото та дзвонить, не заходячи на сайт.",
+            "Google сам пояснює, що на локальні результати впливають три речі: відповідність запиту, відстань і відомість бізнесу. На відстань ви не впливаєте, а на дві інші — так.",
+          ],
+        },
+        {
+          heading: "Як заповнити профіль",
+          paragraphs: ["Мінімум, без якого профіль працює гірше, ніж міг би:"],
+          list: [
+            "Назва — така сама, як на вивісці, без додавання ключових слів: це порушує правила Google.",
+            "Основна категорія — найточніша для вашого бізнесу, і кілька додаткових.",
+            "Адреса, зона обслуговування, телефон і сайт — однакові з тими, що на сайті та в соцмережах.",
+            "Години роботи, включно зі святковими.",
+            "Послуги або товари з описом і цінами, якщо можете їх показати.",
+            "Опис бізнесу простими словами: що робите, для кого, де.",
+          ],
+        },
+        {
+          heading: "Фото і публікації",
+          paragraphs: [
+            "Профілі з актуальними фото виглядають живими і викликають більше довіри. Додавайте фото фасаду і входу, щоб вас легко знайти, інтер'єру, команди і робіт. Публікації про акції, новини та події показують, що бізнес працює.",
+          ],
+        },
+        {
+          heading: "Відгуки",
+          paragraphs: ["Відгуки впливають і на вибір людини, і на позицію в картах. Що варто робити:"],
+          list: [
+            "просити задоволених клієнтів залишити відгук і давати пряме посилання;",
+            "відповідати на всі відгуки, зокрема негативні, спокійно і по суті;",
+            "не купувати відгуки і не пропонувати за них знижки: це порушує правила Google і може призвести до видалення відгуків.",
+          ],
+        },
+        {
+          heading: "Профіль і сайт працюють разом",
+          paragraphs: [
+            "Однакові назва, адреса і телефон на сайті, у профілі, соцмережах і каталогах допомагають Google і AI-асистентам впевнено пов'язати всі згадки з вашим бізнесом. А сторінки послуг на сайті з містом у заголовку посилюють відповідність запиту.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Скільки коштує Google Бізнес-профіль?", answer: "Сам профіль безкоштовний. Платити варто лише за роботу з ним, якщо немає часу вести його самостійно. У нашому пакеті SMM ведення профілю вже входить." },
+        { question: "Чи можна додати ключові слова в назву?", answer: "Ні. Назва має збігатися з реальною назвою бізнесу. Додавання слів на кшталт «найкращий стоматолог Ужгород» порушує правила і може призвести до блокування профілю." },
+        { question: "Як швидко профіль почне показуватися?", answer: "Після підтвердження профіль з'являється в пошуку, а позиції за конкурентними запитами ростуть поступово, разом з відгуками і активністю." },
+      ],
+    },
+    en: {
+      title: "How to set up a Google Business Profile so people find you on maps",
+      metaTitle: "Google Business Profile: how to rank higher on Google Maps",
+      description:
+        "Step by step: how to fill in a Google Business Profile, which categories to choose, and how to handle reviews and photos so your business shows up for “near me” searches.",
+      summary:
+        "To appear on Google Maps for searches like “dentist near me” or “tyre service Uzhhorod”, you need a verified, fully completed Google Business Profile: the right primary category, accurate address and hours, services, fresh photos and regular replies to reviews. Ranking depends on relevance to the search, distance to the person, and prominence, meaning reviews, rating and mentions online.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "Why the maps profile matters",
+          paragraphs: [
+            "For local businesses, the map often matters more than the website. People searching nearby see the map pack at the top, compare ratings and photos, and call without visiting the site.",
+            "Google states that local results depend on relevance, distance and prominence. You can't change distance, but you can work on the other two.",
+          ],
+        },
+        {
+          heading: "How to fill in the profile",
+          paragraphs: ["The minimum without which a profile underperforms:"],
+          list: [
+            "Name: the same as on your sign, with no added keywords, which breaks Google's rules.",
+            "Primary category: the most precise one for your business, plus a few secondary ones.",
+            "Address, service area, phone and website: the same as on your site and social media.",
+            "Opening hours, including holidays.",
+            "Services or products with descriptions and prices where you can show them.",
+            "A plain description: what you do, for whom, where.",
+          ],
+        },
+        {
+          heading: "Photos and posts",
+          paragraphs: [
+            "Profiles with current photos look alive and earn more trust. Add photos of the front and entrance so you're easy to find, plus the interior, team and work. Posts about offers, news and events show the business is active.",
+          ],
+        },
+        {
+          heading: "Reviews",
+          paragraphs: ["Reviews affect both people's choice and map rankings. What to do:"],
+          list: [
+            "ask happy clients for a review and give them a direct link;",
+            "reply to every review, including negative ones, calmly and to the point;",
+            "don't buy reviews or offer discounts for them: it breaks Google's rules and can get reviews removed.",
+          ],
+        },
+        {
+          heading: "Profile and website work together",
+          paragraphs: [
+            "The same name, address and phone on your site, profile, social media and directories help Google and AI assistants confidently connect every mention to your business. Service pages with the city in the title strengthen relevance.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "How much does a Google Business Profile cost?", answer: "The profile itself is free. You only pay for work on it if you lack time to manage it. Profile management is included in our SMM bundle." },
+        { question: "Can I add keywords to the name?", answer: "No. The name must match your real business name. Adding words like “best dentist Uzhhorod” breaks the rules and can get the profile suspended." },
+        { question: "How fast will the profile start showing?", answer: "Once verified, the profile appears in search; rankings for competitive searches grow gradually with reviews and activity." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── TikTok ads ─────────────────────── */
+  "tiktok-ads-for-business": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/tiktok-ads", "/services/meta-ads"],
+    relatedIndustries: ["education", "beauty-salons", "restaurants"],
+    uk: {
+      title: "Чи варто бізнесу рекламуватися в TikTok",
+      metaTitle: "Реклама в TikTok для бізнесу: кому підходить і з чого почати",
+      description:
+        "Кому підходить реклама в TikTok, чим вона відрізняється від Instagram, що потрібно для запуску і як зрозуміти, чи окупається TikTok для вашого бізнесу.",
+      summary:
+        "TikTok підходить бізнесу, чий продукт можна показати в коротких відео і чия аудиторія там проводить час: молодь, мами, покупці одягу, косметики, їжі, курсів і розваг. Реклама в TikTok тримається на відео в стилі платформи, а не на налаштуваннях кабінету, тому без готовності регулярно знімати ролики вона рідко окупається. Перед запуском варто встановити піксель TikTok на сайт, щоб рахувати заявки і покупки, а не лише перегляди.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "Кому підходить TikTok",
+          paragraphs: ["Реклама в TikTok найкраще працює, якщо:"],
+          list: [
+            "продукт виглядає цікаво у відео: до і після, процес, розпаковка, результат;",
+            "аудиторія молода або це батьки, які проводять там час;",
+            "товар відносно недорогий і купується імпульсно;",
+            "ви готові регулярно знімати нові ролики.",
+          ],
+        },
+        {
+          heading: "Чим TikTok відрізняється від Instagram",
+          paragraphs: [
+            "В Instagram люди підписані на знайомих і бренди, у TikTok стрічку формує алгоритм за інтересами. Тому в TikTok легше показатися новій аудиторії, але реклама має виглядати як звичайне відео з платформи: живе, швидке, з гачком у перші секунди.",
+            "Відшліфовані рекламні банери, які працюють у Facebook, у TikTok зазвичай гортають.",
+          ],
+        },
+        {
+          heading: "Що потрібно для запуску",
+          paragraphs: [],
+          list: [
+            "рекламний кабінет TikTok Ads Manager;",
+            "піксель TikTok і події на сайті: заявка, покупка, реєстрація;",
+            "кілька відео для тесту з різними ідеями;",
+            "зрозуміла пропозиція: що людина отримає, якщо натисне.",
+          ],
+        },
+        {
+          heading: "Як зрозуміти, що TikTok окупається",
+          paragraphs: [
+            "Перегляди і лайки в TikTok бувають дуже великими, але це не продажі. Рахуйте вартість заявки чи покупки з TikTok і порівнюйте її з іншими каналами. Відео швидко «вигорають», тому креативи треба оновлювати частіше, ніж у Facebook.",
+            "Вартість ведення TikTok Ads у PRO Marketing# ми називаємо після безкоштовного аналізу, бо вона залежить від обсягу відео і кількості кампаній.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Чи потрібен акаунт TikTok з підписниками?", answer: "Для реклами підписники не обов'язкові, але живий профіль додає довіри тим, хто перейде на нього з реклами." },
+        { question: "Хто знімає відео для реклами?", answer: "Ми готуємо ідеї і сценарії під формат платформи. Знімати можна на телефон: у TikTok природні ролики часто працюють краще за студійні." },
+        { question: "TikTok чи Instagram: з чого почати?", answer: "Якщо аудиторія старша або продукт дорогий, почніть з Meta Ads. Якщо аудиторія молода і продукт добре виглядає у відео, варто протестувати TikTok." },
+      ],
+    },
+    en: {
+      title: "Should your business advertise on TikTok",
+      metaTitle: "TikTok ads for business: who they suit and how to start",
+      description:
+        "Who TikTok ads suit, how they differ from Instagram, what you need to launch, and how to tell whether TikTok pays off for your business.",
+      summary:
+        "TikTok suits businesses whose product can be shown in short videos and whose audience spends time there: young people, parents, buyers of fashion, cosmetics, food, courses and entertainment. TikTok ads rely on videos in the platform's style rather than account settings, so without readiness to shoot regularly they rarely pay off. Before launching, install the TikTok pixel on your site to count leads and purchases, not just views.",
+      readingMinutes: 3,
+      sections: [
+        {
+          heading: "Who TikTok suits",
+          paragraphs: ["TikTok ads work best if:"],
+          list: [
+            "the product is interesting on video: before and after, process, unboxing, result;",
+            "the audience is young, or parents who spend time there;",
+            "the product is relatively cheap and bought on impulse;",
+            "you're ready to shoot new videos regularly.",
+          ],
+        },
+        {
+          heading: "How TikTok differs from Instagram",
+          paragraphs: [
+            "On Instagram people follow friends and brands; on TikTok the algorithm builds the feed by interest. It's easier to reach new people on TikTok, but ads must look like native videos: lively, fast, with a hook in the first seconds.",
+            "Polished banners that work on Facebook usually get scrolled past on TikTok.",
+          ],
+        },
+        {
+          heading: "What you need to launch",
+          paragraphs: [],
+          list: [
+            "a TikTok Ads Manager account;",
+            "the TikTok pixel and site events: lead, purchase, registration;",
+            "several test videos with different ideas;",
+            "a clear offer: what people get if they tap.",
+          ],
+        },
+        {
+          heading: "How to tell TikTok pays off",
+          paragraphs: [
+            "Views and likes on TikTok can be huge, but they aren't sales. Track cost per lead or purchase from TikTok and compare it with other channels. Videos burn out fast, so creatives need refreshing more often than on Facebook.",
+            "We quote TikTok Ads management at PRO Marketing# after a free analysis, since it depends on video volume and the number of campaigns.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Do I need a TikTok account with followers?", answer: "Followers aren't required for ads, but a lively profile adds trust for people who click through." },
+        { question: "Who shoots the ad videos?", answer: "We prepare ideas and scripts for the format. You can shoot on a phone: on TikTok, natural videos often beat studio ones." },
+        { question: "TikTok or Instagram: where to start?", answer: "If the audience is older or the product is expensive, start with Meta Ads. If the audience is young and the product looks good on video, test TikTok." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── Landing page or website ─────────────────────── */
+  "landing-page-or-website": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/website-development", "/services/google-ads", "/services/seo"],
+    relatedIndustries: ["education", "real-estate"],
+    uk: {
+      title: "Лендінг чи сайт: що потрібно бізнесу для реклами",
+      metaTitle: "Лендінг чи багатосторінковий сайт: що обрати для реклами і SEO",
+      description:
+        "Чим лендінг відрізняється від багатосторінкового сайту, коли достатньо однієї сторінки, а коли потрібен повний сайт для реклами і SEO, і що має бути на сторінці, яка продає.",
+      summary:
+        "Лендінг — одна сторінка під одну пропозицію, і він добре працює для реклами конкретної послуги, акції чи набору. Багатосторінковий сайт потрібен, коли послуг багато і ви хочете отримувати клієнтів з пошуку Google: для SEO кожна послуга має мати окрему сторінку. Часто найкраще рішення — сайт зі сторінками послуг, кожна з яких працює як лендінг для реклами.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "Коли достатньо лендінгу",
+          paragraphs: [],
+          list: [
+            "у вас одна основна послуга або одна пропозиція;",
+            "потрібно швидко запустити рекламу під акцію, подію чи набір;",
+            "ви тестуєте новий продукт і хочете перевірити попит;",
+            "основний трафік буде з реклами, а не з пошуку.",
+          ],
+        },
+        {
+          heading: "Коли потрібен багатосторінковий сайт",
+          paragraphs: [],
+          list: [
+            "послуг або товарів багато, і в кожної свій попит;",
+            "ви хочете отримувати клієнтів з органічного пошуку Google;",
+            "клієнти довго обирають і хочуть почитати про компанію, ціни, відповіді на питання;",
+            "важливо, щоб вас знаходили і рекомендували AI-асистенти.",
+          ],
+        },
+        {
+          heading: "Що має бути на сторінці, яка продає",
+          paragraphs: ["Незалежно від формату, сторінка під рекламу повинна:"],
+          list: [
+            "у першому екрані пояснювати, що ви пропонуєте, для кого і де;",
+            "показувати ціну або хоча б «від»;",
+            "мати одну зрозумілу дію: дзвінок, заявку, запис;",
+            "відповідати на типові заперечення: терміни, гарантії, як проходить робота;",
+            "швидко завантажуватися на телефоні;",
+            "мати налаштоване відстеження заявок і дзвінків.",
+          ],
+        },
+        {
+          heading: "Як ми підходимо до сайтів",
+          paragraphs: [
+            "Ми проєктуємо сайт під рекламу і SEO, з якими він працюватиме, і одразу налаштовуємо аналітику. Вартість розробки називаємо після безкоштовного аналізу, бо вона залежить від кількості сторінок і функцій.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Чи можна рекламуватися без сайту?", answer: "Можна вести рекламу на профіль в Instagram, лід-форму в Meta чи профіль на картах. Але для Google Ads і SEO сторінка з послугою і ціною майже завжди дає кращий результат." },
+        { question: "Чи підходить лендінг для SEO?", answer: "Одна сторінка може ранжуватися за кількома близькими запитами, але для багатьох послуг потрібні окремі сторінки." },
+        { question: "Скільки часу займає розробка?", answer: "Залежить від обсягу. Лендінг зазвичай готовий швидше за багатосторінковий сайт; точні терміни називаємо після аналізу." },
+      ],
+    },
+    en: {
+      title: "Landing page or website: what a business needs for advertising",
+      metaTitle: "Landing page or full website: what to choose for ads and SEO",
+      description:
+        "How a landing page differs from a multi-page website, when one page is enough and when you need a full site for ads and SEO, and what a page that sells must include.",
+      summary:
+        "A landing page is one page for one offer, and it works well for advertising a specific service, promotion or intake. A multi-page website is needed when you have many services and want clients from Google search: for SEO, each service needs its own page. Often the best solution is a website with service pages, each of which works as a landing page for ads.",
+      readingMinutes: 3,
+      sections: [
+        {
+          heading: "When a landing page is enough",
+          paragraphs: [],
+          list: [
+            "you have one main service or offer;",
+            "you need to launch ads fast for a promotion, event or intake;",
+            "you're testing a new product and want to check demand;",
+            "most traffic will come from ads, not search.",
+          ],
+        },
+        {
+          heading: "When you need a multi-page website",
+          paragraphs: [],
+          list: [
+            "you have many services or products, each with its own demand;",
+            "you want clients from organic Google search;",
+            "clients take time to decide and want to read about the company, prices and answers;",
+            "you want AI assistants to find and recommend you.",
+          ],
+        },
+        {
+          heading: "What a page that sells must have",
+          paragraphs: ["Whatever the format, a page for ads should:"],
+          list: [
+            "explain on the first screen what you offer, for whom and where;",
+            "show a price or at least a “from” price;",
+            "have one clear action: call, enquiry, booking;",
+            "answer typical objections: timing, guarantees, how the work goes;",
+            "load fast on a phone;",
+            "have lead and call tracking set up.",
+          ],
+        },
+        {
+          heading: "How we approach websites",
+          paragraphs: [
+            "We design websites for the ads and SEO they'll work with and set up analytics from day one. We quote development after a free analysis, as it depends on the number of pages and features.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Can I advertise without a website?", answer: "You can send ads to an Instagram profile, a Meta lead form or a maps profile. But for Google Ads and SEO, a page with the service and price almost always performs better." },
+        { question: "Is a landing page good for SEO?", answer: "One page can rank for a few close searches, but many services need separate pages." },
+        { question: "How long does development take?", answer: "It depends on scope. A landing page is usually faster than a multi-page site; we give exact timelines after analysis." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── Conversion tracking ─────────────────────── */
+  "conversion-tracking": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/google-ads", "/services/meta-ads", "/services/website-development"],
+    relatedIndustries: ["medical-clinics", "auto", "online-stores"],
+    uk: {
+      title: "Як налаштувати відстеження заявок і дзвінків з реклами",
+      metaTitle: "Відстеження конверсій у GA4 і Google Ads: заявки та дзвінки",
+      description:
+        "Навіщо рахувати конверсії, які дії відстежувати, як зв'язати GA4, Google Ads і Meta, і як рахувати дзвінки, щоб бачити, яка реклама справді приводить клієнтів.",
+      summary:
+        "Відстеження конверсій показує, які кампанії, запити і оголошення приводять заявки, дзвінки і продажі. Мінімум — налаштувати в GA4 події для форм, дзвінків, кліків на месенджери і покупок, імпортувати їх у Google Ads як конверсії і встановити піксель Meta на сайт. Без цього рекламні системи оптимізують кліки, а ви не бачите вартості клієнта.",
+      readingMinutes: 5,
+      sections: [
+        {
+          heading: "Навіщо рахувати конверсії",
+          paragraphs: [
+            "Google Ads і Meta Ads навчаються на тих діях, які ви їм передаєте. Якщо передаєте лише кліки, алгоритм шукає людей, які клікають. Якщо передаєте заявки чи покупки — людей, які стають клієнтами.",
+            "Друга причина — гроші. Без відстеження неможливо порахувати вартість заявки і зрозуміти, яку кампанію посилити, а яку вимкнути.",
+          ],
+        },
+        {
+          heading: "Які дії відстежувати",
+          paragraphs: [],
+          list: [
+            "відправлення форм заявки чи запису;",
+            "дзвінки з оголошень і кліки на номер телефону на сайті;",
+            "кліки на Telegram, Viber, WhatsApp;",
+            "покупки з сумою замовлення для інтернет-магазинів;",
+            "додаткові сигнали: перегляд ціни, додавання в кошик, початок оформлення.",
+          ],
+        },
+        {
+          heading: "Як зв'язати системи",
+          paragraphs: ["Базова схема, яку ми налаштовуємо для клієнтів:"],
+          list: [
+            "Google Tag Manager на сайті як єдине місце для всіх тегів;",
+            "події в GA4 для кожної важливої дії;",
+            "зв'язок GA4 і Google Ads, імпорт ключових подій як конверсій;",
+            "піксель Meta і події на сайті для Meta Ads;",
+            "режим згоди на cookies, щоб відстеження відповідало вимогам щодо приватності.",
+          ],
+        },
+        {
+          heading: "Дзвінки і офлайн-продажі",
+          paragraphs: [
+            "Якщо клієнти телефонують, рахуйте дзвінки з оголошень і кліки на номер на сайті. Якщо продаж відбувається пізніше, наприклад у нерухомості чи B2B, варто передавати статуси з CRM назад у рекламні системи: так алгоритм вчиться на реальних продажах, а не лише на заявках.",
+          ],
+        },
+        {
+          heading: "Як перевірити, що все працює",
+          paragraphs: [
+            "Зробіть тестову заявку і перевірте, що подія з'явилася в GA4 у режимі реального часу, а через деякий час — у Google Ads. Порівнюйте кількість заявок у системах з тим, що реально отримав менеджер: великий розрив означає, що щось рахується двічі або не рахується взагалі.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Чи потрібно GA4, якщо є Google Ads?", answer: "Так. GA4 показує всю поведінку на сайті і всі джерела трафіку, а Google Ads — лише свою рекламу. Разом вони дають повну картину." },
+        { question: "Скільки коштує налаштування аналітики?", answer: "Налаштування відстеження входить у нашу роботу з рекламою. Для окремого проєкту аналітики вартість називаємо після аналізу сайту." },
+        { question: "Чи впливає банер cookies на відстеження?", answer: "Так. Без згоди частина даних не збирається. Правильно налаштований режим згоди дозволяє рекламним системам моделювати конверсії, не порушуючи приватність." },
+      ],
+    },
+    en: {
+      title: "How to track leads and calls from your ads",
+      metaTitle: "Conversion tracking in GA4 and Google Ads: leads and calls",
+      description:
+        "Why track conversions, which actions to track, how to connect GA4, Google Ads and Meta, and how to count calls so you see which ads actually bring clients.",
+      summary:
+        "Conversion tracking shows which campaigns, searches and ads bring leads, calls and sales. At minimum, set up GA4 events for forms, calls, messenger clicks and purchases, import them into Google Ads as conversions, and install the Meta pixel on your site. Without this, ad platforms optimise for clicks and you can't see the cost per client.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "Why track conversions",
+          paragraphs: [
+            "Google Ads and Meta Ads learn from the actions you send them. Send only clicks and the algorithm looks for clickers. Send leads or purchases and it looks for people who become clients.",
+            "The second reason is money. Without tracking, you can't calculate cost per lead or decide which campaign to scale and which to stop.",
+          ],
+        },
+        {
+          heading: "Which actions to track",
+          paragraphs: [],
+          list: [
+            "lead or booking form submissions;",
+            "calls from ads and clicks on the phone number on the site;",
+            "clicks to Telegram, Viber, WhatsApp;",
+            "purchases with order value for online stores;",
+            "supporting signals: price views, add to cart, checkout start.",
+          ],
+        },
+        {
+          heading: "How to connect the systems",
+          paragraphs: ["The basic setup we build for clients:"],
+          list: [
+            "Google Tag Manager on the site as the single place for all tags;",
+            "GA4 events for each important action;",
+            "GA4 linked to Google Ads, with key events imported as conversions;",
+            "the Meta pixel and site events for Meta Ads;",
+            "cookie consent mode so tracking respects privacy requirements.",
+          ],
+        },
+        {
+          heading: "Calls and offline sales",
+          paragraphs: [
+            "If clients call, track calls from ads and clicks on the number on your site. If the sale happens later, as in real estate or B2B, send CRM statuses back to the ad platforms so the algorithm learns from real sales, not just leads.",
+          ],
+        },
+        {
+          heading: "How to check it works",
+          paragraphs: [
+            "Submit a test lead and check the event appears in GA4's real-time report, and later in Google Ads. Compare lead counts in the systems with what your manager actually received: a big gap means something is double-counted or not counted at all.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Do I need GA4 if I have Google Ads?", answer: "Yes. GA4 shows all site behaviour and all traffic sources, while Google Ads shows only its own ads. Together they give the full picture." },
+        { question: "How much does analytics setup cost?", answer: "Tracking setup is part of our ad management. For a standalone analytics project, we quote after reviewing the site." },
+        { question: "Does the cookie banner affect tracking?", answer: "Yes. Without consent, some data isn't collected. A properly configured consent mode lets ad platforms model conversions while respecting privacy." },
+      ],
+    },
+  },
+
+  /* ─────────────────────── Performance Max ─────────────────────── */
+  "performance-max": {
+    datePublished: "2026-11-25",
+    relatedServices: ["/services/google-ads"],
+    relatedIndustries: ["online-stores", "auto"],
+    uk: {
+      title: "Performance Max: коли він працює, а коли зливає бюджет",
+      metaTitle: "Performance Max у Google Ads: коли працює і як налаштувати",
+      description:
+        "Що таке кампанії Performance Max у Google Ads, кому вони підходять, чому без даних про конверсії вони витрачають бюджет неефективно і як налаштувати їх правильно.",
+      summary:
+        "Performance Max — тип кампаній Google Ads, який показує рекламу одразу в пошуку, Shopping, YouTube, Gmail, на картах і в медійній мережі, а розподіл бюджету визначає алгоритм. Він добре працює, коли в акаунті налаштоване відстеження конверсій з цінністю, є достатньо даних і якісні матеріали: фід товарів, тексти, зображення, відео. Без цього Performance Max часто витрачає бюджет на дешеві, але нецільові покази.",
+      readingMinutes: 5,
+      sections: [
+        {
+          heading: "Що таке Performance Max",
+          paragraphs: [
+            "Замість окремих кампаній для пошуку, Shopping і YouTube ви створюєте одну кампанію, даєте їй мету, бюджет і матеріали, а Google сам вирішує, де і кому показувати рекламу. Контролю менше, автоматизації більше.",
+          ],
+        },
+        {
+          heading: "Коли Performance Max працює добре",
+          paragraphs: [],
+          list: [
+            "налаштоване відстеження продажів або заявок, бажано з цінністю;",
+            "в акаунті вже є історія конверсій;",
+            "для інтернет-магазину — якісний фід товарів у Merchant Center;",
+            "є хороші зображення, тексти і хоча б кілька відео;",
+            "бюджет дозволяє алгоритму зібрати дані.",
+          ],
+        },
+        {
+          heading: "Чому Performance Max зливає бюджет",
+          paragraphs: ["Найчастіші причини:"],
+          list: [
+            "немає конверсій або рахуються не ті дії, наприклад перегляди сторінок;",
+            "весь каталог в одній групі, і бюджет іде на кілька товарів;",
+            "кампанія забирає брендові запити, які й так прийшли б безкоштовно чи дешевше;",
+            "слабкі матеріали: алгоритму нема що показувати в YouTube і медійній мережі;",
+            "ціль ROAS або вартості конверсії не відповідає економіці бізнесу.",
+          ],
+        },
+        {
+          heading: "Як налаштувати правильно",
+          paragraphs: [],
+          list: [
+            "спершу перевірте відстеження конверсій і передавайте цінність замовлень;",
+            "розділіть товари на групи за маржинальністю або категоріями;",
+            "виключіть брендові запити, якщо для бренду є окрема пошукова кампанія;",
+            "давайте алгоритму кілька тижнів на навчання і не змінюйте налаштування щодня;",
+            "дивіться на звіти за групами товарів і запитами, а не лише на загальний ROAS.",
+          ],
+        },
+        {
+          heading: "Performance Max чи пошукові кампанії",
+          paragraphs: [
+            "Це не вибір «або-або». Для більшості акаунтів ми поєднуємо Performance Max з пошуковими кампаніями: пошук дає контроль над важливими запитами, Performance Max масштабує охоплення. Ведення Google Ads у PRO Marketing# — від 10 000 грн на місяць.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Чи підходить Performance Max для послуг, а не товарів?", answer: "Так, але лише з якісним відстеженням заявок. Без нього кампанія часто приводить спам-заявки або дешеві, нецільові звернення." },
+        { question: "Скільки часу Performance Max навчається?", answer: "Зазвичай кілька тижнів. У цей час результати можуть коливатися, тому оцінювати кампанію варто не раніше ніж через 3–4 тижні." },
+        { question: "Чи можна побачити, де показується реклама Performance Max?", answer: "Частково: Google показує звіти за каналами, групами товарів і категоріями запитів, але деталізація менша, ніж у пошукових кампаніях." },
+      ],
+    },
+    en: {
+      title: "Performance Max: when it works and when it burns budget",
+      metaTitle: "Performance Max in Google Ads: when it works and how to set it up",
+      description:
+        "What Performance Max campaigns in Google Ads are, who they suit, why they waste budget without conversion data, and how to set them up properly.",
+      summary:
+        "Performance Max is a Google Ads campaign type that shows ads across Search, Shopping, YouTube, Gmail, Maps and the Display network at once, with the algorithm deciding how to split the budget. It works well when conversion tracking with value is set up, there's enough data, and assets are strong: product feed, copy, images, video. Without these, Performance Max often spends on cheap but irrelevant impressions.",
+      readingMinutes: 4,
+      sections: [
+        {
+          heading: "What Performance Max is",
+          paragraphs: [
+            "Instead of separate Search, Shopping and YouTube campaigns, you create one campaign, give it a goal, budget and assets, and Google decides where and to whom to show ads. Less control, more automation.",
+          ],
+        },
+        {
+          heading: "When Performance Max works well",
+          paragraphs: [],
+          list: [
+            "sales or lead tracking is set up, ideally with value;",
+            "the account already has conversion history;",
+            "for online stores, a quality product feed in Merchant Center;",
+            "good images, copy and at least a few videos;",
+            "the budget lets the algorithm collect data.",
+          ],
+        },
+        {
+          heading: "Why Performance Max burns budget",
+          paragraphs: ["The most common reasons:"],
+          list: [
+            "no conversions, or the wrong actions counted, such as page views;",
+            "the whole catalogue in one group, with budget going to a few products;",
+            "the campaign takes brand searches that would come free or cheaper anyway;",
+            "weak assets: nothing for the algorithm to show on YouTube and Display;",
+            "a ROAS or cost-per-conversion target that doesn't match the business economics.",
+          ],
+        },
+        {
+          heading: "How to set it up properly",
+          paragraphs: [],
+          list: [
+            "check conversion tracking first and pass order values;",
+            "split products into groups by margin or category;",
+            "exclude brand searches if a separate brand search campaign exists;",
+            "give the algorithm a few weeks to learn and don't change settings daily;",
+            "read reports by product group and search category, not just overall ROAS.",
+          ],
+        },
+        {
+          heading: "Performance Max or search campaigns",
+          paragraphs: [
+            "It isn't either-or. For most accounts we combine Performance Max with search campaigns: search gives control over key queries, Performance Max scales reach. Google Ads management at PRO Marketing# starts from UAH 10,000 per month.",
+          ],
+        },
+      ],
+      faq: [
+        { question: "Does Performance Max suit services, not just products?", answer: "Yes, but only with quality lead tracking. Without it, the campaign often brings spam or cheap, irrelevant enquiries." },
+        { question: "How long does Performance Max take to learn?", answer: "Usually a few weeks. Results can fluctuate during that time, so judge the campaign after 3–4 weeks at the earliest." },
+        { question: "Can I see where Performance Max ads appear?", answer: "Partly: Google shows reports by channel, product group and search category, but with less detail than search campaigns." },
       ],
     },
   },

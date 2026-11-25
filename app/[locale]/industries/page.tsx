@@ -7,6 +7,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { INDUSTRY_LABELS, INDUSTRY_PAGES, INDUSTRY_SLUGS } from "@/lib/industryPages";
 import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 type Params = Promise<{ locale: string }>;
 
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function IndustriesPage({ params }: { params: Params }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
   const labels = INDUSTRY_LABELS[safeLocale];
   const items = INDUSTRY_SLUGS.map((slug) => ({

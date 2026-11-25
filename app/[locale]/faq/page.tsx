@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/layout/Footer";
@@ -36,7 +36,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function FAQPage() {
+export default async function FAQPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: requestLocale } = await params;
+  setRequestLocale(requestLocale);
   const t = await getTranslations("faq");
   const items = t.raw("items") as { question: string; answer: string }[];
 

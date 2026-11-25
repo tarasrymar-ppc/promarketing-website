@@ -76,3 +76,9 @@ body {
     animation: none;
   }
 }
+
+/* Cookie banner is server-rendered; hide it before first paint for visitors
+   who already made a choice (see CONSENT_MARKER_SCRIPT in app/[locale]/layout.tsx). */
+html[data-pm-consent] .pm-cookie-banner {
+  display: none;
+}

@@ -10,6 +10,7 @@ import Process from "@/components/sections/Process";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 const meta = {
   uk: {
@@ -39,7 +40,13 @@ export async function generateMetadata({
   };
 }
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: requestLocale } = await params;
+  setRequestLocale(requestLocale);
   return (
     <>
       <Header />

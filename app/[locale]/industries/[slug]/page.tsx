@@ -21,8 +21,13 @@ import { INDUSTRY_LABELS, INDUSTRY_PAGES } from "@/lib/industryPages";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 import { SERVICE_PAGE_LABELS } from "@/lib/servicePages";
+import { setRequestLocale } from "next-intl/server";
 
 type Params = Promise<{ locale: string; slug: string }>;
+
+export function generateStaticParams() {
+  return Object.keys(INDUSTRY_PAGES).map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -39,6 +44,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function IndustryPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const industry = INDUSTRY_PAGES[slug];
   if (!industry) notFound();
 

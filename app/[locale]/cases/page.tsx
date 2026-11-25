@@ -7,6 +7,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 import PageTitle from "@/components/common/PageTitle";
+import { setRequestLocale } from "next-intl/server";
 
 const meta = {
   uk: {
@@ -65,6 +66,7 @@ export default async function CasesPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
   const page = content[safeLocale];
 

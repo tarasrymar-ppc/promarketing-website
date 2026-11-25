@@ -41,6 +41,9 @@ export default async function AboutHero() {
 
       <div className="flex-1 flex items-center">
         <div className="max-w-6xl mx-auto px-6 py-12 md:py-16 w-full">
+          <Image src="/agency-art/campaign-table.webp" width={1500} height={750}
+            alt={locale === "en" ? "Campaign sketches, print proofs and packaging" : "Ескізи кампанії, пробні відбитки та макет пакування"}
+            sizes="(min-width: 1152px) 1104px, 100vw" className="mb-8 aspect-[2/1] w-full object-cover" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-end">
 
             <p className="text-2xl md:text-4xl font-medium text-[#0D0D0D] leading-snug">
@@ -80,3 +83,4 @@ export default async function AboutHero() {
     </section>
   );
 }
+import Image from "next/image";

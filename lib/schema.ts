@@ -254,6 +254,7 @@ export function breadcrumbSchema(
 // BlogPosting for articles. The agency is both author and publisher so the
 // article is tied to the same entity search and AI engines already know.
 export function articleSchema({
+  imagePath = "/og-image.png",
   locale,
   path,
   headline,
@@ -264,6 +265,7 @@ export function articleSchema({
   locale: Locale;
   path: string;
   headline: string;
+  imagePath?: string;
   description: string;
   datePublished: string;
   dateModified?: string;
@@ -280,7 +282,7 @@ export function articleSchema({
     inLanguage: locale,
     datePublished,
     dateModified: dateModified ?? datePublished,
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}${imagePath}`,
     author: { "@id": organizationId },
     publisher: { "@id": organizationId },
     isPartOf: { "@id": websiteId },

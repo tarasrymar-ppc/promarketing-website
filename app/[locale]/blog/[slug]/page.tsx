@@ -8,6 +8,7 @@ import { RelatedLinks } from "@/components/sections/industry/IndustrySections";
 import JsonLd from "@/components/seo/JsonLd";
 import { Link } from "@/i18n/navigation";
 import BlogCover from "@/components/blog/BlogCover";
+import { blogCover } from "@/lib/blogCovers";
 import { BLOG_EXTRAS, BLOG_EXTRA_LABELS } from "@/lib/blogExtras";
 import { BLOG_LABELS, BLOG_POSTS, SERVICE_LINK_NAMES } from "@/lib/blogPosts";
 import { INDUSTRY_PAGES } from "@/lib/industryPages";
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!post) return {};
   const safeLocale = isLocale(locale) ? locale : "uk";
   const content = post[safeLocale];
+  const cover = blogCover(slug, safeLocale);
   return {
     title: content.metaTitle,
     description: content.description,
@@ -39,7 +41,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description: content.description,
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified ?? post.datePublished,
-      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "PRO Marketing#" }],
+      images: [{ url: cover?.src ?? "/og-image.png", width: 1200, height: 630, alt: cover?.alt ?? "PRO Marketing#" }],
     },
   };
 }
@@ -53,6 +55,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   const safeLocale = isLocale(locale) ? locale : "uk";
   const content = post[safeLocale];
   const labels = BLOG_LABELS[safeLocale];
+  const cover = blogCover(slug, safeLocale);
   const extra = BLOG_EXTRAS[slug];
   const extraLabels = BLOG_EXTRA_LABELS[safeLocale];
   const toc = content.sections.map((section, i) => ({ id: `section-${i + 1}`, heading: section.heading }));
@@ -70,6 +73,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           locale: safeLocale,
           path,
           headline: content.title,
+          imagePath: cover?.src,
           description: content.description,
           datePublished: post.datePublished,
           dateModified: post.dateModified,
@@ -114,7 +118,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               </div>
               {extra && (
                 <div className="mt-8 lg:mt-0 overflow-hidden rounded-2xl">
-                  <BlogCover motif={extra.motif} tone={extra.tone} kicker={extra.kicker[safeLocale]} />
+                  <BlogCover image={cover} sizes="(min-width: 1024px) 490px, 100vw" motif={extra.motif} tone={extra.tone} kicker={extra.kicker[safeLocale]} />
                 </div>
               )}
             </div>

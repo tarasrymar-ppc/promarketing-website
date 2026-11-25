@@ -5,6 +5,7 @@ export const CONTACT = {
   address: "вул. Фединця 2, 3-й поверх, каб. 6",
   city: "м. Ужгород, Україна",
   mapUrl: "https://share.google/X73CcSD7IZ8B4v1C9",
+  mapsCid: "10940024049485222854",
 } as const;
 
 export const SOCIAL = {

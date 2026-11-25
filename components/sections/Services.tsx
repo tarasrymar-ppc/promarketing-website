@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Link as LocaleLink } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -30,7 +31,7 @@ export default function Services() {
   const items = t.raw("items") as ServiceItem[];
 
   return (
-    <section className="py-24 md:py-32 bg-white rounded-3xl overflow-hidden">
+    <section id="services" className="scroll-mt-24 py-24 md:py-32 bg-white rounded-3xl overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -49,9 +50,9 @@ export default function Services() {
         </AnimatedSection>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[#E0E0E0] rounded-t-2xl overflow-hidden">
+        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 gap-px bg-[#E0E0E0] rounded-t-2xl overflow-hidden">
           {items.map((service, i) => (
-            <AnimatedSection key={SERVICE_HREFS[i]} delay={0.05 * i} className={`h-full${i === items.length - 1 ? " col-span-2 md:col-span-1" : ""}`}>
+            <AnimatedSection key={SERVICE_HREFS[i]} delay={0.05 * i} className={`h-full${i === items.length - 1 ? " min-[480px]:col-span-2 md:col-span-1" : ""}`}>
               <motion.div
                 whileHover={{
                   scale: 1.02,
@@ -68,7 +69,11 @@ export default function Services() {
                   </span>
                 )}
 
-                {/* Title */}
+                <Image
+                  src={`/agency-art/${SERVICE_HREFS[i].split("/").pop()}.webp`}
+                  width={400} height={400} sizes="(min-width: 768px) 160px, 112px" alt=""
+                  className="mb-4 h-28 w-28 rounded-lg object-contain md:mb-6 md:h-40 md:w-40"
+                />
                 {/* Title links to the service page; ::after stretches the link over the whole card */}
                 <h3 className="text-base md:text-lg font-semibold text-[#0D0D0D] mb-2 leading-snug">
                   <LocaleLink

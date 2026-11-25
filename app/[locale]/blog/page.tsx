@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import PageTitle from "@/components/common/PageTitle";
 import { ArrowRight } from "lucide-react";
 import BlogCover from "@/components/blog/BlogCover";
+import { blogCover } from "@/lib/blogCovers";
 import { Link } from "@/i18n/navigation";
 import { BLOG_EXTRAS } from "@/lib/blogExtras";
 import JsonLd from "@/components/seo/JsonLd";
@@ -38,6 +39,7 @@ export default async function BlogPage({ params }: { params: Params }) {
       text: post.description,
       meta: `${post.readingMinutes} ${labels.minutes}`,
       extra: BLOG_EXTRAS[slug],
+      image: blogCover(slug, safeLocale),
     };
   });
 
@@ -67,6 +69,8 @@ export default async function BlogPage({ params }: { params: Params }) {
                   {item.extra && (
                     <div className={`overflow-hidden rounded-2xl mb-6 ${i === 0 ? "lg:mb-0" : ""}`}>
                       <BlogCover
+                        image={item.image}
+                        sizes={i === 0 ? "(min-width: 1024px) 550px, 100vw" : "(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"}
                         motif={item.extra.motif}
                         tone={item.extra.tone}
                         kicker={item.extra.kicker[safeLocale]}

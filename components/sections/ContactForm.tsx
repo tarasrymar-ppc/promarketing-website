@@ -42,6 +42,7 @@ export default function ContactForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [loading, setLoading]       = useState(false);
   const [submitted, setSubmitted]   = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   function validateName(value: string): string | null {
     const trimmed = value.trim();
@@ -146,6 +147,24 @@ export default function ContactForm() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col items-start gap-2">
+          {showMap ? (
+            <iframe title={locale === "en" ? "PRO Marketing# office on Google Maps" : "Офіс PRO Marketing# на Google Maps"}
+              src={`https://maps.google.com/maps?cid=${CONTACT.mapsCid}&output=embed&z=18&hl=${locale === "en" ? "en" : "uk"}`}
+              className="h-52 w-full rounded-lg border-0" referrerPolicy="strict-origin-when-cross-origin" />
+          ) : (
+            <button type="button" onClick={() => setShowMap(true)}
+              className="flex min-h-24 w-full items-center justify-center gap-3 rounded-lg bg-[#F4F4F4] px-5 text-sm font-semibold hover:bg-[#ECECEC]">
+              <MapPin size={25} className="text-[#E5202E]" aria-hidden="true" />
+              {locale === "en" ? "Show office on Google Maps" : "Показати офіс на Google Maps"}
+            </button>
+          )}
+          <a href={`https://www.google.com/maps?cid=${CONTACT.mapsCid}`} target="_blank" rel="noopener noreferrer"
+            className="text-sm underline underline-offset-4">
+            {locale === "en" ? "Open in Google Maps" : "Відкрити в Google Maps"}
+          </a>
         </div>
 
         {/* Trust signals */}

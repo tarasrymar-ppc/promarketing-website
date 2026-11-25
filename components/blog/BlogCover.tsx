@@ -1,7 +1,7 @@
+import Image from "next/image";
 import type { CoverMotif, CoverTone } from "@/lib/blogExtras";
 
-// Generated article cover: inline SVG, no image request and no layout shift
-// (the viewBox fixes the aspect ratio). Each topic gets its own simple motif.
+// Keep the original vector motifs as fallbacks for posts awaiting photography.
 
 const TONES: Record<CoverTone, { bg: string; fg: string; accent: string; muted: string }> = {
   dark: { bg: "#0D0D0D", fg: "#FFFFFF", accent: "#E5202E", muted: "rgba(255,255,255,0.14)" },
@@ -141,16 +141,23 @@ function Motif({ motif, c }: { motif: CoverMotif; c: Palette }) {
 }
 
 export default function BlogCover({
+  image,
+  sizes,
   motif,
   tone,
   kicker,
   className = "",
 }: {
+  image?: { src: string; alt: string };
+  sizes: string;
   motif: CoverMotif;
   tone: CoverTone;
   kicker: string;
   className?: string;
 }) {
+  if (image) {
+    return <Image {...image} width={1200} height={630} sizes={sizes} className={`block h-auto w-full ${className}`} />;
+  }
   const c = TONES[tone];
   return (
     <svg

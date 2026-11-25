@@ -227,10 +227,16 @@ export function serviceSchema({
 
 const HOME_LABEL = { uk: "Головна", en: "Home" } as const;
 
-// BreadcrumbList for inner pages: Home > current page.
-export function breadcrumbSchema(locale: Locale, name: string, path: string) {
+// BreadcrumbList for inner pages: Home > [parent >] current page.
+export function breadcrumbSchema(
+  locale: Locale,
+  name: string,
+  path: string,
+  parent?: { name: string; path: string }
+) {
   const items = [
     { name: HOME_LABEL[locale], path: "" },
+    ...(parent ? [parent] : []),
     { name, path },
   ];
   return {
@@ -241,6 +247,59 @@ export function breadcrumbSchema(locale: Locale, name: string, path: string) {
       position: index + 1,
       name: item.name,
       item: localizedUrl(locale, item.path),
+    })),
+  };
+}
+
+// BlogPosting for articles. The agency is both author and publisher so the
+// article is tied to the same entity search and AI engines already know.
+export function articleSchema({
+  locale,
+  path,
+  headline,
+  description,
+  datePublished,
+  dateModified,
+}: {
+  locale: Locale;
+  path: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  const url = localizedUrl(locale, path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline,
+    description,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: locale,
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    image: `${SITE_URL}/og-image.png`,
+    author: { "@id": organizationId },
+    publisher: { "@id": organizationId },
+    isPartOf: { "@id": websiteId },
+  };
+}
+
+// ItemList for index pages (blog, industries), so crawlers see the full set.
+export function itemListSchema(
+  locale: Locale,
+  items: { name: string; path: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: localizedUrl(locale, item.path),
     })),
   };
 }

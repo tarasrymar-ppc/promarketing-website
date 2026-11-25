@@ -1,6 +1,8 @@
 import { CONTACT, SOCIAL, SERVICES } from "@/lib/constants";
 import uk from "@/messages/uk.json";
 import { SITE_URL } from "@/lib/seo";
+import { BLOG_POSTS, BLOG_SLUGS } from "@/lib/blogPosts";
+import { INDUSTRY_PAGES, INDUSTRY_SLUGS } from "@/lib/industryPages";
 
 export const dynamic = "force-static";
 
@@ -13,6 +15,24 @@ export function GET() {
     .map((item) => `### ${item.question}\n${item.answer}`)
     .join("\n\n");
 
+  const industries = INDUSTRY_SLUGS.map((slug) => {
+    const page = INDUSTRY_PAGES[slug].uk;
+    return `- [${page.card.title}](${SITE_URL}/uk/industries/${slug}): ${page.card.text}`;
+  }).join("\n");
+
+  const articles = BLOG_SLUGS.map((slug) => {
+    const post = BLOG_POSTS[slug].uk;
+    return `- [${post.title}](${SITE_URL}/uk/blog/${slug}): ${post.summary}`;
+  }).join("\n");
+
+  const industriesEn = INDUSTRY_SLUGS.map(
+    (slug) => `- [${INDUSTRY_PAGES[slug].en.card.title}](${SITE_URL}/en/industries/${slug})`,
+  ).join("\n");
+
+  const articlesEn = BLOG_SLUGS.map(
+    (slug) => `- [${BLOG_POSTS[slug].en.title}](${SITE_URL}/en/blog/${slug})`,
+  ).join("\n");
+
   const body = `# PRO Marketing#
 
 > Маркетингове агентство повного циклу в Ужгороді (Україна), з 2019 року. Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO, розробка сайтів, лого та брендинг. Фокус — реальні заявки та продажі, а не просто контент.
@@ -22,6 +42,12 @@ PRO Marketing# — команда повного циклу (таргетоло�
 ## Послуги
 ${services}
 - [Комплексний маркетинг під ключ](${SITE_URL}/uk/services/complex-marketing): стратегія, реклама, SEO, SMM, сайт і аналітика від однієї команди.
+
+## Маркетинг для галузей
+${industries}
+
+## Статті (відповіді на часті питання)
+${articles}
 
 ## Ціни
 - Google Ads: від 10 000 грн/міс (ведення; рекламний бюджет оплачується окремо напряму Google)
@@ -42,6 +68,8 @@ ${services}
 - [Кейси](${SITE_URL}/uk/cases)
 - [Контакти](${SITE_URL}/uk/contact)
 - [Поширені питання (FAQ)](${SITE_URL}/uk/faq)
+- [Галузі](${SITE_URL}/uk/industries)
+- [Блог](${SITE_URL}/uk/blog)
 
 ## Контакти
 - Адреса: ${CONTACT.address}, ${CONTACT.city}
@@ -72,6 +100,14 @@ Google Partner. Pricing: Google Ads from UAH 10,000/mo, Meta Ads from UAH 15,000
 - [About](${SITE_URL}/en/about)
 - [Cases](${SITE_URL}/en/cases)
 - [Contact](${SITE_URL}/en/contact)
+- [Industries](${SITE_URL}/en/industries)
+- [Blog](${SITE_URL}/en/blog)
+
+### Industries
+${industriesEn}
+
+### Articles
+${articlesEn}
 `;
 
   return new Response(body, {

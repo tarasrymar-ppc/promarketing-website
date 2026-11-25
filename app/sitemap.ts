@@ -1,4 +1,6 @@
 import { MetadataRoute } from "next";
+import { BLOG_POSTS, BLOG_SLUGS } from "@/lib/blogPosts";
+import { INDUSTRY_SLUGS } from "@/lib/industryPages";
 import { localizedLanguages, localizedUrl, LOCALES } from "@/lib/seo";
 
 const STATIC_ROUTES = [
@@ -8,6 +10,8 @@ const STATIC_ROUTES = [
   "/contact",
   "/faq",
   "/privacy",
+  "/industries",
+  "/blog",
 ];
 
 const SERVICE_SLUGS = [
@@ -48,6 +52,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
         alternates: {
           languages: localizedLanguages(`/services/${slug}`),
+        },
+      });
+    }
+
+    // Industry landing pages
+    for (const slug of INDUSTRY_SLUGS) {
+      entries.push({
+        url: localizedUrl(locale, `/industries/${slug}`),
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates: {
+          languages: localizedLanguages(`/industries/${slug}`),
+        },
+      });
+    }
+
+    // Blog articles
+    for (const slug of BLOG_SLUGS) {
+      const post = BLOG_POSTS[slug];
+      entries.push({
+        url: localizedUrl(locale, `/blog/${slug}`),
+        lastModified: new Date(post.dateModified ?? post.datePublished),
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: {
+          languages: localizedLanguages(`/blog/${slug}`),
         },
       });
     }

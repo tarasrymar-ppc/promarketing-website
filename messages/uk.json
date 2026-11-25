@@ -7,7 +7,32 @@
     "contacts": "Контакти",
     "cta": "Безкоштовний аналіз",
     "menu_hint": "Не знаєте з чого почати? Отримайте безкоштовну консультацію.",
-    "discuss": "Обговорити проєкт"
+    "discuss": "Обговорити проєкт",
+    "blog": "Блог",
+    "industries": "Галузі",
+    "industries_hint": "Для галузей:",
+    "industry_items": [
+      {
+        "label": "Стоматології",
+        "href": "/industries/dental-clinics"
+      },
+      {
+        "label": "Інтернет-магазини",
+        "href": "/industries/online-stores"
+      },
+      {
+        "label": "Готелі Закарпаття",
+        "href": "/industries/hotels-zakarpattia"
+      },
+      {
+        "label": "Нерухомість",
+        "href": "/industries/real-estate"
+      },
+      {
+        "label": "Салони краси",
+        "href": "/industries/beauty-salons"
+      }
+    ]
   },
   "hero": {
     "words": [
@@ -174,6 +199,10 @@
         "href": "/cases"
       },
       {
+        "label": "Блог",
+        "href": "/blog"
+      },
+      {
         "label": "Про нас",
         "href": "/about"
       },
@@ -187,7 +216,30 @@
       }
     ],
     "copyright": "Всі права захищені.",
-    "privacy": "Політика конфіденційності"
+    "privacy": "Політика конфіденційності",
+    "industries": "Галузі",
+    "industry_items": [
+      {
+        "label": "Стоматології",
+        "href": "/industries/dental-clinics"
+      },
+      {
+        "label": "Інтернет-магазини",
+        "href": "/industries/online-stores"
+      },
+      {
+        "label": "Готелі Закарпаття",
+        "href": "/industries/hotels-zakarpattia"
+      },
+      {
+        "label": "Нерухомість",
+        "href": "/industries/real-estate"
+      },
+      {
+        "label": "Салони краси",
+        "href": "/industries/beauty-salons"
+      }
+    ]
   },
   "under_construction": {
     "badge": "У процесі створення",

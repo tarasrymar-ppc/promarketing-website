@@ -185,11 +185,14 @@ export function serviceSchema({
   name,
   description,
   price,
+  areaServed,
 }: {
   locale: Locale;
   path: string;
   name: string;
   description: string;
+  /** Overrides the default Uzhhorod/Zakarpattia area, e.g. for city pages. */
+  areaServed?: readonly { "@type": string; name: string }[];
   /** Starting monthly price in UAH, when the page publishes one. */
   price?: number;
 }) {
@@ -201,7 +204,7 @@ export function serviceSchema({
     description,
     url: localizedUrl(locale, path),
     inLanguage: locale,
-    areaServed: AREA_SERVED[locale],
+    areaServed: areaServed ?? AREA_SERVED[locale],
     provider: {
       "@id": localBusinessId,
     },

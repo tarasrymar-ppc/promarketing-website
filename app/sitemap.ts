@@ -12,6 +12,7 @@ const STATIC_ROUTES = [
   "/privacy",
   "/industries",
   "/blog",
+  "/lviv",
 ];
 
 const SERVICE_SLUGS = [

@@ -17,7 +17,7 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Налаштування Google Ads від 10 000 грн/міс",
+    title: "Реклама в Google в Ужгороді — Google Ads від 10 000 грн/міс",
     description:
       "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.",
   },

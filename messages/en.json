@@ -217,6 +217,45 @@
     ],
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
+    "services": "Services",
+    "service_items": [
+      {
+        "label": "SEO in Uzhhorod",
+        "href": "/services/seo"
+      },
+      {
+        "label": "Google Ads",
+        "href": "/services/google-ads"
+      },
+      {
+        "label": "Meta Ads",
+        "href": "/services/meta-ads"
+      },
+      {
+        "label": "TikTok Ads",
+        "href": "/services/tiktok-ads"
+      },
+      {
+        "label": "SMM",
+        "href": "/services/smm"
+      },
+      {
+        "label": "Website development",
+        "href": "/services/website-development"
+      },
+      {
+        "label": "Logo & branding",
+        "href": "/services/logo-branding"
+      },
+      {
+        "label": "Full-service marketing",
+        "href": "/services/complex-marketing"
+      },
+      {
+        "label": "AEO",
+        "href": "/services/aeo"
+      }
+    ],
     "industries": "Industries",
     "industry_items": [
       {

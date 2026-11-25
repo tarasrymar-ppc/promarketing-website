@@ -101,7 +101,7 @@
       },
       {
         "title": "SEO",
-        "description": "Оптимізуємо сайт під Google. Допомагаємо займати вищі позиції в пошуку та отримувати стабільний органічний трафік.",
+        "description": "Просування сайтів в Ужгороді та по Україні. Оптимізуємо сайт під Google, щоб він займав вищі позиції в пошуку і приносив стабільний органічний трафік.",
         "popular": false
       },
       {
@@ -217,6 +217,45 @@
     ],
     "copyright": "Всі права захищені.",
     "privacy": "Політика конфіденційності",
+    "services": "Послуги",
+    "service_items": [
+      {
+        "label": "Просування сайтів в Ужгороді",
+        "href": "/services/seo"
+      },
+      {
+        "label": "Реклама в Google",
+        "href": "/services/google-ads"
+      },
+      {
+        "label": "Таргетована реклама",
+        "href": "/services/meta-ads"
+      },
+      {
+        "label": "Реклама в TikTok",
+        "href": "/services/tiktok-ads"
+      },
+      {
+        "label": "Ведення соцмереж",
+        "href": "/services/smm"
+      },
+      {
+        "label": "Розробка сайтів",
+        "href": "/services/website-development"
+      },
+      {
+        "label": "Логотип і брендинг",
+        "href": "/services/logo-branding"
+      },
+      {
+        "label": "Комплексний маркетинг",
+        "href": "/services/complex-marketing"
+      },
+      {
+        "label": "AEO",
+        "href": "/services/aeo"
+      }
+    ],
     "industries": "Галузі",
     "industry_items": [
       {

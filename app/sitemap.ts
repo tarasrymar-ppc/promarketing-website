@@ -60,7 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of INDUSTRY_SLUGS) {
       entries.push({
         url: localizedUrl(locale, `/industries/${slug}`),
-        lastModified: new Date(),
+        // Fixed date so lastmod only changes when the content does.
+        lastModified: new Date("2026-11-25"),
         changeFrequency: "monthly",
         priority: 0.7,
         alternates: {

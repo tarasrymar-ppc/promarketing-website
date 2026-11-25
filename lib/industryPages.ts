@@ -29,10 +29,10 @@ export const INDUSTRY_LABELS = {
   uk: {
     indexName: "Галузі",
     indexTitle: "Маркетинг для вашої галузі",
-    indexKeyword: "Реклама та маркетинг для стоматологій, інтернет-магазинів, готелів, нерухомості та салонів краси",
-    indexMetaTitle: "Маркетинг для галузей: стоматології, e-commerce, готелі, нерухомість",
+    indexKeyword: "Реклама та маркетинг для стоматологій, медичних центрів, інтернет-магазинів, готелів, ресторанів, нерухомості, автобізнесу, освіти та салонів краси",
+    indexMetaTitle: "Маркетинг для галузей: медицина, e-commerce, готелі, ресторани, авто",
     indexMetaDescription:
-      "Реклама Google Ads, Meta Ads і SMM під конкретну нішу: стоматології, інтернет-магазини, готелі Закарпаття, нерухомість, салони краси. PRO Marketing#, Ужгород.",
+      "Реклама Google Ads, Meta Ads і SMM під конкретну нішу: стоматології, медичні центри, інтернет-магазини, готелі Закарпаття, ресторани, нерухомість, автобізнес, освіта, салони краси. PRO Marketing#, Ужгород.",
     indexLead: "Кожна ніша має свої запити, сезонність і правила реклами. Ось галузі, для яких ми розписали підхід детально.",
     challengesEyebrow: "Виклики ніші",
     relatedServices: "Послуги",
@@ -43,10 +43,10 @@ export const INDUSTRY_LABELS = {
   en: {
     indexName: "Industries",
     indexTitle: "Marketing for your industry",
-    indexKeyword: "Advertising and marketing for dental clinics, online stores, hotels, real estate and beauty salons",
-    indexMetaTitle: "Industry marketing: dental clinics, e-commerce, hotels, real estate",
+    indexKeyword: "Advertising and marketing for dental clinics, medical centres, online stores, hotels, restaurants, real estate, auto, education and beauty salons",
+    indexMetaTitle: "Industry marketing: medical, e-commerce, hotels, restaurants, auto",
     indexMetaDescription:
-      "Google Ads, Meta Ads and SMM built for a specific niche: dental clinics, online stores, hotels in Zakarpattia, real estate, beauty salons. PRO Marketing#, Uzhhorod.",
+      "Google Ads, Meta Ads and SMM built for a specific niche: dental and medical clinics, online stores, Zakarpattia hotels, restaurants, real estate, auto, education, beauty salons. PRO Marketing#, Uzhhorod.",
     indexLead: "Every niche has its own search queries, seasonality and ad rules. These are the industries we've described in detail.",
     challengesEyebrow: "Niche challenges",
     relatedServices: "Services",
@@ -61,7 +61,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
   "dental-clinics": {
     price: 10000,
     relatedServices: ["/services/google-ads", "/services/meta-ads", "/services/website-development"],
-    relatedPosts: ["google-ads-cost-2026", "meta-ads-vs-google-ads"],
+    relatedPosts: ["google-ads-cost-2026", "meta-ads-vs-google-ads", "google-business-profile"],
     uk: {
       name: "Стоматології",
       card: {
@@ -279,7 +279,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
   "online-stores": {
     price: 10000,
     relatedServices: ["/services/google-ads", "/services/meta-ads", "/services/seo"],
-    relatedPosts: ["google-ads-cost-2026", "meta-ads-vs-google-ads"],
+    relatedPosts: ["google-ads-cost-2026", "performance-max", "conversion-tracking"],
     uk: {
       name: "Інтернет-магазини",
       card: {
@@ -412,7 +412,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
   "hotels-zakarpattia": {
     price: 10000,
     relatedServices: ["/services/google-ads", "/services/smm", "/services/website-development"],
-    relatedPosts: ["meta-ads-vs-google-ads", "what-is-aeo"],
+    relatedPosts: ["meta-ads-vs-google-ads", "google-business-profile", "what-is-aeo"],
     uk: {
       name: "Готелі Закарпаття",
       card: {
@@ -545,7 +545,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
   "real-estate": {
     price: 15000,
     relatedServices: ["/services/meta-ads", "/services/google-ads", "/services/website-development"],
-    relatedPosts: ["meta-ads-vs-google-ads", "how-to-choose-marketing-agency"],
+    relatedPosts: ["meta-ads-vs-google-ads", "landing-page-or-website", "conversion-tracking"],
     uk: {
       name: "Нерухомість",
       card: {
@@ -676,7 +676,7 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
   "beauty-salons": {
     price: 15000,
     relatedServices: ["/services/smm", "/services/meta-ads", "/services/google-ads"],
-    relatedPosts: ["meta-ads-vs-google-ads", "how-to-choose-marketing-agency"],
+    relatedPosts: ["smm-cost", "google-business-profile", "meta-ads-vs-google-ads"],
     uk: {
       name: "Салони краси",
       card: {
@@ -800,6 +800,522 @@ export const INDUSTRY_PAGES: Record<string, IndustryPage> = {
         { question: "Does a salon need Google Ads?", answer: "For most salons, Instagram and Google Maps come first. Search ads make sense for services people actively search for, such as cosmetology or laser hair removal." },
       ],
       formSub: "Tell us about the salon: services, city and where clients come from now. We'll suggest a plan for the first month.",
+    },
+  },
+
+  /* ───────────────────────── Medical clinics ───────────────────────── */
+  "medical-clinics": {
+    price: 10000,
+    relatedServices: ["/services/google-ads", "/services/seo", "/services/meta-ads"],
+    relatedPosts: ["google-business-profile", "conversion-tracking"],
+    uk: {
+      name: "Медичні центри",
+      card: {
+        title: "Реклама для медичних центрів",
+        text: "Google Ads, SEO і карти для клінік, діагностичних центрів і приватних лікарів: записи на прийом за напрямками.",
+      },
+      metaTitle: "Реклама медичного центру: Google Ads, SEO і карти",
+      metaDescription:
+        "Реклама і просування медичних центрів, клінік і приватних лікарів: записи на прийом з Google, карт та Instagram з урахуванням правил медичної реклами. Ужгород і вся Україна.",
+      h1: "Реклама і просування медичних центрів, клінік і приватних лікарів",
+      lead: "Приводимо пацієнтів у медичний центр за конкретними напрямками: від консультацій лікарів до діагностики й аналізів.",
+      sub: "Кампанії за спеціалізаціями, сторінки лікарів і послуг, які знаходить Google, доглянутий профіль на картах і облік дзвінків. З урахуванням правил медичної реклами.",
+      facts: [
+        "Google Ads — від 10 000 грн/міс",
+        "Meta Ads — від 15 000 грн/міс",
+        "звіт про звернення за напрямками",
+      ],
+      challenges: {
+        heading: "Що заважає клініці отримувати пацієнтів онлайн",
+        intro: "Типові проблеми, з якими до нас приходять медичні центри.",
+        items: [
+          { title: "Багато напрямків, одна реклама", text: "Кардіолог, УЗД, аналізи, педіатр — у кожного напрямку свій попит і своя цінність. Загальна кампанія «медичний центр» змішує все і не показує, що окупається." },
+          { title: "Немає сторінок під послуги", text: "Людина шукає «УЗД щитовидки ціна», а потрапляє на головну. Без окремих сторінок і реклама дорожча, і SEO не росте." },
+          { title: "Правила медичної реклами", text: "Google і Meta обмежують медичні формулювання і зображення. Помилки ведуть до відхилених оголошень і перевірок акаунта." },
+          { title: "Пацієнти телефонують", text: "Більшість записів іде телефоном. Якщо дзвінки не рахувати, неможливо зрозуміти, яка реклама приводить пацієнтів." },
+        ],
+      },
+      deliverables: {
+        intro: "Що робимо для медичного центру.",
+        items: [
+          { title: "Кампанії за спеціалізаціями", text: "Окремі групи на лікарів, діагностику, аналізи і пакети обстежень. Кожна веде на свою сторінку з цінами і записом." },
+          { title: "SEO сторінок послуг і лікарів", text: "Плануємо і оптимізуємо сторінки під запити пацієнтів: послуга, ціна, лікар, місто. Додаємо розмітку для Google." },
+          { title: "Карти і відгуки", text: "Ведемо Бізнес-профіль Google: послуги, фото, графік, відповіді на відгуки." },
+          { title: "Облік дзвінків і записів", text: "Налаштовуємо цілі в GA4 і Google Ads, щоб бачити вартість звернення за кожним напрямком." },
+          { title: "Тексти з урахуванням правил", text: "Без обіцянок гарантованого результату і заборонених формулювань, щоб оголошення проходили модерацію." },
+        ],
+      },
+      process: {
+        intro: "Як ми запускаємо маркетинг для клініки.",
+        steps: [
+          { label: "01 — Аналіз", title: "Напрямки і попит", items: ["Які напрямки найважливіші для клініки", "Що шукають пацієнти у вашому місті", "Сайт, карти і відстеження"] },
+          { label: "02 — Запуск", title: "Реклама і сторінки", items: ["Google Ads за спеціалізаціями", "Сторінки послуг і лікарів", "Облік дзвінків і записів"] },
+          { label: "03 — Розвиток", title: "Реклама плюс SEO", items: ["Бюджет на напрямки, що дають записи", "Органічний трафік на сторінки послуг", "Щомісячний звіт"] },
+        ],
+      },
+      timeline: {
+        heading: "Чого чекати і коли",
+        intro: "Реклама дає звернення швидко, SEO додає безкоштовний трафік з часом.",
+        items: [
+          { time: "Тиждень 1", title: "Аудит і підготовка", text: "Аналізуємо напрямки, сайт і конкурентів, налаштовуємо відстеження." },
+          { time: "Тиждень 2", title: "Запуск реклами", text: "Перші покази і звернення за пріоритетними напрямками." },
+          { time: "Місяць 1", title: "Оптимізація", text: "Прибираємо нецільові запити, посилюємо напрямки із записами." },
+          { time: "Місяці 2–3", title: "SEO-зростання", text: "Сторінки послуг починають отримувати органічний трафік." },
+        ],
+      },
+      faq: [
+        { question: "Скільки коштує реклама для медичного центру?", answer: "Ведення Google Ads — від 10 000 грн на місяць, Meta Ads — від 15 000 грн. Рекламний бюджет оплачується окремо, напряму Google чи Meta. Вартість SEO — після безкоштовного аналізу сайту." },
+        { question: "Чи можна рекламувати медичні послуги в Google?", answer: "Так, з обмеженнями: не можна обіцяти гарантоване одужання, частина тем і формулювань заборонена або потребує сертифікації. Ми пишемо оголошення з урахуванням цих правил." },
+        { question: "Що краще для клініки: реклама чи SEO?", answer: "Реклама приводить пацієнтів з першого тижня, SEO — безкоштовний трафік через кілька місяців. Для клініки з багатьма напрямками найкраще працює поєднання." },
+        { question: "Ви працюєте з приватними лікарями?", answer: "Так. Для приватного кабінету часто достатньо доглянутого профілю на картах, сторінки з послугами і невеликої пошукової кампанії." },
+      ],
+      formSub: "Розкажіть про клініку і напрямки, які хочете розвивати. Запропонуємо план реклами і SEO.",
+    },
+    en: {
+      name: "Medical clinics",
+      card: {
+        title: "Medical clinic advertising",
+        text: "Google Ads, SEO and maps for clinics, diagnostic centres and private doctors: appointments by specialty.",
+      },
+      metaTitle: "Medical clinic advertising: Google Ads, SEO and maps",
+      metaDescription:
+        "Advertising and SEO for medical centres, clinics and private doctors: appointments from Google, maps and Instagram within healthcare ad rules. Uzhhorod and all of Ukraine.",
+      h1: "Advertising and SEO for medical centres, clinics and private doctors",
+      lead: "We bring patients to medical centres for specific specialties, from doctor consultations to diagnostics and lab tests.",
+      sub: "Campaigns by specialty, doctor and service pages that Google can find, a well-kept maps profile and call tracking, all within healthcare ad rules.",
+      facts: ["Google Ads from UAH 10,000/mo", "Meta Ads from UAH 15,000/mo", "report on enquiries by specialty"],
+      challenges: {
+        heading: "What keeps a clinic from getting patients online",
+        intro: "Common problems medical centres come to us with.",
+        items: [
+          { title: "Many specialties, one campaign", text: "Cardiology, ultrasound, lab tests, paediatrics: each has its own demand and value. A generic “medical centre” campaign mixes them and hides what pays off." },
+          { title: "No pages for services", text: "Someone searches “thyroid ultrasound price” and lands on the home page. Without dedicated pages, ads cost more and SEO doesn't grow." },
+          { title: "Healthcare ad rules", text: "Google and Meta restrict medical wording and images. Mistakes lead to rejected ads and account reviews." },
+          { title: "Patients call", text: "Most bookings happen by phone. If calls aren't tracked, you can't tell which ads bring patients." },
+        ],
+      },
+      deliverables: {
+        intro: "What we do for a medical centre.",
+        items: [
+          { title: "Campaigns by specialty", text: "Separate groups for doctors, diagnostics, lab tests and check-up packages, each leading to its own page with prices and booking." },
+          { title: "SEO for service and doctor pages", text: "We plan and optimise pages for patients' searches: service, price, doctor, city, with structured data for Google." },
+          { title: "Maps and reviews", text: "We maintain your Google Business Profile: services, photos, hours, replies to reviews." },
+          { title: "Call and booking tracking", text: "Goals in GA4 and Google Ads show the cost of an enquiry for each specialty." },
+          { title: "Copy within the rules", text: "No guaranteed outcomes or banned wording, so ads pass review." },
+        ],
+      },
+      process: {
+        intro: "How we launch marketing for a clinic.",
+        steps: [
+          { label: "01 — Analysis", title: "Specialties and demand", items: ["Which specialties matter most", "What patients search for in your city", "Website, maps and tracking"] },
+          { label: "02 — Launch", title: "Ads and pages", items: ["Google Ads by specialty", "Service and doctor pages", "Call and booking tracking"] },
+          { label: "03 — Growth", title: "Ads plus SEO", items: ["Budget to specialties that bring bookings", "Organic traffic to service pages", "Monthly report"] },
+        ],
+      },
+      timeline: {
+        heading: "What to expect and when",
+        intro: "Ads bring enquiries quickly; SEO adds free traffic over time.",
+        items: [
+          { time: "Week 1", title: "Audit and preparation", text: "We analyse specialties, the website and competitors, and set up tracking." },
+          { time: "Week 2", title: "Ads launch", text: "First impressions and enquiries for priority specialties." },
+          { time: "Month 1", title: "Optimisation", text: "We cut irrelevant searches and push specialties that bring bookings." },
+          { time: "Months 2–3", title: "SEO growth", text: "Service pages start getting organic traffic." },
+        ],
+      },
+      faq: [
+        { question: "How much does advertising for a medical centre cost?", answer: "Google Ads management starts from UAH 10,000 per month and Meta Ads from UAH 15,000. The ad budget is paid separately, directly to Google or Meta. SEO is quoted after a free site analysis." },
+        { question: "Can medical services be advertised on Google?", answer: "Yes, with restrictions: you can't promise guaranteed recovery, and some topics and wording are banned or need certification. We write ads within those rules." },
+        { question: "Which is better for a clinic: ads or SEO?", answer: "Ads bring patients from the first week; SEO brings free traffic after a few months. For a clinic with many specialties, a combination works best." },
+        { question: "Do you work with private doctors?", answer: "Yes. For a private practice, a well-kept maps profile, a services page and a small search campaign are often enough." },
+      ],
+      formSub: "Tell us about the clinic and the specialties you want to grow. We'll suggest an ads and SEO plan.",
+    },
+  },
+
+  /* ───────────────────────── Restaurants ───────────────────────── */
+  restaurants: {
+    price: 15000,
+    relatedServices: ["/services/smm", "/services/meta-ads", "/services/google-ads"],
+    relatedPosts: ["google-business-profile", "smm-cost"],
+    uk: {
+      name: "Ресторани",
+      card: {
+        title: "Маркетинг для ресторанів і кафе",
+        text: "Instagram, карти Google і таргет для ресторанів, кафе, кав'ярень і доставки їжі.",
+      },
+      metaTitle: "Маркетинг для ресторану і кафе: Instagram, карти, таргет",
+      metaDescription:
+        "SMM, таргетована реклама і карти Google для ресторанів, кафе і доставки їжі: більше гостей і замовлень. Ужгород, Закарпаття і вся Україна. SMM + таргет від 35 000 грн/міс.",
+      h1: "Маркетинг і реклама для ресторанів, кафе і доставки їжі",
+      lead: "Робимо так, щоб ресторан знаходили на картах, хотіли відвідати після Instagram і поверталися знову.",
+      sub: "Апетитний контент, реклама на людей поруч, доглянутий профіль у Google з меню й відгуками, акції на тихі дні і облік бронювань та замовлень.",
+      facts: [
+        "SMM + таргет — від 35 000 грн/міс",
+        "Meta Ads — від 15 000 грн/міс",
+        "Google Бізнес-профіль входить у SMM-пакет",
+      ],
+      challenges: {
+        heading: "Чому заклад не отримує гостей з інтернету",
+        intro: "Що ми найчастіше бачимо в маркетингу ресторанів.",
+        items: [
+          { title: "Гості шукають на картах", text: "Запит «де поїсти поруч» вирішується на карті: фото, рейтинг, меню, години роботи. Порожній профіль — мінус гості." },
+          { title: "Instagram без системи", text: "Пости раз на тиждень і без реклами бачать лише постійні гості. Нові люди про заклад не дізнаються." },
+          { title: "Тихі дні і години", text: "У вихідні зал повний, у будні порожній. Реклама, однакова весь тиждень, не допомагає вирівняти завантаження." },
+          { title: "Немає обліку", text: "Незрозуміло, скільки бронювань і замовлень приходить з Instagram, а скільки з карт чи сайту." },
+        ],
+      },
+      deliverables: {
+        intro: "Що робимо для ресторану, кафе чи доставки.",
+        items: [
+          { title: "Ведення Instagram і Facebook", text: "Контент-план, фото і reels страв, сторіс з подіями й новинками меню." },
+          { title: "Реклама на людей поруч", text: "Meta Ads на район, місто і туристів, які зараз поруч, з акціями на тихі дні." },
+          { title: "Google Бізнес-профіль", text: "Фото, меню, години роботи, відповіді на відгуки, щоб заклад вигравав на картах." },
+          { title: "Бронювання і доставка", text: "Кнопки бронювання, замовлення і зв'язку в профілях, облік звернень з кожного каналу." },
+          { title: "Події та сезонні пропозиції", text: "План на свята, сезон і туристичні періоди, щоб заповнювати зал заздалегідь." },
+        ],
+      },
+      process: {
+        intro: "Як ми запускаємо маркетинг закладу.",
+        steps: [
+          { label: "01 — Аналіз", title: "Заклад і гості", items: ["Хто ваші гості і коли приходять", "Конкуренти поруч", "Instagram, карти і відгуки"] },
+          { label: "02 — Запуск", title: "Контент і реклама", items: ["Контент-план на місяць", "Meta Ads на людей поруч", "Профіль на картах"] },
+          { label: "03 — Завантаження", title: "Більше гостей", items: ["Акції на тихі дні", "Ретаргетинг на гостей", "Щомісячний звіт"] },
+        ],
+      },
+      timeline: {
+        heading: "Чого чекати і коли",
+        intro: "Реклама дає результат швидко, а профіль, який хочеться відкрити, формується за кілька місяців.",
+        items: [
+          { time: "Тиждень 1", title: "Аудит і зйомка", text: "Аналізуємо профілі, плануємо контент, знімаємо страви й атмосферу." },
+          { time: "Тиждень 2", title: "Запуск", text: "Перші публікації і реклама на людей поруч." },
+          { time: "Місяць 1", title: "Оптимізація", text: "Залишаємо формати і аудиторії, що приводять гостей." },
+          { time: "Місяці 2–3", title: "Стабільний потік", text: "Живий профіль, кращий рейтинг на картах і зрозумілі цифри." },
+        ],
+      },
+      faq: [
+        { question: "Скільки коштує маркетинг для ресторану?", answer: "Пакет SMM з таргетованою рекламою — від 35 000 грн на місяць, у нього входять Instagram, Facebook, Meta Ads і Google Бізнес-профіль. Окремо Meta Ads — від 15 000 грн. Рекламний бюджет оплачується окремо, напряму Meta." },
+        { question: "Чи потрібна ресторану реклама в Google?", answer: "Для більшості закладів важливіші карти Google та Instagram. Пошукова реклама має сенс для доставки їжі, банкетів і корпоративів, які люди активно шукають." },
+        { question: "Як підняти рейтинг на картах?", answer: "Відповідати на всі відгуки, просити гостей залишати відгук, оновлювати фото і меню, тримати актуальні години роботи. Купувати відгуки не варто: це порушує правила Google." },
+        { question: "Хто знімає контент?", answer: "Ми плануємо зйомки і знімаємо страви й атмосферу. Для щоденних сторіс даємо персоналу прості сценарії." },
+      ],
+      formSub: "Розкажіть про заклад: формат, місто і які дні найслабші. Запропонуємо план на перший місяць.",
+    },
+    en: {
+      name: "Restaurants",
+      card: {
+        title: "Marketing for restaurants and cafés",
+        text: "Instagram, Google Maps and targeted ads for restaurants, cafés, coffee shops and food delivery.",
+      },
+      metaTitle: "Restaurant and café marketing: Instagram, maps, ads",
+      metaDescription:
+        "SMM, targeted ads and Google Maps for restaurants, cafés and food delivery: more guests and orders. Uzhhorod, Zakarpattia and all of Ukraine. SMM + ads from UAH 35,000/mo.",
+      h1: "Marketing and advertising for restaurants, cafés and food delivery",
+      lead: "We make restaurants easy to find on maps, tempting on Instagram, and worth coming back to.",
+      sub: "Appetising content, ads for people nearby, a Google profile with menu and reviews, offers for quiet days, and tracking of bookings and orders.",
+      facts: ["SMM + ads from UAH 35,000/mo", "Meta Ads from UAH 15,000/mo", "Google Business Profile included in the SMM bundle"],
+      challenges: {
+        heading: "Why a venue gets no guests from the internet",
+        intro: "What we most often see in restaurant marketing.",
+        items: [
+          { title: "Guests search on maps", text: "“Where to eat nearby” is decided on a map: photos, rating, menu, hours. An empty profile costs guests." },
+          { title: "Instagram without a system", text: "A post a week with no ads reaches only regulars. New people never hear about the place." },
+          { title: "Quiet days and hours", text: "Full on weekends, empty on weekdays. Ads that are the same all week don't even out the load." },
+          { title: "No tracking", text: "It's unclear how many bookings and orders come from Instagram versus maps or the website." },
+        ],
+      },
+      deliverables: {
+        intro: "What we do for a restaurant, café or delivery service.",
+        items: [
+          { title: "Instagram and Facebook management", text: "Content plan, dish photos and reels, stories about events and new menu items." },
+          { title: "Ads for people nearby", text: "Meta Ads for your area, city and tourists who are nearby right now, with offers for quiet days." },
+          { title: "Google Business Profile", text: "Photos, menu, hours and replies to reviews, so the venue wins on maps." },
+          { title: "Bookings and delivery", text: "Booking, ordering and contact buttons in profiles, with enquiries tracked per channel." },
+          { title: "Events and seasonal offers", text: "A plan for holidays, the season and tourist periods to fill the room in advance." },
+        ],
+      },
+      process: {
+        intro: "How we launch a venue's marketing.",
+        steps: [
+          { label: "01 — Analysis", title: "Venue and guests", items: ["Who your guests are and when they come", "Competitors nearby", "Instagram, maps and reviews"] },
+          { label: "02 — Launch", title: "Content and ads", items: ["A month's content plan", "Meta Ads for people nearby", "Maps profile"] },
+          { label: "03 — Occupancy", title: "More guests", items: ["Offers for quiet days", "Retargeting past guests", "Monthly report"] },
+        ],
+      },
+      timeline: {
+        heading: "What to expect and when",
+        intro: "Ads work quickly; a profile people want to open takes a few months.",
+        items: [
+          { time: "Week 1", title: "Audit and shoot", text: "We review the profiles, plan content and shoot dishes and atmosphere." },
+          { time: "Week 2", title: "Launch", text: "First posts and ads for people nearby." },
+          { time: "Month 1", title: "Optimisation", text: "We keep the formats and audiences that bring guests." },
+          { time: "Months 2–3", title: "Steady flow", text: "A lively profile, a better maps rating and clear numbers." },
+        ],
+      },
+      faq: [
+        { question: "How much does restaurant marketing cost?", answer: "The SMM bundle with targeted ads starts from UAH 35,000 per month and includes Instagram, Facebook, Meta Ads and the Google Business Profile. Meta Ads alone starts from UAH 15,000. The ad budget is paid separately, directly to Meta." },
+        { question: "Does a restaurant need Google Ads?", answer: "For most venues, Google Maps and Instagram matter more. Search ads make sense for food delivery, banquets and corporate events that people actively search for." },
+        { question: "How do we raise our maps rating?", answer: "Reply to every review, ask guests to leave one, keep photos, menu and hours up to date. Don't buy reviews: it breaks Google's rules." },
+        { question: "Who shoots the content?", answer: "We plan and shoot dishes and atmosphere. For daily stories we give staff simple scripts." },
+      ],
+      formSub: "Tell us about the venue: format, city and which days are quietest. We'll suggest a plan for the first month.",
+    },
+  },
+
+  /* ───────────────────────── Auto business ───────────────────────── */
+  auto: {
+    price: 10000,
+    relatedServices: ["/services/google-ads", "/services/meta-ads", "/services/website-development"],
+    relatedPosts: ["conversion-tracking", "performance-max"],
+    uk: {
+      name: "Автобізнес",
+      card: {
+        title: "Реклама для автобізнесу",
+        text: "Google Ads і Meta Ads для СТО, автосервісів, шиномонтажів, автосалонів і магазинів запчастин.",
+      },
+      metaTitle: "Реклама для СТО, автосервісу і автосалону",
+      metaDescription:
+        "Google Ads, карти і таргет для автосервісів, СТО, шиномонтажів, автосалонів і магазинів запчастин: дзвінки і записи, а не просто кліки. Ужгород і вся Україна.",
+      h1: "Реклама для автосервісів, СТО, автосалонів і магазинів запчастин",
+      lead: "Приводимо клієнтів в автосервіс і автосалон з Google та карт, коли людина вже шукає ремонт, шини чи авто.",
+      sub: "Пошукова реклама за послугами і марками, доглянутий профіль на картах, Shopping для запчастин, Meta Ads для автосалонів і облік дзвінків.",
+      facts: [
+        "Google Ads — від 10 000 грн/міс",
+        "Meta Ads — від 15 000 грн/міс",
+        "облік дзвінків і записів",
+      ],
+      challenges: {
+        heading: "З чим стикається автобізнес у рекламі",
+        intro: "Особливості ніші, які варто врахувати перед запуском.",
+        items: [
+          { title: "Термінові запити", text: "«Шиномонтаж поруч», «евакуатор», «ремонт стартера» — людина обирає за хвилини. Виграє той, кого видно першим і до кого легко додзвонитися." },
+          { title: "Сезонні піки", text: "Перевзування навесні й восени, кондиціонери влітку. Бюджет треба перерозподіляти під сезон, а не тримати однаковим." },
+          { title: "Великий асортимент запчастин", text: "Тисячі позицій без фіду і структури кампаній означають, що реклама показує не ті товари." },
+          { title: "Довге рішення про купівлю авто", text: "Автомобіль обирають тижнями. Без ретаргетингу покупець, який цікавився, іде до іншого салону." },
+        ],
+      },
+      deliverables: {
+        intro: "Що робимо для автобізнесу.",
+        items: [
+          { title: "Пошук за послугами і марками", text: "Кампанії на ремонт, діагностику, шиномонтаж, обслуговування конкретних марок, з показом поруч із сервісом." },
+          { title: "Карти Google", text: "Профіль з послугами, фото, графіком і відгуками, щоб вас обирали на карті." },
+          { title: "Shopping для запчастин", text: "Фід товарів, Merchant Center і кампанії за категоріями та брендами." },
+          { title: "Meta Ads для автосалонів", text: "Реклама моделей, тест-драйвів і умов кредиту з ретаргетингом на тих, хто цікавився." },
+          { title: "Облік дзвінків і заявок", text: "Рахуємо дзвінки і записи з кожної кампанії, щоб бюджет ішов туди, де є клієнти." },
+        ],
+      },
+      process: {
+        intro: "Як ми запускаємо рекламу для автобізнесу.",
+        steps: [
+          { label: "01 — Аналіз", title: "Послуги і попит", items: ["Найприбутковіші послуги чи товари", "Конкуренти поруч", "Сайт, карти і відстеження"] },
+          { label: "02 — Запуск", title: "Реклама і карти", items: ["Пошукові кампанії і Shopping", "Профіль на картах", "Облік дзвінків"] },
+          { label: "03 — Сезон", title: "Керуємо за сезоном", items: ["Бюджет під сезонні піки", "Ретаргетинг на довгий цикл", "Щомісячний звіт"] },
+        ],
+      },
+      timeline: {
+        heading: "Чого чекати і коли",
+        intro: "На термінові запити реклама реагує швидко.",
+        items: [
+          { time: "Тиждень 1", title: "Аудит і підготовка", text: "Аналізуємо послуги, конкурентів і відстеження." },
+          { time: "Тиждень 2", title: "Запуск", text: "Перші дзвінки і записи з пошуку та карт." },
+          { time: "Місяць 1", title: "Оптимізація", text: "Чистимо нецільові запити, посилюємо послуги з дзвінками." },
+          { time: "Сезон", title: "Масштаб", text: "Підсилюємо бюджет перед сезонними піками." },
+        ],
+      },
+      faq: [
+        { question: "Скільки коштує реклама для СТО чи автосервісу?", answer: "Ведення Google Ads — від 10 000 грн на місяць. Рекламний бюджет оплачується окремо, напряму Google; рекомендований мінімум — від 15 000 грн на місяць. Для одного сервісу в одному місті часто достатньо вузької кампанії за ключовими послугами." },
+        { question: "Що краще для автосалону: Google чи Facebook?", answer: "Google Ads приводить тих, хто вже шукає модель чи салон. Meta Ads допомагає показати модель ширшій аудиторії і нагадувати про себе протягом вибору. Для автосалону найкраще працює поєднання." },
+        { question: "Чи можна рекламувати магазин запчастин через Shopping?", answer: "Так, якщо є фід товарів з назвами, цінами і наявністю. Ми допоможемо підключити Merchant Center і структурувати кампанії." },
+        { question: "Як рахувати клієнтів, які телефонують?", answer: "Налаштовуємо відстеження дзвінків з оголошень і сайту, щоб бачити, скільки дзвінків дає кожна кампанія." },
+      ],
+      formSub: "Розкажіть про бізнес: сервіс, салон чи запчастини, місто і ключові послуги. Запропонуємо план реклами.",
+    },
+    en: {
+      name: "Auto business",
+      card: {
+        title: "Advertising for the auto business",
+        text: "Google Ads and Meta Ads for car repair shops, tyre services, dealerships and parts stores.",
+      },
+      metaTitle: "Advertising for car repair shops and dealerships",
+      metaDescription:
+        "Google Ads, maps and targeted ads for car repair shops, tyre services, dealerships and parts stores: calls and bookings, not just clicks. Uzhhorod and all of Ukraine.",
+      h1: "Advertising for car repair shops, tyre services, dealerships and parts stores",
+      lead: "We bring customers to repair shops and dealerships from Google and maps when they're already looking for repairs, tyres or a car.",
+      sub: "Search ads by service and car make, a well-kept maps profile, Shopping for parts, Meta Ads for dealerships and call tracking.",
+      facts: ["Google Ads from UAH 10,000/mo", "Meta Ads from UAH 15,000/mo", "call and booking tracking"],
+      challenges: {
+        heading: "What the auto business faces in advertising",
+        intro: "Niche features worth accounting for before launch.",
+        items: [
+          { title: "Urgent searches", text: "“Tyre service near me”, “tow truck”, “starter repair”: people decide in minutes. The one seen first and easy to call wins." },
+          { title: "Seasonal peaks", text: "Tyre changes in spring and autumn, air conditioning in summer. Budget should shift with the season." },
+          { title: "Huge parts catalogues", text: "Thousands of items with no feed or campaign structure mean ads show the wrong products." },
+          { title: "A long car-buying decision", text: "People choose a car over weeks. Without retargeting, an interested buyer goes to another dealer." },
+        ],
+      },
+      deliverables: {
+        intro: "What we do for auto businesses.",
+        items: [
+          { title: "Search by service and make", text: "Campaigns for repairs, diagnostics, tyre service and servicing specific makes, shown near your shop." },
+          { title: "Google Maps", text: "A profile with services, photos, hours and reviews so people choose you on the map." },
+          { title: "Shopping for parts", text: "Product feed, Merchant Center and campaigns by category and brand." },
+          { title: "Meta Ads for dealerships", text: "Ads for models, test drives and finance offers, with retargeting for interested buyers." },
+          { title: "Call and lead tracking", text: "We count calls and bookings from each campaign so budget goes where customers are." },
+        ],
+      },
+      process: {
+        intro: "How we launch ads for an auto business.",
+        steps: [
+          { label: "01 — Analysis", title: "Services and demand", items: ["The most profitable services or products", "Competitors nearby", "Website, maps and tracking"] },
+          { label: "02 — Launch", title: "Ads and maps", items: ["Search and Shopping campaigns", "Maps profile", "Call tracking"] },
+          { label: "03 — Season", title: "Managing by season", items: ["Budget for seasonal peaks", "Retargeting for a long cycle", "Monthly report"] },
+        ],
+      },
+      timeline: {
+        heading: "What to expect and when",
+        intro: "For urgent searches, ads respond quickly.",
+        items: [
+          { time: "Week 1", title: "Audit and preparation", text: "We analyse services, competitors and tracking." },
+          { time: "Week 2", title: "Launch", text: "First calls and bookings from search and maps." },
+          { time: "Month 1", title: "Optimisation", text: "We cut irrelevant searches and push services that bring calls." },
+          { time: "Season", title: "Scale", text: "We raise the budget before seasonal peaks." },
+        ],
+      },
+      faq: [
+        { question: "How much does advertising for a repair shop cost?", answer: "Google Ads management starts from UAH 10,000 per month. The ad budget is paid separately, directly to Google; the recommended minimum is from UAH 15,000 per month. For one shop in one city, a narrow campaign for key services is often enough." },
+        { question: "Which is better for a dealership: Google or Facebook?", answer: "Google Ads reaches people already searching for a model or dealer. Meta Ads shows a model to a wider audience and keeps you in mind while they choose. For dealerships, a combination works best." },
+        { question: "Can a parts store advertise through Shopping?", answer: "Yes, if you have a product feed with titles, prices and availability. We'll help connect Merchant Center and structure the campaigns." },
+        { question: "How do you count customers who call?", answer: "We set up call tracking from ads and the website to see how many calls each campaign brings." },
+      ],
+      formSub: "Tell us about the business: repair shop, dealership or parts, city and key services. We'll suggest an ads plan.",
+    },
+  },
+
+  /* ───────────────────────── Education ───────────────────────── */
+  education: {
+    price: 15000,
+    relatedServices: ["/services/meta-ads", "/services/google-ads", "/services/tiktok-ads"],
+    relatedPosts: ["tiktok-ads-for-business", "landing-page-or-website"],
+    uk: {
+      name: "Освіта",
+      card: {
+        title: "Реклама для курсів і шкіл",
+        text: "Набір учнів для мовних шкіл, курсів, дитячих центрів і приватних шкіл через Meta Ads, Google і TikTok.",
+      },
+      metaTitle: "Реклама для курсів, мовних шкіл і освітніх центрів",
+      metaDescription:
+        "Реклама для мовних шкіл, онлайн-курсів, дитячих центрів і приватних шкіл: заявки на пробні заняття з Meta Ads, Google Ads і TikTok. Ужгород і вся Україна.",
+      h1: "Реклама для курсів, мовних шкіл, дитячих центрів і приватних шкіл",
+      lead: "Допомагаємо освітнім проєктам набирати учнів: від заявки на пробне заняття до запису на курс.",
+      sub: "Meta Ads і TikTok для охоплення, Google Ads за запитами на кшталт «курси англійської Ужгород», лендінги під набір і облік заявок аж до оплати.",
+      facts: [
+        "Meta Ads — від 15 000 грн/міс",
+        "Google Ads — від 10 000 грн/міс",
+        "звіт з вартістю заявки на пробне заняття",
+      ],
+      challenges: {
+        heading: "Чому набір учнів буксує",
+        intro: "Типові проблеми освітніх проєктів у рекламі.",
+        items: [
+          { title: "Сезонні набори", text: "Вересень, січень, літні табори. Якщо почати рекламу в останній момент, найкращих учнів уже забрали конкуренти." },
+          { title: "Заявки, які не доходять до заняття", text: "Багато заявок, але мало людей на пробному уроці. Причина — повільна обробка і відсутність нагадувань." },
+          { title: "Рішення приймають батьки", text: "Для дитячих напрямків рекламувати треба батькам, а контент — показувати дитину в процесі навчання." },
+          { title: "Немає сторінки під набір", text: "Реклама веде на загальну сторінку, де складно зрозуміти програму, розклад і ціну." },
+        ],
+      },
+      deliverables: {
+        intro: "Що робимо для освітнього проєкту.",
+        items: [
+          { title: "Meta Ads і TikTok", text: "Реклама з відео занять, викладачами і пропозицією на пробний урок, ретаргетинг на тих, хто цікавився." },
+          { title: "Google Ads за запитами", text: "Кампанії на курси, мови, підготовку до НМТ, гуртки у вашому місті або онлайн." },
+          { title: "Лендінг під набір", text: "Сторінка з програмою, розкладом, ціною і формою запису на пробне заняття." },
+          { title: "Обробка заявок", text: "Передача заявок у CRM чи месенджер і шаблони нагадувань, щоб люди доходили до заняття." },
+          { title: "Звіт до оплати", text: "Рахуємо не лише заявки, а й тих, хто прийшов на пробне заняття і записався на курс." },
+        ],
+      },
+      process: {
+        intro: "Як ми готуємо набір.",
+        steps: [
+          { label: "01 — Аналіз", title: "Продукт і учні", items: ["Хто ваші учні і хто приймає рішення", "Конкуренти і їхні пропозиції", "Сайт, заявки і відстеження"] },
+          { label: "02 — Запуск", title: "Канали і лендінг", items: ["Meta Ads, TikTok і Google Ads", "Лендінг під набір", "Передача заявок у CRM"] },
+          { label: "03 — Набір", title: "Від заявки до оплати", items: ["Нагадування про пробне заняття", "Бюджет на канали з оплатами", "Звіт після набору"] },
+        ],
+      },
+      timeline: {
+        heading: "Чого чекати і коли",
+        intro: "Рекламу варто запускати за 4–6 тижнів до старту набору.",
+        items: [
+          { time: "Тиждень 1", title: "Підготовка", text: "Аналіз, лендінг, налаштування форм і відстеження." },
+          { time: "Тиждень 2", title: "Запуск", text: "Перші заявки на пробні заняття." },
+          { time: "Місяць 1", title: "Оптимізація", text: "Залишаємо канали й креативи, з яких люди доходять до заняття." },
+          { time: "Набір", title: "Результат", text: "Зрозуміла вартість учня і план на наступний набір." },
+        ],
+      },
+      faq: [
+        { question: "Скільки коштує реклама для курсів чи школи?", answer: "Ведення Meta Ads — від 15 000 грн на місяць, Google Ads — від 10 000 грн. Вартість ведення TikTok — після безкоштовного аналізу. Рекламний бюджет оплачується окремо, напряму платформі." },
+        { question: "Який канал найкращий для освіти?", answer: "Для дитячих і хобі-напрямків зазвичай Meta Ads, для конкретних запитів на кшталт «курси англійської» чи «підготовка до НМТ» — Google Ads. TikTok добре працює для молодої аудиторії і онлайн-курсів." },
+        { question: "Коли починати рекламу перед набором?", answer: "За 4–6 тижнів до старту: рекламі потрібен час на навчання, а людям — на рішення." },
+        { question: "Ви працюєте з онлайн-курсами?", answer: "Так. Для онлайн-курсів рекламу налаштовуємо на всю Україну або на потрібні країни." },
+      ],
+      formSub: "Розкажіть про проєкт: напрямок, вік учнів, місто чи онлайн і коли старт набору. Запропонуємо план.",
+    },
+    en: {
+      name: "Education",
+      card: {
+        title: "Advertising for courses and schools",
+        text: "Student enrolment for language schools, courses, kids' centres and private schools through Meta Ads, Google and TikTok.",
+      },
+      metaTitle: "Advertising for courses, language schools and learning centres",
+      metaDescription:
+        "Ads for language schools, online courses, kids' centres and private schools: trial lesson sign-ups from Meta Ads, Google Ads and TikTok. Uzhhorod and all of Ukraine.",
+      h1: "Advertising for courses, language schools, kids' centres and private schools",
+      lead: "We help education projects enrol students, from a trial lesson sign-up to a course enrolment.",
+      sub: "Meta Ads and TikTok for reach, Google Ads for searches like “English courses Uzhhorod”, landing pages for each intake, and lead tracking all the way to payment.",
+      facts: ["Meta Ads from UAH 15,000/mo", "Google Ads from UAH 10,000/mo", "report with cost per trial lesson sign-up"],
+      challenges: {
+        heading: "Why enrolment stalls",
+        intro: "Common advertising problems in education.",
+        items: [
+          { title: "Seasonal intakes", text: "September, January, summer camps. Start ads at the last minute and competitors have already taken the best students." },
+          { title: "Leads that never show up", text: "Plenty of sign-ups, few people at the trial lesson. The cause is slow follow-up and no reminders." },
+          { title: "Parents decide", text: "For kids' programmes, ads should target parents, and content should show children learning." },
+          { title: "No page for the intake", text: "Ads lead to a general page where the programme, schedule and price are hard to find." },
+        ],
+      },
+      deliverables: {
+        intro: "What we do for an education project.",
+        items: [
+          { title: "Meta Ads and TikTok", text: "Ads with lesson videos, teachers and a trial lesson offer, plus retargeting for interested people." },
+          { title: "Google Ads for searches", text: "Campaigns for courses, languages, exam prep and clubs in your city or online." },
+          { title: "Intake landing page", text: "A page with programme, schedule, price and a trial lesson sign-up form." },
+          { title: "Lead handling", text: "Leads sent to your CRM or messenger, with reminder templates so people show up." },
+          { title: "Report through to payment", text: "We count not just leads, but who attended the trial and enrolled." },
+        ],
+      },
+      process: {
+        intro: "How we prepare an intake.",
+        steps: [
+          { label: "01 — Analysis", title: "Product and students", items: ["Who your students are and who decides", "Competitors and their offers", "Website, leads and tracking"] },
+          { label: "02 — Launch", title: "Channels and landing page", items: ["Meta Ads, TikTok and Google Ads", "Intake landing page", "Leads sent to the CRM"] },
+          { label: "03 — Intake", title: "From lead to payment", items: ["Trial lesson reminders", "Budget to channels that bring payments", "Report after the intake"] },
+        ],
+      },
+      timeline: {
+        heading: "What to expect and when",
+        intro: "Start ads 4–6 weeks before the intake opens.",
+        items: [
+          { time: "Week 1", title: "Preparation", text: "Analysis, landing page, forms and tracking." },
+          { time: "Week 2", title: "Launch", text: "First trial lesson sign-ups." },
+          { time: "Month 1", title: "Optimisation", text: "We keep channels and creatives whose leads show up." },
+          { time: "Intake", title: "Result", text: "A clear cost per student and a plan for the next intake." },
+        ],
+      },
+      faq: [
+        { question: "How much does advertising for courses or a school cost?", answer: "Meta Ads management starts from UAH 15,000 per month and Google Ads from UAH 10,000. TikTok management is quoted after a free analysis. The ad budget is paid separately, directly to the platform." },
+        { question: "Which channel is best for education?", answer: "For kids' and hobby programmes, usually Meta Ads; for specific searches like “English courses” or exam prep, Google Ads. TikTok works well for younger audiences and online courses." },
+        { question: "When should ads start before an intake?", answer: "4–6 weeks before the start: ads need time to learn, and people need time to decide." },
+        { question: "Do you work with online courses?", answer: "Yes. For online courses we target all of Ukraine or the countries you need." },
+      ],
+      formSub: "Tell us about the project: subject, students' age, city or online, and when the intake starts. We'll suggest a plan.",
     },
   },
 };

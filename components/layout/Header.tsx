@@ -348,7 +348,7 @@ export default function Header() {
                 </div>
 
                 {/* Industry landing pages */}
-                <div className="mt-6 pt-5 border-t border-[#E0E0E0] flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                <div className="mt-6 pt-5 border-t border-[#E0E0E0] flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
                   <Link
                     href="/industries"
                     onClick={closeMega}

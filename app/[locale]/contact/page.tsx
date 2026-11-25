@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import PageTitle from "@/components/common/PageTitle";
 
 const meta = {
   uk: {
-    title: "Контакти — PRO Marketing#",
+    title: "Контакти — Ужгород, вул. Фединця 2",
     description:
       "Зв'яжіться з PRO Marketing# в Ужгороді. Залиште заявку онлайн або подзвоніть — зв'яжемось і запропонуємо оптимальний формат співпраці.",
   },
   en: {
-    title: "Contact — PRO Marketing#",
+    title: "Contact — Uzhhorod, Fedyntsia St. 2",
     description:
       "Get in touch with PRO Marketing# in Uzhhorod. Submit a request online or call us — we'll get back to you and propose the best way to work together.",
   },
@@ -36,20 +39,21 @@ export async function generateMetadata({
 export default async function ContactPage() {
   const t = await getTranslations("contact");
 
+  const locale = await getLocale();
+  const crumbLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(crumbLocale, crumbLocale === "uk" ? "Контакти" : "Contact", "/contact")}
+      />
       <Header />
       <main className="min-h-screen bg-white pt-16 md:pt-[68px] flex flex-col">
 
         {/* ── EDITORIAL HERO TITLE ── */}
         <div className="border-b border-[#E0E0E0]">
           <div className="max-w-6xl mx-auto px-6">
-            <h1
-              className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-              style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-            >
-              {t("title")}<span className="text-[#E5202E]">.</span>
-            </h1>
+            <PageTitle title={t("title")} keyword={t("h1")} />
           </div>
         </div>
 

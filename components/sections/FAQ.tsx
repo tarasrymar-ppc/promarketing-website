@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/common/AnimatedSection";
@@ -31,6 +31,8 @@ export default function FAQ() {
               <AnimatedSection key={i} delay={0.04 * i}>
                 <button
                   onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
                   className="group w-full flex items-center justify-between gap-6 py-6 text-left"
                 >
                   <span
@@ -55,22 +57,19 @@ export default function FAQ() {
                   </motion.div>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-6 text-sm md:text-base text-[#6B6B6B] leading-relaxed max-w-3xl">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Answer stays in the HTML (collapsed with CSS) so crawlers can read it */}
+                <div
+                  id={`faq-answer-${i}`}
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="pb-6 text-sm md:text-base text-[#6B6B6B] leading-relaxed max-w-3xl">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </AnimatedSection>
             );
           })}

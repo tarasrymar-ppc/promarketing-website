@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { localizedUrl, LOCALES } from "@/lib/seo";
+import { localizedLanguages, localizedUrl, LOCALES } from "@/lib/seo";
 
 const STATIC_ROUTES = [
   "",
@@ -34,9 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: route === "" ? "weekly" : "monthly",
         priority: route === "" ? 1.0 : 0.8,
         alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, localizedUrl(l, route)])
-          ),
+          languages: localizedLanguages(route),
         },
       });
     }
@@ -49,9 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.7,
         alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, localizedUrl(l, `/services/${slug}`)])
-          ),
+          languages: localizedLanguages(`/services/${slug}`),
         },
       });
     }

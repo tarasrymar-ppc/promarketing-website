@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -24,7 +24,7 @@ export default function Hero() {
       {/* Headline — no entrance animation, renders visible immediately */}
       <div className="max-w-4xl w-full">
         <h1 className="home-hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#0D0D0D] leading-[1.06]">
-          {t("headline")}
+          {t("headline")}{" "}
           <br />
           <span className="home-hero-word-window flex items-center justify-center overflow-hidden h-[1.15em]">
             <AnimatePresence mode="wait">

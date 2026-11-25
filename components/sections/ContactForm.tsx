@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 import { ClockIcon, ShieldCheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";

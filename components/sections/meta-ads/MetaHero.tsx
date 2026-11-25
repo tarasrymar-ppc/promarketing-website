@@ -1,8 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { getLocale } from "next-intl/server";
+import PageTitle from "@/components/common/PageTitle";
 
 const content = {
   uk: {
+    h1: "Таргетована реклама у Facebook та Instagram в Ужгороді та по всій Україні",
     lead: "Таргетована реклама у Facebook, Instagram та Threads для бізнесів, яким потрібні клієнти — а не просто охоплення.",
     sub: "Знаходимо вашу аудиторію за інтересами, поведінкою та даними. Ретаргетинг, Lookalike, каталоги — все під ваш бізнес.",
     cta: "Отримати консультацію",
@@ -13,6 +15,7 @@ const content = {
     ],
   },
   en: {
+    h1: "Facebook and Instagram ads management in Uzhhorod and across Ukraine",
     lead: "Targeted advertising on Facebook, Instagram and Threads for businesses that need customers — not just reach.",
     sub: "We find your audience by interests, behavior and data. Retargeting, Lookalike, catalogs — all tailored to your business.",
     cta: "Get a consultation",
@@ -33,12 +36,7 @@ export default async function MetaHero() {
 
       <div className="border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
-          <h1
-            className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-            style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-          >
-            Meta Ads<span className="text-[#E5202E]">.</span>
-          </h1>
+          <PageTitle title="Meta Ads" keyword={t.h1} />
         </div>
       </div>
 

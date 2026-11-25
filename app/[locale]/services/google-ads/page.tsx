@@ -11,17 +11,18 @@ import GAFAQ from "@/components/sections/google-ads/GAFAQ";
 import GAForm from "@/components/sections/google-ads/GAForm";
 import Clients from "@/components/sections/Clients";
 import JsonLd from "@/components/seo/JsonLd";
-import { serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { googleAdsFaq } from "@/lib/serviceFaq";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Google Ads — налаштування і ведення від 10 000 грн/міс | PRO Marketing#",
+    title: "Налаштування Google Ads від 10 000 грн/міс",
     description:
       "Налаштування та ведення Google Ads для e-commerce і сервісного бізнесу. Від 10 000 грн/міс, перші заявки за 1–2 тижні, без обов'язкового контракту. Акаунт — на ваше ім'я.",
   },
   en: {
-    title: "Google Ads — setup and management from UAH 10,000/mo | PRO Marketing#",
+    title: "Google Ads management from UAH 10,000/mo",
     description:
       "Setup and management of Google Ads for e-commerce and service businesses. From UAH 10,000/mo, first leads in 1–2 weeks, no mandatory contract. The account stays in your name.",
   },
@@ -58,7 +59,12 @@ export default async function GoogleAdsPage({
           path: "/services/google-ads",
           name: "Google Ads",
           description: meta[safeLocale].description,
+          price: 10000,
         })}
+      />
+      <JsonLd data={faqSchema([...googleAdsFaq[safeLocale].items])} />
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, "Google Ads", "/services/google-ads")}
       />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">

@@ -81,7 +81,7 @@ const content: Record<
   }
 > = {
   uk: {
-    metaTitle: "PPC AdLaunch — внутрішній інструмент | PRO Marketing#",
+    metaTitle: "PPC AdLaunch — внутрішній інструмент",
     metaDescription:
       "PPC AdLaunch — внутрішній інструмент Google Ads, який використовує виключно команда PRO Marketing для створення, ведення та звітності по пошукових кампаніях клієнтів.",
     eyebrow: "Внутрішні інструменти",
@@ -141,7 +141,7 @@ const content: Record<
     ],
   },
   en: {
-    metaTitle: "PPC AdLaunch — Internal Tool | PRO Marketing#",
+    metaTitle: "PPC AdLaunch — Internal Tool",
     metaDescription:
       "PPC AdLaunch is an internal Google Ads tool used exclusively by the PRO Marketing team to build, manage, and report on client Search campaigns.",
     eyebrow: "Internal Tools",

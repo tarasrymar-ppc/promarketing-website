@@ -1,7 +1,9 @@
 import { getLocale } from "next-intl/server";
+import PageTitle from "@/components/common/PageTitle";
 
 const content = {
   uk: {
+    h1: "PRO Marketing# — маркетингове агентство в Ужгороді з 2019 року",
     title: "Про нас",
     lead: "Команда, яка бере повну відповідальність за результат вашого маркетингу.",
     sub: "Ми не фрілансери і не одна людина на всі задачі. PRO Marketing# — команда маркетологів в Ужгороді з 12-річним досвідом: вузькі спеціалісти, які працюють разом над кожним проєктом.",
@@ -12,6 +14,7 @@ const content = {
     ],
   },
   en: {
+    h1: "PRO Marketing#, a marketing agency in Uzhhorod since 2019",
     title: "About us",
     lead: "A team that takes full responsibility for the results of your marketing.",
     sub: "We're not freelancers or one person doing everything. PRO Marketing# is a team of marketers in Uzhhorod with 12 years of experience — focused specialists working together on every project.",
@@ -32,12 +35,7 @@ export default async function AboutHero() {
 
       <div className="border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6">
-          <h1
-            className="font-semibold tracking-tighter text-[#0D0D0D] leading-none py-6 md:py-8"
-            style={{ fontSize: "clamp(56px, 14vw, 180px)" }}
-          >
-            {t.title}<span className="text-[#E5202E]">.</span>
-          </h1>
+          <PageTitle title={t.title} keyword={t.h1} />
         </div>
       </div>
 

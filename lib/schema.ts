@@ -10,6 +10,25 @@ const BUSINESS_DESCRIPTION = {
   en: "PRO Marketing# is a full-service marketing agency in Uzhhorod, Ukraine. Since 2019 we help businesses attract clients and grow sales through Google Ads, Meta Ads, TikTok Ads, SMM, SEO, AEO, and web development.",
 } as const;
 
+const GOOGLE_PARTNER_URL = "https://www.google.com/partners/agency?id=7339068295";
+
+// Topics the agency is an authority on. Helps search and AI engines connect
+// the brand entity with the services people ask about.
+const KNOWS_ABOUT = [
+  "Google Ads",
+  "Meta Ads",
+  "Facebook Ads",
+  "Instagram Ads",
+  "TikTok Ads",
+  "SMM",
+  "SEO",
+  "Answer Engine Optimization",
+  "Website development",
+  "Logo design",
+  "Branding",
+  "Digital marketing",
+];
+
 const AREA_SERVED = {
   uk: [
     { "@type": "City", name: "Ужгород" },
@@ -36,6 +55,18 @@ const ADDRESS = {
   },
 } as const;
 
+const SERVICES_CATALOG = [
+  { path: "/services/google-ads", name: { uk: "Налаштування Google Ads", en: "Google Ads management" } },
+  { path: "/services/meta-ads", name: { uk: "Таргетована реклама Meta Ads (Facebook, Instagram)", en: "Meta Ads (Facebook, Instagram)" } },
+  { path: "/services/tiktok-ads", name: { uk: "Реклама в TikTok", en: "TikTok Ads" } },
+  { path: "/services/smm", name: { uk: "SMM — ведення соцмереж", en: "SMM — social media management" } },
+  { path: "/services/seo", name: { uk: "SEO-просування сайтів", en: "SEO" } },
+  { path: "/services/aeo", name: { uk: "AEO — оптимізація під AI-пошук", en: "AEO — AI search optimization" } },
+  { path: "/services/website-development", name: { uk: "Розробка сайтів і лендінгів", en: "Website development" } },
+  { path: "/services/logo-branding", name: { uk: "Розробка логотипа та брендинг", en: "Logo & branding" } },
+  { path: "/services/complex-marketing", name: { uk: "Комплексний маркетинг під ключ", en: "Full-service marketing" } },
+] as const;
+
 export function organizationSchema(locale: Locale) {
   return {
     "@type": "Organization",
@@ -47,7 +78,10 @@ export function organizationSchema(locale: Locale) {
     logo: `${SITE_URL}/logo.png`,
     foundingDate: "2019",
     areaServed: AREA_SERVED[locale],
-    sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google],
+    sameAs: [SOCIAL.facebook, SOCIAL.linkedin, SOCIAL.google, GOOGLE_PARTNER_URL],
+    award: "Google Partner",
+    knowsAbout: KNOWS_ABOUT,
+    knowsLanguage: ["uk", "en"],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: CONTACT.phone,
@@ -60,7 +94,7 @@ export function organizationSchema(locale: Locale) {
 
 export function localBusinessSchema(locale: Locale) {
   return {
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": localBusinessId,
     name: "PRO Marketing#",
     alternateName: "PRO Marketing Agency",
@@ -77,6 +111,28 @@ export function localBusinessSchema(locale: Locale) {
       "@type": "PostalAddress",
       ...ADDRESS[locale],
       addressCountry: "UA",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:30",
+        closes: "17:30",
+      },
+    ],
+    hasMap: CONTACT.mapUrl,
+    knowsAbout: KNOWS_ABOUT,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: locale === "uk" ? "Маркетингові послуги" : "Marketing services",
+      itemListElement: SERVICES_CATALOG.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name[locale],
+          url: localizedUrl(locale, service.path),
+        },
+      })),
     },
     parentOrganization: {
       "@id": organizationId,
@@ -128,25 +184,63 @@ export function serviceSchema({
   path,
   name,
   description,
+  price,
 }: {
   locale: Locale;
   path: string;
   name: string;
   description: string;
+  /** Starting monthly price in UAH, when the page publishes one. */
+  price?: number;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${localizedUrl(locale, path)}#service`,
     name,
     description,
     url: localizedUrl(locale, path),
-    areaServed: {
-      "@type": "Country",
-      name: "Ukraine",
-    },
+    inLanguage: locale,
+    areaServed: AREA_SERVED[locale],
     provider: {
-      "@id": organizationId,
+      "@id": localBusinessId,
     },
     serviceType: name,
+    ...(price
+      ? {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "UAH",
+            price,
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price,
+              priceCurrency: "UAH",
+              unitText: locale === "uk" ? "місяць" : "month",
+            },
+            url: localizedUrl(locale, path),
+          },
+        }
+      : {}),
+  };
+}
+
+const HOME_LABEL = { uk: "Головна", en: "Home" } as const;
+
+// BreadcrumbList for inner pages: Home > current page.
+export function breadcrumbSchema(locale: Locale, name: string, path: string) {
+  const items = [
+    { name: HOME_LABEL[locale], path: "" },
+    { name, path },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: localizedUrl(locale, item.path),
+    })),
   };
 }

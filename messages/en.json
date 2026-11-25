@@ -7,7 +7,32 @@
     "contacts": "Contacts",
     "cta": "Free Analysis",
     "menu_hint": "Not sure where to start? Get a free consultation.",
-    "discuss": "Discuss a project"
+    "discuss": "Discuss a project",
+    "blog": "Blog",
+    "industries": "Industries",
+    "industries_hint": "By industry:",
+    "industry_items": [
+      {
+        "label": "Dental clinics",
+        "href": "/industries/dental-clinics"
+      },
+      {
+        "label": "Online stores",
+        "href": "/industries/online-stores"
+      },
+      {
+        "label": "Zakarpattia hotels",
+        "href": "/industries/hotels-zakarpattia"
+      },
+      {
+        "label": "Real estate",
+        "href": "/industries/real-estate"
+      },
+      {
+        "label": "Beauty salons",
+        "href": "/industries/beauty-salons"
+      }
+    ]
   },
   "hero": {
     "words": [
@@ -174,6 +199,10 @@
         "href": "/cases"
       },
       {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
         "label": "About",
         "href": "/about"
       },
@@ -187,7 +216,30 @@
       }
     ],
     "copyright": "All rights reserved.",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "industries": "Industries",
+    "industry_items": [
+      {
+        "label": "Dental clinics",
+        "href": "/industries/dental-clinics"
+      },
+      {
+        "label": "Online stores",
+        "href": "/industries/online-stores"
+      },
+      {
+        "label": "Zakarpattia hotels",
+        "href": "/industries/hotels-zakarpattia"
+      },
+      {
+        "label": "Real estate",
+        "href": "/industries/real-estate"
+      },
+      {
+        "label": "Beauty salons",
+        "href": "/industries/beauty-salons"
+      }
+    ]
   },
   "under_construction": {
     "badge": "In progress",

@@ -97,6 +97,7 @@ export default function Header() {
       href: SERVICE_HREFS[i],
       Icon: SERVICE_ICONS[i],
     }));
+  const industryItems = t.raw("industry_items") as { label: string; href: string }[];
   const router = useRouter();
   const pathname = usePathname();
 
@@ -108,6 +109,7 @@ export default function Header() {
   const NAV_LINKS = [
     { label: t("services"),  href: "#",        hasMega: true  },
     { label: t("cases"),     href: "/cases",   hasMega: false },
+    { label: t("blog"),      href: "/blog",    hasMega: false },
     { label: t("about"),     href: "/about",   hasMega: false },
     { label: t("faq"),       href: "/faq",     hasMega: false },
     { label: t("contacts"),  href: "/contact", hasMega: false },
@@ -345,8 +347,29 @@ export default function Header() {
                   </motion.div>
                 </div>
 
+                {/* Industry landing pages */}
+                <div className="mt-6 pt-5 border-t border-[#E0E0E0] flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                  <Link
+                    href="/industries"
+                    onClick={closeMega}
+                    className="font-semibold text-[#0D0D0D] hover:text-[#E5202E] transition-colors duration-150"
+                  >
+                    {t("industries_hint")}
+                  </Link>
+                  {industryItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={closeMega}
+                      className="text-[#6B6B6B] hover:text-[#E5202E] transition-colors duration-150"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+
                 {/* Bottom strip */}
-                <div className="mt-6 pt-5 border-t border-[#E0E0E0] flex items-center justify-between">
+                <div className="mt-5 pt-5 border-t border-[#E0E0E0] flex items-center justify-between">
                   <p className="text-sm text-[#6B6B6B]">
                     {t("menu_hint")}
                   </p>
@@ -375,7 +398,7 @@ export default function Header() {
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="min-[1120px]:hidden overflow-hidden bg-white border-t border-[#E0E0E0]"
             >
-              <div className="px-6 pb-6">
+              <div className="px-6 pb-6 max-h-[calc(100dvh-64px)] overflow-y-auto overscroll-contain">
                 <div className="pt-4">
                   <p className="text-xs font-semibold text-[#6B6B6B] uppercase tracking-wider mb-3">
                     {t("services")}
@@ -390,6 +413,28 @@ export default function Header() {
                       >
                         <Icon size={14} weight="duotone" className="text-[#E5202E] flex-shrink-0" />
                         {title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-[#E0E0E0]">
+                  <Link
+                    href="/industries"
+                    onClick={() => setIsMobileOpen(false)}
+                    className="block text-xs font-semibold text-[#6B6B6B] uppercase tracking-wider mb-3 hover:text-[#E5202E]"
+                  >
+                    {t("industries")}
+                  </Link>
+                  <div className="grid grid-cols-2 gap-1">
+                    {industryItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setIsMobileOpen(false)}
+                        className="px-3 py-2.5 text-sm text-[#0D0D0D] hover:text-[#E5202E] hover:bg-[#F4F4F4] rounded-lg transition-colors duration-150"
+                      >
+                        {item.label}
                       </Link>
                     ))}
                   </div>

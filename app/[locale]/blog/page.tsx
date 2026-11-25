@@ -7,6 +7,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { BLOG_LABELS, BLOG_POSTS, BLOG_SLUGS } from "@/lib/blogPosts";
 import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 type Params = Promise<{ locale: string }>;
 
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function BlogPage({ params }: { params: Params }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
   const labels = BLOG_LABELS[safeLocale];
   const items = BLOG_SLUGS.map((slug) => {

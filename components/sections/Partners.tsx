@@ -153,6 +153,10 @@ export default async function Partners() {
                   <img
                     src={GOOGLE_PARTNER.badge}
                     alt="Google Partner"
+                    width={152}
+                    height={146}
+                    loading="lazy"
+                    decoding="async"
                     className="h-16 sm:h-[72px] w-auto object-contain"
                   />
                 </a>

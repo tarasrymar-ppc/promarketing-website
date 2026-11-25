@@ -11,8 +11,13 @@ import { BLOG_LABELS, BLOG_POSTS, SERVICE_LINK_NAMES } from "@/lib/blogPosts";
 import { INDUSTRY_PAGES } from "@/lib/industryPages";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 type Params = Promise<{ locale: string; slug: string }>;
+
+export function generateStaticParams() {
+  return Object.keys(BLOG_POSTS).map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -37,6 +42,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const post = BLOG_POSTS[slug];
   if (!post) notFound();
 

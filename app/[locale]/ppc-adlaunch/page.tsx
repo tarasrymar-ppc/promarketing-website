@@ -13,6 +13,7 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { isLocale, localizedAlternates, type Locale } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 type Item = { title: string; desc: string };
 
@@ -229,6 +230,7 @@ export default async function PpcAdLaunchPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
   const page = content[safeLocale];
 

@@ -15,6 +15,11 @@ import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 import { SERVICE_PAGE_LABELS, SERVICE_PAGES } from "@/lib/servicePages";
+import { setRequestLocale } from "next-intl/server";
+
+export function generateStaticParams() {
+  return Object.keys(SERVICE_PAGES).map((slug) => ({ slug }));
+}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> }
@@ -35,6 +40,7 @@ export default async function ServicePage(
   { params }: { params: Promise<{ locale: string; slug: string }> }
 ) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const service = SERVICE_PAGES[slug];
   if (!service) notFound();
 

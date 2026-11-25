@@ -15,6 +15,14 @@ import { siteGraphSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates, SITE_URL } from "@/lib/seo";
 import "../globals.css";
 
+const CONSENT_MARKER_SCRIPT = `try{var v=localStorage.getItem("pm_cookie_consent_v1");if(v==="accepted"||v==="rejected")document.documentElement.setAttribute("data-pm-consent",v)}catch(e){}`;
+
+// Pre-render every page for both locales at build time, so visitors get cached
+// HTML from the CDN edge instead of a server render in a US region.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -92,8 +100,16 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="h-full">
+    // suppressHydrationWarning: the inline consent script below may add
+    // data-pm-consent to <html> before React hydrates.
+    <html lang={locale} className="h-full" suppressHydrationWarning>
       <head>
+        <script
+          // Runs before first paint: hide the cookie banner for visitors who
+          // already chose, so the server-rendered banner never flashes.
+          dangerouslySetInnerHTML={{ __html: CONSENT_MARKER_SCRIPT }}
+        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <GoogleTagManagerHead />
       </head>
       <body className="min-h-full flex flex-col">

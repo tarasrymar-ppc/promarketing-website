@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { CONTACT } from "@/lib/constants";
 import { isLocale, localizedAlternates, type Locale } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 const content: Record<
   Locale,
@@ -161,6 +162,7 @@ export default async function PrivacyPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
   const page = content[safeLocale];
 

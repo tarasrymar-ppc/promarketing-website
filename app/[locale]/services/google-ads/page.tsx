@@ -14,6 +14,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { googleAdsFaq } from "@/lib/serviceFaq";
 import { isLocale, localizedAlternates } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 const meta = {
   uk: {
@@ -49,6 +50,7 @@ export default async function GoogleAdsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const safeLocale = isLocale(locale) ? locale : "uk";
 
   return (

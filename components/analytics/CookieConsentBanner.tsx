@@ -43,8 +43,13 @@ const copy: Record<
 export default function CookieConsentBanner({ locale }: { locale: string }) {
   const safeLocale: Locale = locale === "en" ? "en" : "uk";
   const text = copy[safeLocale];
-  const [consent, setConsent] = useState<CookieConsentState | "loading">(
-    "loading"
+  // "unknown" until hydration: the banner is rendered in the server HTML so it
+  // paints together with the page (it used to appear only after hydration and
+  // became the late LCP element on mobile). Returning visitors never see it:
+  // the inline script in the layout <head> marks <html data-pm-consent> before
+  // the first paint and CSS hides `.pm-cookie-banner`.
+  const [consent, setConsent] = useState<CookieConsentState | "unknown">(
+    "unknown"
   );
 
   useEffect(() => {
@@ -60,7 +65,15 @@ export default function CookieConsentBanner({ locale }: { locale: string }) {
       window.removeEventListener(COOKIE_CONSENT_EVENT, onConsentUpdated);
   }, []);
 
-  if (consent !== null) return null;
+  useEffect(() => {
+    // Once React knows the real state it controls visibility, so drop the
+    // pre-paint marker (otherwise "Cookie settings" could not reopen it).
+    if (consent !== "unknown") {
+      document.documentElement.removeAttribute("data-pm-consent");
+    }
+  }, [consent]);
+
+  if (consent !== null && consent !== "unknown") return null;
 
   function acceptCookies() {
     setCookieConsent("accepted");
@@ -75,7 +88,7 @@ export default function CookieConsentBanner({ locale }: { locale: string }) {
 
   return (
     <div
-      className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-4xl rounded-[8px] border border-[#2B2B2B] bg-[#0D0D0D] text-white shadow-2xl"
+      className="pm-cookie-banner fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-4xl rounded-[8px] border border-[#2B2B2B] bg-[#0D0D0D] text-white shadow-2xl"
       role="dialog"
       aria-live="polite"
       aria-labelledby="cookie-consent-title"

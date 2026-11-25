@@ -6,7 +6,7 @@ import AboutValues from "@/components/sections/about/AboutValues";
 import AboutGeography from "@/components/sections/about/AboutGeography";
 import Clients from "@/components/sections/Clients";
 import CTA from "@/components/sections/CTA";
-import { getLocale } from "next-intl/server";
+import { getLocale, setRequestLocale } from "next-intl/server";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
@@ -39,7 +39,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function AboutPage() {
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: requestLocale } = await params;
+  setRequestLocale(requestLocale);
   const locale = await getLocale();
   const crumbLocale = isLocale(locale) ? locale : "uk";
 

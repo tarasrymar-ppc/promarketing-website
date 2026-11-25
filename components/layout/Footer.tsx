@@ -29,6 +29,7 @@ function LinkedInIcon() {
 export default async function Footer() {
   const t = await getTranslations("footer");
   const nav = t.raw("nav") as NavItem[];
+  const services = t.raw("service_items") as NavItem[];
   const industries = t.raw("industry_items") as NavItem[];
   const year = new Date().getFullYear();
 
@@ -98,6 +99,22 @@ export default async function Footer() {
           </div>
 
         </div>
+      </div>
+
+      {/* Service pages: keyword anchors so every page links to each service */}
+      <div className="max-w-6xl mx-auto px-6">
+        <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 py-4 border-b border-white/8 text-sm">
+          <span className="text-white/70">{t("services")}:</span>
+          {services.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-white/50 hover:text-white transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
       {/* Industry landing pages */}

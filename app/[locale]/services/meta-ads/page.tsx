@@ -18,7 +18,7 @@ import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
   uk: {
-    title: "Таргетована реклама Meta Ads від 15 000 грн/міс",
+    title: "Таргетована реклама в Ужгороді — Meta Ads від 15 000 грн/міс",
     description:
       "Таргетована реклама у Facebook та Instagram. Від 15 000 грн/міс, перші заявки в день запуску, без обов'язкового контракту. Ретаргетинг, Lookalike аудиторії, два майданчики в одному кабінеті.",
   },

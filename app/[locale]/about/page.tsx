@@ -6,6 +6,9 @@ import AboutValues from "@/components/sections/about/AboutValues";
 import AboutGeography from "@/components/sections/about/AboutGeography";
 import Clients from "@/components/sections/Clients";
 import CTA from "@/components/sections/CTA";
+import { getLocale } from "next-intl/server";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -36,9 +39,15 @@ export async function generateMetadata({
   };
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const locale = await getLocale();
+  const crumbLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(crumbLocale, crumbLocale === "uk" ? "Про нас" : "About us", "/about")}
+      />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">
         <AboutHero />

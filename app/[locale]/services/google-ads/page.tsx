@@ -11,7 +11,8 @@ import GAFAQ from "@/components/sections/google-ads/GAFAQ";
 import GAForm from "@/components/sections/google-ads/GAForm";
 import Clients from "@/components/sections/Clients";
 import JsonLd from "@/components/seo/JsonLd";
-import { serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { googleAdsFaq } from "@/lib/serviceFaq";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -58,7 +59,12 @@ export default async function GoogleAdsPage({
           path: "/services/google-ads",
           name: "Google Ads",
           description: meta[safeLocale].description,
+          price: 10000,
         })}
+      />
+      <JsonLd data={faqSchema([...googleAdsFaq[safeLocale].items])} />
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, "Google Ads", "/services/google-ads")}
       />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">

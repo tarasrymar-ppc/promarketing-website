@@ -11,7 +11,8 @@ import SMMFAQ from "@/components/sections/smm/SMMFAQ";
 import SMMForm from "@/components/sections/smm/SMMForm";
 import Clients from "@/components/sections/Clients";
 import JsonLd from "@/components/seo/JsonLd";
-import { serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { smmFaq } from "@/lib/serviceFaq";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -58,7 +59,12 @@ export default async function SMMPage({
           path: "/services/smm",
           name: "SMM",
           description: meta[safeLocale].description,
+          price: 35000,
         })}
+      />
+      <JsonLd data={faqSchema([...smmFaq[safeLocale].items])} />
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, "SMM", "/services/smm")}
       />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">

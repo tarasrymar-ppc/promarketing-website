@@ -12,7 +12,8 @@ import MetaFAQ from "@/components/sections/meta-ads/MetaFAQ";
 import MetaForm from "@/components/sections/meta-ads/MetaForm";
 import Clients from "@/components/sections/Clients";
 import JsonLd from "@/components/seo/JsonLd";
-import { serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { metaAdsFaq } from "@/lib/serviceFaq";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -59,7 +60,12 @@ export default async function MetaAdsPage({
           path: "/services/meta-ads",
           name: "Meta Ads",
           description: meta[safeLocale].description,
+          price: 15000,
         })}
+      />
+      <JsonLd data={faqSchema([...metaAdsFaq[safeLocale].items])} />
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, "Meta Ads", "/services/meta-ads")}
       />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">

@@ -3,6 +3,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -65,6 +67,9 @@ export default async function CasesPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, safeLocale === "uk" ? "Кейси" : "Cases", "/cases")}
+      />
       <Header />
       <main className="min-h-screen bg-white pt-16 md:pt-[68px]">
 

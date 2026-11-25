@@ -12,7 +12,7 @@ import {
   ServiceTimeline,
 } from "@/components/sections/service/ServiceSections";
 import JsonLd from "@/components/seo/JsonLd";
-import { faqSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 import { SERVICE_PAGE_LABELS, SERVICE_PAGES } from "@/lib/servicePages";
 
@@ -53,6 +53,9 @@ export default async function ServicePage(
         })}
       />
       <JsonLd data={faqSchema(page.faq)} />
+      <JsonLd
+        data={breadcrumbSchema(safeLocale, page.name, `/services/${slug}`)}
+      />
       <Header />
       <main className="bg-white pt-16 md:pt-[68px]">
         <ServiceHero page={page} labels={labels} />

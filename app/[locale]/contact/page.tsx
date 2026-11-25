@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -36,8 +38,14 @@ export async function generateMetadata({
 export default async function ContactPage() {
   const t = await getTranslations("contact");
 
+  const locale = await getLocale();
+  const crumbLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(crumbLocale, crumbLocale === "uk" ? "Контакти" : "Contact", "/contact")}
+      />
       <Header />
       <main className="min-h-screen bg-white pt-16 md:pt-[68px] flex flex-col">
 

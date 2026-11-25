@@ -1,10 +1,10 @@
 import { type Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import { faqSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { isLocale, localizedAlternates } from "@/lib/seo";
 
 const meta = {
@@ -39,8 +39,14 @@ export default async function FAQPage() {
   const t = await getTranslations("faq");
   const items = t.raw("items") as { question: string; answer: string }[];
 
+  const locale = await getLocale();
+  const crumbLocale = isLocale(locale) ? locale : "uk";
+
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(crumbLocale, crumbLocale === "uk" ? "FAQ" : "FAQ", "/faq")}
+      />
       <JsonLd data={faqSchema(items)} />
       <Header />
       <main className="pt-16 md:pt-[68px]">

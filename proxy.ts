@@ -1,23 +1,23 @@
 import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
 
 const handleI18n = createMiddleware(routing);
 
-// Resolve the locale purely from the visitor's country.
-// Vercel injects `x-vercel-ip-country` automatically on every request.
-// Ukraine -> Ukrainian; every other country (and unknown, e.g. localhost) -> English.
-function geoLocale(request: NextRequest): (typeof routing.locales)[number] {
-  const country = request.headers.get("x-vercel-ip-country");
-  return country === "UA" ? "uk" : "en";
-}
+const LOCALE_PREFIX = new RegExp(`^/(${routing.locales.join("|")})(/|$)`);
 
 export default function proxy(request: NextRequest) {
-  // Seed next-intl's cookie-based detection with the geo locale so the country
-  // always decides the language at the unprefixed entry point ("/"), taking
-  // priority over the browser's Accept-Language header.
-  // Explicit /uk and /en URLs still win, so the in-page language switcher works.
-  request.cookies.set("NEXT_LOCALE", geoLocale(request));
+  const { pathname } = request.nextUrl;
+
+  // Unprefixed URLs ("/", "/services/seo", ...) have no content of their own.
+  // Send them permanently (308) to the Ukrainian version so search engines
+  // consolidate signals on the /uk URL instead of keeping the unprefixed one.
+  if (!LOCALE_PREFIX.test(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${routing.defaultLocale}${pathname === "/" ? "" : pathname}`;
+    return NextResponse.redirect(url, 308);
+  }
+
   return handleI18n(request);
 }
 

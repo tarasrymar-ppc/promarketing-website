@@ -9,6 +9,7 @@ import {
   GoogleTagManagerBody,
   GoogleTagManagerHead,
 } from "@/components/analytics/GoogleTagManager";
+import MobileCTABar from "@/components/layout/MobileCTABar";
 import JsonLd from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
 import { siteGraphSchema } from "@/lib/schema";
@@ -119,6 +120,7 @@ export default async function LocaleLayout({
         <JsonLd data={siteGraphSchema(locale === "en" ? "en" : "uk")} />
         <NextIntlClientProvider messages={messages}>
           {children}
+          <MobileCTABar />
           <CookieConsentBanner locale={locale} />
         </NextIntlClientProvider>
       </body>

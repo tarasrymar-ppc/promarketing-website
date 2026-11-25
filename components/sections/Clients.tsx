@@ -87,7 +87,7 @@ export default async function Clients() {
   const row = [...CLIENTS, ...CLIENTS];
 
   return (
-    <section className="py-16 md:py-24 bg-white rounded-3xl">
+    <section className="py-16 md:py-24 bg-[#F4F4F4] rounded-3xl">
 
       <style>{`
         @keyframes clients-scroll {

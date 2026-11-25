@@ -6,9 +6,11 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
+// Fades content in as it scrolls into view. The animation is pure CSS
+// (`.reveal` in app/globals.css), so it adds no JavaScript to the page.
 export default function AnimatedSection({
   children,
   className = "",
 }: AnimatedSectionProps) {
-  return <div className={className}>{children}</div>;
+  return <div className={`reveal ${className}`}>{children}</div>;
 }

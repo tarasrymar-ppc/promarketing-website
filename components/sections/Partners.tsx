@@ -130,7 +130,7 @@ export default async function Partners() {
   const c = locale === "en" ? content.en : content.uk;
 
   return (
-    <section className="py-16 md:py-20 bg-[#F4F4F4] rounded-3xl overflow-hidden">
+    <section className="py-16 md:py-20 bg-white rounded-3xl overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <AnimatedSection>
           <div className="flex flex-col md:flex-row md:items-stretch gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">

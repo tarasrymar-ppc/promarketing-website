@@ -15,7 +15,7 @@ export default function Process() {
   const items = t.raw("items") as StepItem[];
 
   return (
-    <section className="py-24 md:py-32 bg-[#F4F4F4] rounded-3xl overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#0D0D0D] rounded-3xl overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -23,27 +23,27 @@ export default function Process() {
           <p className="text-xs font-semibold text-[#E5202E] uppercase tracking-widest mb-4">
             {t("label")}
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0D0D0D]">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white">
             {t("title")}
           </h2>
         </AnimatedSection>
 
         {/* Steps grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0E0] rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden">
           {items.map((step, i) => (
             <AnimatedSection key={step.number} delay={0.08 * i} className="h-full">
               <motion.div
                 whileHover={{
                   scale: 1.02,
-                  boxShadow: "0 12px 40px rgba(0,0,0,0.10)",
+                  boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
                   zIndex: 10,
                 }}
                 transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative h-full bg-[#F4F4F4] p-8 md:p-10 group hover:bg-white transition-colors duration-300 cursor-default"
+                className="relative h-full bg-[#0D0D0D] p-8 md:p-10 group hover:bg-[#161616] transition-colors duration-300 cursor-default"
               >
                 {/* Decorative large number */}
                 <span
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[120px] md:text-[140px] font-bold leading-none select-none pointer-events-none text-[#E0E0E0] group-hover:text-[#E5202E]/8 transition-colors duration-300"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[120px] md:text-[140px] font-bold leading-none select-none pointer-events-none text-white/[0.06] group-hover:text-[#E5202E]/20 transition-colors duration-300"
                   aria-hidden="true"
                 >
                   {step.number}
@@ -54,10 +54,10 @@ export default function Process() {
                   <span className="text-xs font-semibold text-[#E5202E] tracking-widest tabular-nums">
                     {step.number}
                   </span>
-                  <h3 className="text-xl md:text-2xl font-semibold text-[#0D0D0D] mt-3 mb-3 tracking-tight">
+                  <h3 className="text-xl md:text-2xl font-semibold text-white mt-3 mb-3 tracking-tight">
                     {step.title}
                   </h3>
-                  <p className="text-sm md:text-base text-[#6B6B6B] leading-relaxed max-w-xs">
+                  <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-xs">
                     {step.description}
                   </p>
                 </div>

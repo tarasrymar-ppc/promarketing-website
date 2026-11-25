@@ -30,7 +30,7 @@ export default function Services() {
   const items = t.raw("items") as ServiceItem[];
 
   return (
-    <section className="py-24 md:py-32 bg-[#F4F4F4] rounded-3xl overflow-hidden">
+    <section className="py-24 md:py-32 bg-white rounded-3xl overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -91,7 +91,7 @@ export default function Services() {
 
         {/* CTA strip */}
         <AnimatedSection delay={0.18}>
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white rounded-2xl px-8 py-6">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F4F4F4] rounded-2xl px-8 py-6">
             <p className="text-sm text-[#6B6B6B]">
               {t("cta_text")}{" "}
               <span className="text-[#0D0D0D] font-medium">
